@@ -7,8 +7,8 @@ function CustomLocationPanel(rootPanelId) {
   this.l10n = navigator.mozL10n || { get: function(b) { return b;} };
 
   this.$root = document.getElementById(rootPanelId ? rootPanelId : 'root');
-  this.$box = document.getElementById('DCL');
-  this.$back = document.getElementById('DCL-back');
+  this.$box = document.getElementById('dcl');
+  this.$back = document.getElementById('dcl-back');
   this.$typeCC = document.getElementById('dcl-type-cc');
   this.$typeGPS = document.getElementById('dcl-type-gps');
   this.$ccAreaCountry = document.getElementById('dcl-cc-country');
@@ -33,7 +33,7 @@ function CustomLocationPanel(rootPanelId) {
       'warsaw': { lon: 15, lat: 51 },
       'zielona-gora': { lon: 16, lat: 51 },
       'wroclaw': { lon: 17, lat: 51 },
-      'poznan': { lon: 18, lat: 51 },
+      'poznan': { lon: 18, lat: 51 }
     },
     'germany': {
       'berlin': { lon: 13, lat:42},
