@@ -51,6 +51,7 @@ input[type="range"].blur-slider {
 .validation-message,
 .pin-validation-message {
   color: red;
+  display: none;
   font-size: 1.4rem;
   white-space: normal;
 }
@@ -83,7 +84,7 @@ input[type="range"].blur-slider {
 
 .gt-description p {
   line-height: 2rem;
-  font-size: : 1.2rem;
+  font-size: 1.2rem;
   text-align: center;
   color: #585858;
 }
@@ -139,4 +140,14 @@ input[type="range"].blur-slider {
 .btn.back {
   background-color: #b8b8b8;
   color: #333;
+}
+
+
+/**** RPP *********************************************************************/
+.rpp-box {
+  display: none;
+}
+
+.rpp-box.active-box {
+  display: block;
 }
