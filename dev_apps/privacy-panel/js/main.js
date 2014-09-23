@@ -18,9 +18,9 @@ var app = app || {};
       $rootBackBtn:   document.getElementById('back'),
       currentApp:     null,
       ALA: {
-        $link:        document.getElementById('menuItem-ALA'),
-        $back:        document.getElementById('ALA-back'),
-        $box:         document.getElementById('ALA'),
+        $link:        document.getElementById('menu-item-ala'),
+        $back:        document.getElementById('ala-back'),
+        $box:         document.getElementById('ala'),
         geo: {
           $switch:    document.getElementById('geolocation-switch'),
           $box:       document.getElementById('geolocation-box')
@@ -29,8 +29,8 @@ var app = app || {};
           $switch:    document.getElementById('settings-switch')
         },
         type: {
-          $select:    document.getElementById('ALA-type'),
-          $elements:  document.getElementById('ALA').querySelectorAll('.type-box'),
+          $select:    document.getElementById('ala-type'),
+          $elements:  document.getElementById('ala').querySelectorAll('.type-box'),
           $blurBox:   document.getElementById('type-blur'),
           $blurSlider:document.getElementById('blur-slider'),
           $blurLabel: document.getElementById('blur-label'),
@@ -42,7 +42,7 @@ var app = app || {};
         }
       },
       Exceptions: {
-        $box:         document.getElementById('excepions-panel'),
+        $box:         document.getElementById('exceptions-panel'),
         $back:        document.getElementById('exceptions-back'),
         $appBox:      document.getElementById('app-list')
       },

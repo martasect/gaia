@@ -336,7 +336,7 @@ var RemotePrivacyProtection = (function() {
 
 
   // main event listner on menu option
-  document.getElementById('menuItem-RPP').addEventListener('click', function() {
+  document.getElementById('menu-item-rpp').addEventListener('click', function() {
     window.LazyLoader.load(
       [
         document.getElementById('remote-privacy-protection')

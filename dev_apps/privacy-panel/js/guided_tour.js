@@ -3,7 +3,7 @@
 (function() {
   'use strict';
 
-  document.getElementById('menuItem-GT').addEventListener('click', function() {
+  document.getElementById('menu-item-gt').addEventListener('click', function() {
     window.LazyLoader.load(
       [
         document.getElementById('welcome'),
