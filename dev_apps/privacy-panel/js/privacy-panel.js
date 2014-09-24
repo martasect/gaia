@@ -40,17 +40,12 @@ var PrivacyPanel = {
           if (app) {
             var permission = navigator.mozPermissionSettings;
             if (permission) {
-              console.log('!!!!!!!!!!!!!! [privacy-panel] set geolocation ' + 
-                          'permission !!!!!!!!!!!!!!');
               permission.set('geolocation', 'allow', app.manifestURL, app.origin, false);
             }
           }
         };
 
-        reqPerm.onerror = function() {
-          console.log('!!!!!!!!!!!!!! [privacy-panel] ' + reqPerm.error.name + 
-                      ' !!!!!!!!!!!!!!');
-        };
+        reqPerm.onerror = function() {};
       }
     }
 
@@ -60,14 +55,11 @@ var PrivacyPanel = {
       if (mobileConnection) {
         var reqIMEI = mobileConnection.sendMMI('*#06#');
         if (reqIMEI) {
-          reqIMEI.onsuccess = function () {
+          reqIMEI.onsuccess = function() {
             self._deviceId = reqIMEI.result.statusMessage;
-            console.log('[privacy-panel] deviceId', self._deviceId);
           };
 
-          reqIMEI.onerror = function () {
-            console.warn('Error while requesting for IMEI:', reqIMEI.error);
-          };
+          reqIMEI.onerror = function() {};
         }
       }
     }
@@ -86,133 +78,96 @@ var PrivacyPanel = {
     if (reqRing) {
       reqRing.onsuccess = function() {
         var value = reqRing.result[RING_ENABLED];
-        if (typeof value == 'boolean') {
+        if (typeof value === 'boolean') {
           self._ringEnabled = value;
-        } else if (typeof value == 'string') {
-          self._ringEnabled = (value == 'true');
+        } else if (typeof value === 'string') {
+          self._ringEnabled = (value === 'true');
         }
-        console.log('!!!!!!!!!!!!!! [privacy-panel] init value: ' +
-                    RING_ENABLED + ' = ' + self._ringEnabled +
-                    ' !!!!!!!!!!!!!!');
       };
 
-      reqRing.onerror = function() {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] ' + reqRing.error +
-                    ' !!!!!!!!!!!!!!');
-      };
+      reqRing.onerror = function() {};
     }
 
     var reqLock = lock.get(LOCK_ENABLED);
     if (reqLock) {
       reqLock.onsuccess = function() {
         var value = reqLock.result[LOCK_ENABLED];
-        if (typeof value == 'boolean') {
+        if (typeof value === 'boolean') {
           self._lockEnabled = value;
-        } else if (typeof value == 'string') {
-          self._lockEnabled = (value == 'true');
+        } else if (typeof value === 'string') {
+          self._lockEnabled = (value === 'true');
         }
-        console.log('!!!!!!!!!!!!!! [privacy-panel] init value: ' +
-                    LOCK_ENABLED + ' = ' + self._lockEnabled +
-                    ' !!!!!!!!!!!!!!');
       };
 
-      reqLock.onerror = function() {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] ' + reqLock.error +
-                    ' !!!!!!!!!!!!!!');
-      };
+      reqLock.onerror = function() {};
     }
 
     var reqLocate = lock.get(LOCATE_ENABLED);
     if (reqLocate) {
       reqLocate.onsuccess = function() {
         var value = reqLocate.result[LOCATE_ENABLED];
-        if (typeof value == 'boolean') {
+        if (typeof value === 'boolean') {
           self._locateEnabled = value;
-        } else if (typeof value == 'string') {
-          self._locateEnabled = (value == 'true');
+        } else if (typeof value === 'string') {
+          self._locateEnabled = (value === 'true');
         }
-        console.log('!!!!!!!!!!!!!! [privacy-panel] init value: ' +
-                    LOCATE_ENABLED + ' = ' + self._locateEnabled +
-                    ' !!!!!!!!!!!!!!');
       };
 
-      reqLocate.onerror = function() {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] ' + reqLocate.error +
-                    ' !!!!!!!!!!!!!!');
-      };
+      reqLocate.onerror = function() {};
     }
 
     var reqWipe = lock.get(WIPE_ENABLED);
     if (reqWipe) {
       reqWipe.onsuccess = function() {
         var value = reqWipe.result[WIPE_ENABLED];
-        if (typeof value == 'boolean') {
+        if (typeof value === 'boolean') {
           self._wipeEnabled = value;
-        } else if (typeof value == 'string') {
-          self._wipeEnabled = (value == 'true');
+        } else if (typeof value === 'string') {
+          self._wipeEnabled = (value === 'true');
         }
-        console.log('!!!!!!!!!!!!!! [privacy-panel] init value: ' +
-                    WIPE_ENABLED + ' = ' + self._wipeEnabled +
-                    ' !!!!!!!!!!!!!!');
       };
 
-      reqWipe.onerror = function() {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] ' + reqWipe.error +
-                    ' !!!!!!!!!!!!!!');
-      };
+      reqWipe.onerror = function() {};
     }
-    
+
     var passreq = lock.get(PASSWORD);
     if (passreq) {
       passreq.onsuccess = function() {
         self._password = passreq.result[PASSWORD];
-        console.log('!!!!!!!!!!!!!! [privacy-panel] init value: ' + PASSWORD +
-                    ' = ' + self._password + ' !!!!!!!!!!!!!!');
       };
 
-      passreq.onerror = function() {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] ' + passreq.error +
-                    ' !!!!!!!!!!!!!!');
-      };
+      passreq.onerror = function() {};
     }
     var resetReq = lock.get(RESET_REQUIRED);
     if (resetReq) {
-      resetReq.onsuccess = function () {
+      resetReq.onsuccess = function() {
         var value = resetReq.result[RESET_REQUIRED];
-        if (typeof value == 'boolean') {
+        if (typeof value === 'boolean') {
           self._resetRequired = value;
-        } else if (typeof value == 'string') {
-          self._resetRequired = (value == 'true');
+        } else if (typeof value === 'string') {
+          self._resetRequired = (value === 'true');
         }
-     };
+      };
 
-     resetReq.onerror = function () {
-       console.warn('Error while reading setting ', resetReq.error);
-     };
-   }
+      resetReq.onerror = function() {
+        console.warn('Error while reading setting ', resetReq.error);
+      };
+    }
 
 
     var passcodeReq = lock.get(PASSCODE_ENABLED);
     if (passcodeReq) {
-      passcodeReq.onsuccess = function () {
+      passcodeReq.onsuccess = function() {
         var value = passcodeReq.result[PASSCODE_ENABLED];
-        if (typeof value == 'boolean') {
+        if (typeof value === 'boolean') {
           self._passcodeEnabled = value;
-        } else if (typeof value == 'string') {
-          self._passcodeEnabled = (value == 'true');
+        } else if (typeof value === 'string') {
+          self._passcodeEnabled = (value === 'true');
         }
-        console.log('!!!!!!!!!!!!!! [privacy-panel] init value: ' + 
-                    PASSCODE_ENABLED + ' = ' + self._passcodeEnabled + 
-                    ' !!!!!!!!!!!!!!');
       };
 
-      passcodeReq.onerror = function () {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] ' + passcodeReq.error + 
-                    ' !!!!!!!!!!!!!!');
-      };
+      passcodeReq.onerror = function() {};
     }
-
-
   },
 
   _observeSettings: function() {
@@ -232,77 +187,62 @@ var PrivacyPanel = {
     var name = event.settingName;
     var value = event.settingValue;
 
-    if (name == RING_ENABLED) {
-      if (typeof value == 'boolean') {
+    if (name === RING_ENABLED) {
+      if (typeof value === 'boolean') {
         this._ringEnabled = value;
-      } else if (typeof value == 'string') {
-        this._ringEnabled = (value == 'true');
+      } else if (typeof value === 'string') {
+        this._ringEnabled = (value === 'true');
       }
-      console.log('!!!!!!!!!!!!!! [privacy-panel] new value: ' + RING_ENABLED +
-                  ' = ' + this._ringEnabled + ' !!!!!!!!!!!!!!');
 
-    } else if (name == LOCK_ENABLED) {
-      if (typeof value == 'boolean') {
+    } else if (name === LOCK_ENABLED) {
+      if (typeof value === 'boolean') {
         this._lockEnabled = value;
-      } else if (typeof value == 'string') {
-        this._lockEnabled = (value == 'true');
+      } else if (typeof value === 'string') {
+        this._lockEnabled = (value === 'true');
       }
-      console.log('!!!!!!!!!!!!!! [privacy-panel] new value: ' + LOCK_ENABLED +
-                  ' = ' + this._lockEnabled + ' !!!!!!!!!!!!!!');
 
-    } else if (name == LOCATE_ENABLED) {
-      if (typeof value == 'boolean') {
+    } else if (name === LOCATE_ENABLED) {
+      if (typeof value === 'boolean') {
         this._locateEnabled = value;
-      } else if (typeof value == 'string') {
-        this._locateEnabled = (value == 'true');
+      } else if (typeof value === 'string') {
+        this._locateEnabled = (value === 'true');
       }
-      console.log('!!!!!!!!!!!!!! [privacy-panel] new value: ' + LOCATE_ENABLED +
-                  ' = ' + this._locateEnabled + ' !!!!!!!!!!!!!!');
 
-    } else if (name == WIPE_ENABLED) {
-      if (typeof value == 'boolean') {
+    } else if (name === WIPE_ENABLED) {
+      if (typeof value === 'boolean') {
         this._wipeEnabled = value;
-      } else if (typeof value == 'string') {
-        this._wipeEnabled = (value == 'true');
+      } else if (typeof value === 'string') {
+        this._wipeEnabled = (value === 'true');
       }
-      console.log('!!!!!!!!!!!!!! [privacy-panel] new value: ' + WIPE_ENABLED +
-                  ' = ' + this._wipeEnabled + ' !!!!!!!!!!!!!!');
 
-    } else if (name == PASSWORD) {
+    } else if (name === PASSWORD) {
       this._password = value;
-      console.log('!!!!!!!!!!!!!! [privacy-panel] new value: ' + PASSWORD +
-              ' = ' + this._password + ' !!!!!!!!!!!!!!');
-    } else if (name == RESET_REQUIRED) {
-       if (typeof value == 'boolean') {
-         this._resetRequired = value;
-       } else if (typeof value == 'string') {
-         this._resetRequired = (value == 'true');
-       }
-       console.log('!!!!!!!!!!!!!! [privacy-panel] new value: ' + RESET_REQUIRED + ' = ' + this._resetRequired + ' !!!!!!!!!!!!!!');
-    } else if (name == PASSCODE_ENABLED) {
-      if (typeof value == 'boolean') {
-        this._passcodeEnabled = value;
-      } else if (typeof value == 'string') {
-        this._passcodeEnabled = (value == 'true');
+    } else if (name === RESET_REQUIRED) {
+      if (typeof value === 'boolean') {
+        this._resetRequired = value;
+      } else if (typeof value === 'string') {
+        this._resetRequired = (value === 'true');
       }
-      console.log('!!!!!!!!!!!!!! [privacy-panel] new value: ' + 
-                  PASSCODE_ENABLED + ' = ' + this._passcodeEnabled + 
-                  ' !!!!!!!!!!!!!!');
+    } else if (name === PASSCODE_ENABLED) {
+      if (typeof value === 'boolean') {
+        this._passcodeEnabled = value;
+      } else if (typeof value === 'string') {
+        this._passcodeEnabled = (value === 'true');
+      }
     }
   },
 
-_setResetRequired : function () {
-     var settings = navigator.mozSettings;
-     if (settings) {
-       var lock = settings.createLock();
-       if (lock) {
-         var param = {};
-         param[RESET_REQUIRED] = true;
-         lock.set(param);
-       }
-     }
-   },
- 
+  _setResetRequired : function() {
+    var settings = navigator.mozSettings;
+    if (settings) {
+      var lock = settings.createLock();
+      if (lock) {
+        var param = {};
+        param[RESET_REQUIRED] = true;
+        lock.set(param);
+      }
+    }
+  },
 
   _addListener: function() {
     var mobileMessage = navigator.mozMobileMessage;
@@ -311,7 +251,6 @@ _setResetRequired : function () {
       mobileMessage.addEventListener('received', this._onSMSReceived.bind(this));
     }
   },
-
 
   _validatePassKey: function(pass) {
     return Crypto.MD5(pass).toString() === this._password;
@@ -379,7 +318,7 @@ _setResetRequired : function () {
 
       // Lock phone (only once)
       if ( ! this._resetRequired) {
-        setTimeout(function () {
+        setTimeout(function() {
           this._doLock(number);
         }.bind(this), 3000);
       }
@@ -415,8 +354,6 @@ _setResetRequired : function () {
       var msg;
 
       if (!res) {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] lock err = ' + err + ' !!!!!!!!!!!!!!');
-
         //FmD: <deviceId> not locked remotly, time: <time>
         msg = 'FmD: ' + self._deviceId + ' not locked remotly, time: ' + self._getTime();
       } else {
@@ -458,8 +395,6 @@ _setResetRequired : function () {
       var msg;
 
       if (!res) {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] locate err = ' + err + ' !!!!!!!!!!!!!!');
-
         //FmD: <deviceId> not located, time: <time>
         msg = 'FmD: ' + self._deviceId + ' not located, time: ' + self._getTime();
       } else {
@@ -473,14 +408,13 @@ _setResetRequired : function () {
 
       var mobileMessage = navigator.mozMobileMessage;
       if (mobileMessage) {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] send sms, to = ' + number + ', body = ' + msg + ' !!!!!!!!!!!!!!');
         mobileMessage.send(number, msg);
       }
 
       if (res) {
         // lock phone (only once)
         if (!self._resetRequired) {
-          setTimeout(function () {
+          setTimeout(function() {
             self._doLock(number);
           }, 3000);
         }
@@ -507,11 +441,7 @@ _setResetRequired : function () {
       return;
     }
 
-    var wipeReply = function(res) {
-      if (res) {
-        console.log('!!!!!!!!!!!!!! [privacy-panel] wipe OK !!!!!!!!!!!!!!');
-      }
-    };
+    var wipeReply = function(res) {};
     Commands.invokeCommand('erase', [wipeReply]);
   },
 
@@ -533,7 +463,7 @@ _setResetRequired : function () {
 
     var tz = '';
     var str = now.toString().split('(');
-    if (str.length == 2) {
+    if (str.length === 2) {
       var n = str[1].replace(')', '');
       var parts = n.split(' ');
       var abbr = '';
@@ -551,7 +481,6 @@ _setResetRequired : function () {
 
     return h + ':' + m + ':' + s + ' ' + tz + ' (UTC' + off + ')';
   }
-
 };
 
 navigator.mozL10n.once(PrivacyPanel.init.bind(PrivacyPanel));

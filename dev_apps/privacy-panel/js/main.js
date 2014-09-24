@@ -545,9 +545,7 @@ var app = app || {};
     }
 
     // save current type
-    if (save === true) {
-      app.saveApplications();
-    }
+    save && app.saveApplications();
   };
 
   /**
