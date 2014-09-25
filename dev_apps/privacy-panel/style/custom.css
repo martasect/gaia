@@ -56,6 +56,23 @@ input[type="range"].blur-slider {
   white-space: normal;
 }
 
+
+/**** GT **********************************************************************/
+
+section[role="region"] > header.gt-header:first-child {
+  background: none;
+  position: absolute;
+}
+
+section[role="region"] > header.gt-header:first-child a:hover {
+  background: none;
+}
+
+section[role="region"] > div.gt-box {
+  top: 0;
+  height: 100%;
+}
+
 .gt-picture {
   height: calc(50% - 5rem);
   background: #cde4e3;
@@ -69,7 +86,7 @@ input[type="range"].blur-slider {
   color: #00caf2;
   text-align: center;
   font-size: 1.8rem;
-  line-height: 3rem;
+  line-height: 2rem;
   display: block;
   margin: 0;
   padding: 2rem 1rem 1rem 1rem;
@@ -82,6 +99,7 @@ input[type="range"].blur-slider {
   font-size: 1.2rem;
   text-align: center;
   color: #585858;
+  padding: 0 2rem;
 }
 
 .gt-action {
@@ -131,15 +149,10 @@ li .btn {
   margin-left: 0;
 }
 
-.btn.next {
+.btn.btn-blue {
   background-color: #00caf2;
   border-color: #00caf2;
   color: #fff;
-}
-
-.btn.back {
-  background-color: #b8b8b8;
-  color: #333;
 }
 
 
