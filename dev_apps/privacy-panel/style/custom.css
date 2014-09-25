@@ -56,11 +56,6 @@ input[type="range"].blur-slider {
   white-space: normal;
 }
 
-.small-link {
-  font-size: 1.4rem;
-  white-space: normal;
-}
-
 .gt-picture {
   height: calc(50% - 5rem);
   background: #cde4e3;
@@ -121,7 +116,7 @@ input[type="range"].blur-slider {
   white-space: nowrap;
   overflow: hidden;
   background: #d8d8d8;
-  border: none;
+  border: 1px solid #999999;
   border-radius: 2rem;
   font-weight: normal;
   font-size: 1.6rem;
@@ -132,8 +127,13 @@ input[type="range"].blur-slider {
   outline: none;
 }
 
+li .btn {
+  margin-left: 0;
+}
+
 .btn.next {
   background-color: #00caf2;
+  border-color: #00caf2;
   color: #fff;
 }
 

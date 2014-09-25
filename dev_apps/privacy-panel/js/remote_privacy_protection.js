@@ -19,28 +19,32 @@ var RemotePrivacyProtection = (function() {
         return;
       }
 
+      this.$RPP = document.getElementById('remote-privacy-protection');
+
       this.elements = {
-        $boxes:       document.getElementById('remote-privacy-protection').querySelectorAll('.rpp-box'),
+        $boxes:       this.$RPP.querySelectorAll('.rpp-box'),
         $content:     document.getElementById('rpp-content'),
         $newPass:     document.getElementById('rpp-new-password'),
         $login:       document.getElementById('rpp-login'),
         $changePass:  document.getElementById('rpp-change-password'),
         RemoteLocate: {
-          $box:       document.querySelector('#remote-privacy-protection .remote-locate'),
-          $input:     document.querySelector('#remote-privacy-protection .remote-locate input')
+          $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-locate'),
+          $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-locate input')
         },
         RemoteRing: {
-          $box:       document.querySelector('#remote-privacy-protection .remote-ring'),
-          $input:     document.querySelector('#remote-privacy-protection .remote-ring input')
+          $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-ring'),
+          $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-ring input')
         },
         RemoteLock: {
-          $box:       document.querySelector('#remote-privacy-protection .remote-lock'),
-          $input:     document.querySelector('#remote-privacy-protection .remote-lock input')
+          $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-lock'),
+          $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-lock input')
         },
         RemoteWipe: {
-          $box:       document.querySelector('#remote-privacy-protection .remote-wipe'),
-          $input:     document.querySelector('#remote-privacy-protection .remote-wipe input')
-        }
+          $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-wipe'),
+          $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-wipe input')
+        },
+        $backToRootLink: this.$RPP.querySelector('.back-to-root'),
+        $backToLoginLink: this.$RPP.querySelector('.back-to-login')
       };
 
 
@@ -53,6 +57,7 @@ var RemotePrivacyProtection = (function() {
       this.elements.RemoteRing.$input.addEventListener('change', function(event) { this.toggleRemoteRing(event.target.checked); }.bind(this));
       this.elements.RemoteLock.$input.addEventListener('change', function(event) { this.toggleRemoteLock(event.target.checked); }.bind(this));
       this.elements.RemoteWipe.$input.addEventListener('change', function(event) { this.toggleRemoteWipe(event.target.checked); }.bind(this));
+      this.elements.$backToLoginLink.addEventListener('click', this.backToLogin.bind(this));
 
       this.isInitialized = true;
 
@@ -61,6 +66,9 @@ var RemotePrivacyProtection = (function() {
     },
 
 
+    /**
+     * Show RPP box (new password or login form)
+     */
     showRPPBox: function() {
       // Get current passphrase and display proper screen
       var status = this.settings.createLock().get('rpp.password');
@@ -69,8 +77,10 @@ var RemotePrivacyProtection = (function() {
 
         this.hideRPPBoxes();
         if (password) {
+          this.resetLogindForm();
           this.elements.$login.classList.add('active-box');
         } else {
+          this.resetNewPasswordForm();
           this.elements.$newPass.classList.add('active-box');
         }
       }.bind(this);
@@ -119,7 +129,51 @@ var RemotePrivacyProtection = (function() {
       this.hideRPPBoxes();
       this.elements.$changePass.classList.add('active-box');
 
-      // reset form
+      this.resetChangePasswordForm();
+
+      // show back-to-login button
+      this.elements.$backToRootLink.style.display = 'none';
+      this.elements.$backToLoginLink.style.display = 'block';
+    },
+
+    /**
+     * Go back to login page
+     */
+    backToLogin: function() {
+      // show back-to-root button
+      this.elements.$backToRootLink.style.display = 'block';
+      this.elements.$backToLoginLink.style.display = 'none';
+
+      this.showRPPBox();
+    },
+
+    /**
+     * Reset new password form
+     */
+    resetNewPasswordForm: function() {
+      this.elements.$newPass.querySelector('.pass1').value = '';
+      this.elements.$newPass.querySelector('.pass2').value = '';
+
+      var $validationMessage = this.elements.$newPass.querySelector('.validation-message');
+      $validationMessage.textContent = '';
+      $validationMessage.style.display = 'none';
+    },
+
+    /**
+     * Reset login form
+     */
+    resetLogindForm: function() {
+      this.elements.$login.querySelector('.pass1').value = '';
+
+      var $validationMessage = this.elements.$login.querySelector('.validation-message');
+      $validationMessage.textContent = '';
+      $validationMessage.style.display = 'none';
+    },
+
+    /**
+     * Reset change password form
+     */
+    resetChangePasswordForm: function() {
       this.elements.$changePass.querySelector('.pin').value = '';
       this.elements.$changePass.querySelector('.pass1').value = '';
       this.elements.$changePass.querySelector('.pass2').value = '';
@@ -164,9 +218,7 @@ var RemotePrivacyProtection = (function() {
         $validationMessage.textContent = 'Confirmation must match passphrase!';
         $validationMessage.style.display = 'block';
       } else {
-        // clear validation message
-        $validationMessage.textContent = '';
-        $validationMessage.style.display = 'none';
+        this.resetNewPasswordForm();
 
         // saving password
         this.settings.createLock().set({ 'rpp.password': passHash });
@@ -190,14 +242,8 @@ var RemotePrivacyProtection = (function() {
         password = status.result['rpp.password'];
 
         if (password === passHash) {
-          // clear validation message
-          $validationMessage.textContent = '';
-          $validationMessage.style.display = 'none';
+          this.resetLogindForm();
 
-          // clear password input
-          this.elements.$login.querySelector('.pass1').value = '';
-
-          // show RPP menu
           this.showRPPContent();
         } else {
           // passwords are valid
