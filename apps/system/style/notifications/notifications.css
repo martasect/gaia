@@ -333,8 +333,22 @@ html[dir="rtl"] #toaster-icon {
   right: 1.5rem;
 }
 
-html[dir="rtl"] #notification-container > div {
-  left: unset;
-  right: 5.6rem;
+html[dir="rtl"] #notifications-container .notification > div {
+  margin-left: 0;
+  margin-right: 5rem;
   text-align: right;
+}
+
+html[dir="rtl"] #notifications-container .notification > div.title-container .title {
+  margin-right: 0;
+  margin-left: .5rem;
+}
+
+html[dir="rtl"] #notifications-container .notification > div.title-container .timestamp {
+  left: 1.5rem;
+  right: auto;
+}
+
+html[dir="rtl"] #notifications-container .notification > img {
+  float: right;
 }

@@ -215,8 +215,8 @@ body .utility-tray .statusbar > .sb-start {
   margin: 0;
   top: 0.6rem;
   position: relative;
-  width: 1rem;
-  left: 0;
+  width: 1.4rem;
+  left: 0.1rem;
 }
 
 #statusbar-connections .statusbar-data:not(.sb-icon-data-circle) {
@@ -233,6 +233,7 @@ body .utility-tray .statusbar > .sb-start {
 
 #statusbar-connections .statusbar-signal {
   position: relative;
+  margin-left: 0.8rem;
 }
 
 #statusbar-connections[data-multiple="true"] .statusbar-signal {
@@ -262,16 +263,10 @@ body .utility-tray .statusbar > .sb-start {
 #statusbar-connections .statusbar-signal .statusbar-data {
   position: relative;
   margin: 0;
-  font-size: 1rem;
-  text-align: right;
-  top: -.5rem;
-  left: -.7rem;
-}
-
-#statusbar-connections[data-multiple="true"] .statusbar-signal .statusbar-data {
-  left: -.7rem;
+  font-size: 0.8rem;
   text-align: left;
-  top: -.5rem;
+  top: 0;
+  left: -.6rem;
 }
 
 #statusbar-connections[data-multiple="true"] .statusbar-data.sb-icon-data-circle {
@@ -520,7 +515,7 @@ body .utility-tray .statusbar > .sb-start {
 }
 
 .sb-icon-roaming {
-  background-position: -16.3rem -4rem;
+  background-position: -16rem -4rem;
 }
 
 .sb-icon-alarm {

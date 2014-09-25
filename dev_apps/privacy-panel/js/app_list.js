@@ -15,7 +15,8 @@ var AppList = (function(require) {
       mozApps.mgmt.getAll().onsuccess = function(event) {
         var apps = event.target.result;
         apps.forEach(function(app) {
-          if (app.manifest.permissions && app.manifest.permissions[filter]) {
+          var manifest = app.manifest || app.updateManifest;
+          if (manifest.permissions && manifest.permissions[filter]) {
             list.push(app);
           }
         });
