@@ -39,12 +39,10 @@ var RemotePrivacyProtection = (function() {
           $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-lock'),
           $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-lock input')
         },
-        RemoteWipe: {
-          $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-wipe'),
-          $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-wipe input')
-        },
-        $backToRootLink: this.$RPP.querySelector('.back-to-root'),
-        $backToLoginLink: this.$RPP.querySelector('.back-to-login')
+//        RemoteWipe: {
+//          $box:       document.querySelector('#remote-privacy-protection .remote-wipe'),
+//          $input:     document.querySelector('#remote-privacy-protection .remote-wipe input')
+//        }
       };
 
 
@@ -56,8 +54,7 @@ var RemotePrivacyProtection = (function() {
       this.elements.RemoteLocate.$input.addEventListener('change', function(event) { this.toggleRemoteLocate(event.target.checked); }.bind(this));
       this.elements.RemoteRing.$input.addEventListener('change', function(event) { this.toggleRemoteRing(event.target.checked); }.bind(this));
       this.elements.RemoteLock.$input.addEventListener('change', function(event) { this.toggleRemoteLock(event.target.checked); }.bind(this));
-      this.elements.RemoteWipe.$input.addEventListener('change', function(event) { this.toggleRemoteWipe(event.target.checked); }.bind(this));
-      this.elements.$backToLoginLink.addEventListener('click', this.backToLogin.bind(this));
+//      this.elements.RemoteWipe.$input.addEventListener('change', function(event) { this.toggleRemoteWipe(event.target.checked); }.bind(this));
 
       this.isInitialized = true;
 
@@ -115,11 +112,11 @@ var RemotePrivacyProtection = (function() {
       }.bind(this);
 
       // get Remote Wipe value from settings
-      var status4 = this.settings.createLock().get('rpp.wipe.enabled');
-      status4.onsuccess = function() {
-        this.elements.RemoteWipe.$input.checked = (status4.result['rpp.wipe.enabled'] === true);
-        this.elements.RemoteWipe.$box.style.display = 'block';
-      }.bind(this);
+//      var status4 = this.settings.createLock().get('rpp.wipe.enabled');
+//      status4.onsuccess = function() {
+//        this.elements.RemoteWipe.$input.checked = (status4.result['rpp.wipe.enabled'] === true);
+//        this.elements.RemoteWipe.$box.style.display = 'block';
+//      }.bind(this);
     },
 
     /**
@@ -375,9 +372,9 @@ var RemotePrivacyProtection = (function() {
      * Save Remote Wipe value
      * @param {Boolean} value
      */
-    toggleRemoteWipe: function(value) {
-      this.settings.createLock().set({ 'rpp.wipe.enabled': value });
-    }
+//    toggleRemoteWipe: function(value) {
+//      this.settings.createLock().set({ 'rpp.wipe.enabled': value });
+//    }
   };
 
 
