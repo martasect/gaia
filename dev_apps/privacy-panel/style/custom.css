@@ -33,15 +33,10 @@ input[type="range"].blur-slider {
 
 .app-element img {
   height: 3rem;
-  margin-right: 1.4rem;
+  left: 0;
+  position: absolute;
+  top: 1.6rem;
   width: 3rem;
-}
-
-.app-element a {
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding-left: 2rem;
 }
 
 .app-info {

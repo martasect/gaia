@@ -424,18 +424,46 @@ var app = app || {};
     app.elements.Application.$box.style.display = 'none';
     app.elements.Exceptions.$box.style.display = 'block';
 
+    // remove existing entries from application list
+    for (var $el of app.elements.Exceptions.$appBox.querySelectorAll('.app-element')) {
+      app.elements.Exceptions.$appBox.removeChild($el);
+    }
+
     // render app list
-    var manifest, icon, li;
+    var manifest, icon, appSettings, type, li;
 
     app.elements.appList.forEach(function(item, index) {
       manifest = item.manifest || item.updateManifest;
       icon = AppList.icon(item);
+      appSettings = app.elements.exceptionsList[item.manifestURL];
+      type = undefined;
+
+      if (appSettings) {
+        type = app.elements.exceptionsList[item.manifestURL].type;
+        switch (appSettings.type) {
+          case 'user-defined':
+            type = 'User defined';
+            break;
+          case 'blur':
+            type = app.getRadiusLabel(appSettings.slider) + ' blur';
+            break;
+          case 'precise':
+            type = 'Precise';
+            break;
+          case 'no-location':
+            type = 'No location';
+            break;
+          default:
+            break;
+        }
+      }
 
       li = app.genAppItemTemplate({
         manifestUrl: item.manifestURL,
         name: manifest.name,
         index: index,
-        iconSrc: icon
+        iconSrc: icon,
+        type: type
       });
       app.elements.Exceptions.$appBox.appendChild(li);
     });
@@ -450,11 +478,21 @@ var app = app || {};
     var icon = document.createElement('img');
     var item = document.createElement('li');
     var link = document.createElement('a');
-    var name = document.createTextNode(itemData.name);
+    var name = document.createElement('span');
+
     icon.src = itemData.iconSrc;
+    name.textContent = itemData.name;
+
     link.classList.add('menu-item');
     link.appendChild(icon);
     link.appendChild(name);
+
+    if (itemData.type) {
+      var type = document.createElement('small');
+      type.textContent = itemData.type;
+      link.appendChild(type);
+    }
+
     link.addEventListener('click', function(){ app.showApplicationPanel(itemData); });
     item.classList.add('app-element');
     item.appendChild(link);
