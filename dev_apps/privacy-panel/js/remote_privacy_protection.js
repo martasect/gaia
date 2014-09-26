@@ -39,6 +39,8 @@ var RemotePrivacyProtection = (function() {
           $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-lock'),
           $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-lock input')
         },
+        $backToRootLink: this.$RPP.querySelector('.back-to-root'),
+        $backToLoginLink: this.$RPP.querySelector('.back-to-login')
 //        RemoteWipe: {
 //          $box:       document.querySelector('#remote-privacy-protection .remote-wipe'),
 //          $input:     document.querySelector('#remote-privacy-protection .remote-wipe input')
@@ -54,6 +56,7 @@ var RemotePrivacyProtection = (function() {
       this.elements.RemoteLocate.$input.addEventListener('change', function(event) { this.toggleRemoteLocate(event.target.checked); }.bind(this));
       this.elements.RemoteRing.$input.addEventListener('change', function(event) { this.toggleRemoteRing(event.target.checked); }.bind(this));
       this.elements.RemoteLock.$input.addEventListener('change', function(event) { this.toggleRemoteLock(event.target.checked); }.bind(this));
+       this.elements.$backToLoginLink.addEventListener('click', this.backToLogin.bind(this));
 //      this.elements.RemoteWipe.$input.addEventListener('change', function(event) { this.toggleRemoteWipe(event.target.checked); }.bind(this));
 
       this.isInitialized = true;
