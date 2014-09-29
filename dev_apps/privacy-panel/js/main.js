@@ -68,6 +68,39 @@ var app = app || {};
       app.toggleRootBackBtn(evt.settingValue);
     });
 
+
+    // Get timezone
+    var userTimeZone = app.settings.createLock().get('time.timezone.user-selected');
+    userTimeZone.onsuccess = function() {
+      var value1 = userTimeZone.result['time.timezone.user-selected'];
+
+      if (value1) {
+        app.timeZone = {
+          region: value1.replace(/\/.*/, ''),
+          city: value1.replace(/.*?\//, '')
+        };
+      } else {
+        var timeZone = app.settings.createLock().get('time.timezone');
+        timeZone.onsuccess = function() {
+          var value2 = userTimeZone.result['time.timezone'];
+
+          app.timeZone =  {
+            region: value2.replace(/\/.*/, ''),
+            city: value2.replace(/.*?\//, '')
+          };
+        };
+      }
+    };
+
+    // Observe 'time.timezone.user-selected'
+    app.settings.addObserver('time.timezone.user-selected', function(evt) {
+      var value = evt.settingValue;
+      app.timeZone =  {
+        region: value.replace(/\/.*/, ''),
+        city: value.replace(/.*?\//, '')
+      };
+    });
+
     // Get the launch flag whe app starts.
     app.getLaunchFlag(function(result) {
       app.toggleRootBackBtn(result);
@@ -224,7 +257,11 @@ var app = app || {};
    * Show main Custom location screen.
    */
   app.showCustomLocationBox = function() {
-    var customSettings = {};
+    var customSettings = {
+      timeZone: app.timeZone,
+      type: 'cc'
+    };
+
     var customSettingsKeys = [
       { key: 'geolocation.blur.cl.type',    name: "type" },
       { key: 'geolocation.blur.cl.country', name: "country" },
@@ -610,7 +647,10 @@ var app = app || {};
    */
   app.showAppCustomLocationBox = function() {
     var application = app.elements.exceptionsList[app.elements.currentApp];
-    var customSettings = {};
+    var customSettings = {
+      timeZone: app.timeZone,
+      type: 'cc'
+    };
 
     if (application.cl_type) {
       customSettings.type = application.cl_type;

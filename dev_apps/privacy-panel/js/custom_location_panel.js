@@ -52,12 +52,14 @@ CustomLocationPanel.prototype = {
   initAndShow: function(customLocationSettings, callback) {
     this.callback = callback || function(){};
 
-    this.settings = customLocationSettings || { type: 'gps' };
+    this.settings = customLocationSettings;
 
     this.updateCountriesList();
     this.updateType();
 
     this.show();
+
+    this.changedParameters();
   },
 
   show: function() {
@@ -164,7 +166,11 @@ CustomLocationPanel.prototype = {
 
   updateCountry: function() {
     if(this.settings.country === undefined) {
-      this.settings.country = this.getFirstCountry();
+      this.settings.country =
+        (this.settings.timeZone &&
+        this.countriesAndCities.hasOwnProperty(this.settings.timeZone.region)) ?
+          this.settings.timeZone.region :
+          this.getFirstCountry();
     }
 
     this.$countries.value = this.settings.country;
@@ -200,7 +206,11 @@ CustomLocationPanel.prototype = {
 
   updateCity: function() {
     if(this.settings.city === undefined || !this.cities.hasOwnProperty(this.settings.city)) {
-      this.settings.city = this.getFirstCityFromCountry();
+      this.settings.city =
+        (this.settings.timeZone &&
+        this.cities.hasOwnProperty(this.settings.timeZone.city)) ?
+          this.settings.timeZone.city :
+          this.getFirstCityFromCountry();
     }
 
     if(this.settings.city !== null)
