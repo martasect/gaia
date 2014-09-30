@@ -44,6 +44,10 @@ var RemotePrivacyProtection = (function() {
         $backToLoginLink: this.$RPP.querySelector('.back-to-login')
       };
 
+      this.constants = {
+        minPassLength: 1,
+        maxPassLength: 10
+      };
 
       // event listeners
       this.elements.$newPass.querySelector('button.rpp-new-password-ok')
@@ -216,10 +220,10 @@ var RemotePrivacyProtection = (function() {
       if ( ! pass1) {
         $validationMessage.textContent = 'Passphrase is empty!';
         $validationMessage.style.display = 'block';
-      } else if (pass1.length > 100) {
+      } else if (pass1.length > this.constants.maxPassLength) {
         $validationMessage.textContent = 'Passphrase is too long!';
         $validationMessage.style.display = 'block';
-      } else if (pass1.length < 4) {
+      } else if (pass1.length < this.constants.minPassLength) {
         $validationMessage.textContent = 'Passphrase is too short!';
         $validationMessage.style.display = 'block';
       } else if (pass1 !== pass2) {
@@ -287,10 +291,10 @@ var RemotePrivacyProtection = (function() {
         $validationMessage.textContent = 'Passphrase is empty!';
         $validationMessage.style.display = 'block';
       }
-      else if (pass1.length > 100) {
+      else if (pass1.length > this.constants.maxPassLength) {
         $validationMessage.textContent = 'Passphrase is too long!';
         $validationMessage.style.display = 'block';
-      } else if (pass1.length < 4) {
+      } else if (pass1.length < this.constants.minPassLength) {
         $validationMessage.textContent = 'Passphrase is too short!';
         $validationMessage.style.display = 'block';
       } else if (pass1 !== pass2) {
