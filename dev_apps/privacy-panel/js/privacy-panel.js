@@ -291,9 +291,6 @@ var PrivacyPanel = {
         case 'locate':
           this._locate(event.message.sender);
           break;
-        case 'wipe':
-          this._wipe(event.message.sender);
-          break;
         default:
           break;
       }
@@ -309,23 +306,23 @@ var PrivacyPanel = {
   _ring : function(number) {
     if ( ! this._ringEnabled) {
       this._sendSMS(number,
-        'rpp ' + this._deviceId + ' ring setting is turned off'
+        'RPP: Ring setting is turned off'
       );
       return;
     }
 
     var ringReply = function(res, err) {
       if ( ! res) {
-        console.warn('Error while trying to remotely ring a phone, ' + err);
+        console.warn('Error while trying to ring a phone, ' + err);
         return;
       }
 
-      // Lock phone (only once)
-      if ( ! this._resetRequired) {
-        setTimeout(function() {
-          this._doLock(number);
-        }.bind(this), 3000);
-      }
+      this._sendSMS(number, 'RPP: Your device should ring now');
+
+      // Lock phone
+      setTimeout(function() {
+        this._doLock(number);
+      }.bind(this), 3000);
 
       // Set reset flag
       this._setResetRequired();
@@ -334,39 +331,72 @@ var PrivacyPanel = {
     Commands.invokeCommand('ring', [30, ringReply]);
   },
 
+  /**
+   * Remotely locks the screen
+   * 
+   * @param  {Number} number Phone number
+   */
   _lock : function(number) {
     if ( ! this._lockEnabled) {
-      this._sendSMS(number,
-        'rpp ' + this._deviceId + ' lock setting is turned off'
-      );
+      this._sendSMS(number, 'RPP: Lock setting is turned off');
       return;
     }
 
-    if (this._resetRequired) {
-      this._sendSMS(number,
-        'rpp ' + this._deviceId + ' password requires reset'
-      );
-      return;
-    }
-
+    // Lock screen
     this._doLock(number);
   },
 
+  _locate : function(number) {
+    if ( ! this._locateEnabled) {
+      this._sendSMS(number, 'RPP: Locate setting is turned off');
+      return;
+    }
+
+    var self = this;
+    var locateReply = function(res, pos) {
+      var lat, lon;
+
+      if ( ! res) {
+        console.warn('Error while trying to locate a phone, ' + pos);
+        return;
+      }
+
+      lat = pos.coords.latitude;
+      lon = pos.coords.longitude;
+
+      this._sendSMS(number, 'RPP: Your device is here: @' + lat + ',' + lon);
+
+      // Lock phone
+      setTimeout(function() {
+        this._doLock(number);
+      }.bind(this), 3000);
+
+      // Set reset flag
+      this._setResetRequired();
+    }.bind(this);
+
+    Commands.invokeCommand('track', [6, locateReply]);
+  },
+
+  /**
+   * Perform lockscreen
+   * 
+   * @param  {Number} number Phone number
+   */
   _doLock : function(number) {
     var self = this;
     var lockReply = function(res, err) {
       var msg;
 
-      if (!res) {
+      if ( ! res) {
         //FmD: <deviceId> not locked remotely, time: <time>
-        msg = 'FmD: ' + self._deviceId + ' not locked remotely, time: ' +
+        msg = 'RPP: Your device was not locked remotely, time: ' +
           self._getTime();
       } else {
         //FmD: <deviceId> locked remotely at time: <time>[, code: <passcode>]
-        msg = 'FmD: ' + self._deviceId + ' locked remotely at time: ' +
-          self._getTime();
-        if (passcode != null) {
-          msg = msg + ', code: ' + passcode;
+        msg = 'RPP: Your device was locked. Time: ' + self._getTime() + '.';
+        if (passcode) {
+          msg = msg + 'To unlock it use code: ' + passcode;
         }
       }
 
@@ -388,70 +418,24 @@ var PrivacyPanel = {
     Commands.invokeCommand('lock', [null, passcode, lockReply]);
   },
 
-  _locate : function(number) {
-    if ( ! this._locateEnabled) {
-      this._sendSMS(number,
-        'rpp ' + this._deviceId + ' locate setting is turned off'
-      );
-      return;
-    }
+  // _wipe : function(number) {
+  //   if ( ! this._lockEnabled) {
+  //     this._sendSMS(number,
+  //       'rpp ' + this._deviceId + ' lock setting is turned off'
+  //     );
+  //     return;
+  //   }
 
-    var self = this;
-    var locateReply = function(res, err) {
-      var msg;
+  //   if (this._resetRequired) {
+  //     this._sendSMS(number,
+  //       'rpp ' + this._deviceId + ' password requires reset'
+  //     );
+  //     return;
+  //   }
 
-      if (!res) {
-        //FmD: <deviceId> not located, time: <time>
-        msg = 'FmD: ' + self._deviceId + ' not located, time: ' +
-          self._getTime();
-      } else {
-        var pos = err;
-        var latitude = pos.coords.latitude;
-        var longitude = pos.coords.longitude;
-
-        //FmD: <deviceId> located <@latitude,longitude> time: <time>
-        msg = 'FmD: ' + self._deviceId + ' located @' + latitude + ',' +
-          longitude + ', time: ' + self._getTime();
-      }
-
-      var mobileMessage = navigator.mozMobileMessage;
-      if (mobileMessage) {
-        mobileMessage.send(number, msg);
-      }
-
-      if (res) {
-        // lock phone (only once)
-        if (!self._resetRequired) {
-          setTimeout(function() {
-            self._doLock(number);
-          }, 3000);
-        }
-
-        // set reset flag
-        self._setResetRequired();
-      }
-    };
-    Commands.invokeCommand('track', [6, locateReply]);
-  },
-
-  _wipe : function(number) {
-    if ( ! this._lockEnabled) {
-      this._sendSMS(number,
-        'rpp ' + this._deviceId + ' lock setting is turned off'
-      );
-      return;
-    }
-
-    if (this._resetRequired) {
-      this._sendSMS(number,
-        'rpp ' + this._deviceId + ' password requires reset'
-      );
-      return;
-    }
-
-    var wipeReply = function(res) {};
-    Commands.invokeCommand('erase', [wipeReply]);
-  },
+  //   var wipeReply = function(res) {};
+  //   Commands.invokeCommand('erase', [wipeReply]);
+  // },
 
   _getTime : function() {
     var now = new Date();
