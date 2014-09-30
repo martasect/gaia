@@ -491,11 +491,11 @@ var app = app || {};
     app.elements.appList.forEach(function(item, index) {
       manifest = item.manifest || item.updateManifest;
       icon = AppList.icon(item);
-      appSettings = app.elements.exceptionsList[item.manifestURL];
+      appSettings = app.elements.exceptionsList[item.origin];
       type = undefined;
 
       if (appSettings) {
-        type = app.elements.exceptionsList[item.manifestURL].type;
+        type = app.elements.exceptionsList[item.origin].type;
         switch (appSettings.type) {
           case 'user-defined':
             type = 'User defined';
@@ -515,7 +515,7 @@ var app = app || {};
       }
 
       li = app.genAppItemTemplate({
-        manifestUrl: item.manifestURL,
+        origin: item.origin,
         name: manifest.name,
         index: index,
         iconSrc: icon,
@@ -571,7 +571,7 @@ var app = app || {};
    */
   app.showApplicationPanel = function(itemData) {
 
-    app.elements.currentApp = itemData.manifestUrl;
+    app.elements.currentApp = itemData.origin;
 
     app.elements.Exceptions.$box.style.display = 'none';
     app.elements.Application.$box.style.display = 'block';
@@ -582,7 +582,7 @@ var app = app || {};
     app.elements.Application.type.$infoBox
       .querySelector('span').textContent = itemData.name;
 
-    var application = app.elements.exceptionsList[itemData.manifestUrl];
+    var application = app.elements.exceptionsList[itemData.origin];
     if (!application) {
       // set default value (from general settings)
       app.elements.Application.type.$select.value = 'system-settings';
