@@ -96,7 +96,8 @@ CustomLocationPanel.prototype = {
     this.$countries.removeEventListener('change', this.listeners.countryChange);
     this.$cities.removeEventListener('change', this.listeners.cityChange);
 
-    this.$longitude.removeEventListener('change', this.listeners.longitudeChange);
+    this.$longitude.removeEventListener('change',
+      this.listeners.longitudeChange);
     this.$latitude.removeEventListener('change', this.listeners.latitudeChange);
   },
 
@@ -146,14 +147,15 @@ CustomLocationPanel.prototype = {
   },
 
   updateType: function() {
-    this.settings.type = this.settings.type === undefined ? 'gps' : this.settings.type;
+    this.settings.type =
+      this.settings.type === undefined ? 'gps' : this.settings.type;
 
     this.$typeCC.checked = this.settings.type === 'cc';
     this.$typeGPS.checked = this.settings.type !== 'cc';
 
     this.updateCountry();
 
-    if(this.settings.type === 'cc') {
+    if (this.settings.type === 'cc') {
       this.updateLongitudeAndLatitudeForCity();
       this.disableGPSControls();
       this.enableCCControls();
@@ -165,7 +167,7 @@ CustomLocationPanel.prototype = {
   },
 
   updateCountry: function() {
-    if(this.settings.country === undefined) {
+    if (this.settings.country === undefined) {
       this.settings.country =
         (this.settings.timeZone &&
         this.countriesAndCities.hasOwnProperty(this.settings.timeZone.region)) ?
@@ -205,7 +207,8 @@ CustomLocationPanel.prototype = {
   },
 
   updateCity: function() {
-    if(this.settings.city === undefined || !this.cities.hasOwnProperty(this.settings.city)) {
+    if (this.settings.city === undefined ||
+      ! this.cities.hasOwnProperty(this.settings.city)) {
       this.settings.city =
         (this.settings.timeZone &&
         this.cities.hasOwnProperty(this.settings.timeZone.city)) ?
@@ -213,14 +216,14 @@ CustomLocationPanel.prototype = {
           this.getFirstCityFromCountry();
     }
 
-    if(this.settings.city !== null)
+    if (this.settings.city !== null)
     {
       this.$cities.value = this.settings.city;
     }
   },
 
   updateLongitudeAndLatitudeForCity: function() {
-    if(this.settings.city !== null)
+    if (this.settings.city !== null)
     {
       var city = this.cities[this.settings.city];
       this.settings.longitude = city.lon;
@@ -244,11 +247,11 @@ CustomLocationPanel.prototype = {
   },
 
   updateLongitudeAndLatitude: function() {
-    if(this.settings.longitude === undefined) {
+    if (this.settings.longitude === undefined) {
       this.settings.longitude = 0;
     }
 
-    if(this.settings.latitude === undefined) {
+    if (this.settings.latitude === undefined) {
       this.settings.latitude = 0;
     }
 
@@ -259,27 +262,27 @@ CustomLocationPanel.prototype = {
   enableCCControls: function() {
     this.$countries.disabled = false;
     this.$cities.disabled = false;
-    this.$ccAreaCountry.style.opacity = "1";
-    this.$ccAreaCity.style.opacity = "1";
+    this.$ccAreaCountry.style.opacity = '1';
+    this.$ccAreaCity.style.opacity = '1';
   },
 
   enableGPSControls: function() {
     this.$longitude.disabled = false;
     this.$latitude.disabled = false;
-    this.$gpsArea.style.opacity = "1";
+    this.$gpsArea.style.opacity = '1';
   },
 
   disableCCControls: function() {
     this.$countries.disabled = true;
     this.$cities.disabled = true;
-    this.$ccAreaCountry.style.opacity = "0.3";
-    this.$ccAreaCity.style.opacity = "0.3";
+    this.$ccAreaCountry.style.opacity = '0.3';
+    this.$ccAreaCity.style.opacity = '0.3';
   },
 
   disableGPSControls: function() {
     this.$longitude.disabled = true;
     this.$latitude.disabled = true;
-    this.$gpsArea.style.opacity = "0.3";
+    this.$gpsArea.style.opacity = '0.3';
   },
 
   changedParameters: function() {

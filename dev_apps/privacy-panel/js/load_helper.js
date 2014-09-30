@@ -1,6 +1,6 @@
 'use strict';
 
-var LoadHelper = (function() {
+(function() {
 
   function LoadHelper() {}
 
@@ -53,5 +53,5 @@ var LoadHelper = (function() {
     element.style.display = 'block';
   };
 
-  return new LoadHelper();
+  window.LoadHelper = new LoadHelper();
 }());

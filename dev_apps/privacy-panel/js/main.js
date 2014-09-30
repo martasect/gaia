@@ -1,11 +1,10 @@
 /* global AppList */
-/* global Crypto */
 /* global CustomLocationPanel */
+'use strict';
 
 var app = app || {};
 
 (function() {
-  'use strict';
 
   app.init = function() {
     app.settings = window.navigator.mozSettings;
@@ -30,7 +29,8 @@ var app = app || {};
         },
         type: {
           $select:    document.getElementById('ala-type'),
-          $elements:  document.getElementById('ala').querySelectorAll('.type-box'),
+          $elements:  document.getElementById('ala')
+                        .querySelectorAll('.type-box'),
           $blurBox:   document.getElementById('type-blur'),
           $blurSlider:document.getElementById('blur-slider'),
           $blurLabel: document.getElementById('blur-label'),
@@ -51,12 +51,14 @@ var app = app || {};
         $back:        document.getElementById('app-back'),
         type: {
           $select:    document.getElementById('app-type'),
-          $elements:  document.getElementById('app-panel').querySelectorAll('.type-box'),
+          $elements:  document.getElementById('app-panel')
+                        .querySelectorAll('.type-box'),
           $blurBox:   document.getElementById('app-type-blur'),
           $blurSlider:document.getElementById('app-blur-slider'),
           $blurLabel: document.getElementById('app-blur-label'),
           $customBox: document.getElementById('app-type-custom-location'),
-          $infoBox:   document.getElementById('app-panel').querySelector('.app-info')
+          $infoBox:   document.getElementById('app-panel')
+                        .querySelector('.app-info')
         }
       },
       DCL: new CustomLocationPanel()
@@ -70,7 +72,8 @@ var app = app || {};
 
 
     // Get timezone
-    var userTimeZone = app.settings.createLock().get('time.timezone.user-selected');
+    var userTimeZone = app.settings.createLock()
+      .get('time.timezone.user-selected');
     userTimeZone.onsuccess = function() {
       var value1 = userTimeZone.result['time.timezone.user-selected'];
 
@@ -124,9 +127,11 @@ var app = app || {};
     });
 
     // prepare exception list
-    var applicationList = this.settings.createLock().get('geolocation.exceptions');
+    var applicationList = this.settings.createLock()
+      .get('geolocation.exceptions');
     applicationList.onsuccess = function() {
-      app.elements.exceptionsList = applicationList.result['geolocation.exceptions'] || {};
+      app.elements.exceptionsList =
+        applicationList.result['geolocation.exceptions'] || {};
     };
 
 
@@ -134,15 +139,22 @@ var app = app || {};
     app.elements.ALA.$link.addEventListener('click', app.showALABox);
     app.elements.ALA.$back.addEventListener('click', app.showRootBox);
 
-    app.elements.ALA.geo.$switch.addEventListener('click', function(event) { app.toggleGeolocation(event.target.checked, true); });
-    app.elements.ALA.settings.$switch.addEventListener('click', function(event) { app.toggleSettings(event.target.checked, true); });
+    app.elements.ALA.geo.$switch.addEventListener('click',
+      function(event) { app.toggleGeolocation(event.target.checked, true); });
+    app.elements.ALA.settings.$switch.addEventListener('click',
+      function(event) { app.toggleSettings(event.target.checked, true); });
 
-    app.elements.ALA.type.$select.addEventListener('change', function(event) { app.changeType(event.target.value, true); });
-    app.elements.ALA.type.$blurSlider.addEventListener('change', function(event) { app.changeBlurSlider(event.target.value); });
-    app.elements.ALA.type.$blurSlider.addEventListener('touchmove', function(event) { app.updateSliderLabel(event.target.value); });
-    app.elements.ALA.type.$customBox.addEventListener('click', app.showCustomLocationBox);
+    app.elements.ALA.type.$select.addEventListener('change',
+      function(event) { app.changeType(event.target.value, true); });
+    app.elements.ALA.type.$blurSlider.addEventListener('change',
+      function(event) { app.changeBlurSlider(event.target.value); });
+    app.elements.ALA.type.$blurSlider.addEventListener('touchmove',
+      function(event) { app.updateSliderLabel(event.target.value); });
+    app.elements.ALA.type.$customBox.addEventListener('click',
+      app.showCustomLocationBox);
 
-    app.elements.ALA.exception.$link.addEventListener('click', app.showExceptions);
+    app.elements.ALA.exception.$link.addEventListener('click',
+      app.showExceptions);
 
     // listeners for Exceptions
     app.elements.Exceptions.$back.addEventListener('click', app.backToALA);
@@ -152,10 +164,14 @@ var app = app || {};
       app.elements.currentApp = null;
       app.showExceptions();
     });
-    app.elements.Application.type.$select.addEventListener('change', function(event) { app.changeAppType(event.target.value, true); });
-    app.elements.Application.type.$blurSlider.addEventListener('change', function(event) { app.changeAppBlurSlider(event.target.value); });
-    app.elements.Application.type.$blurSlider.addEventListener('touchmove', function(event) { app.updateAppSliderLabel(event.target.value); });
-    app.elements.Application.type.$customBox.addEventListener('click', app.showAppCustomLocationBox);
+    app.elements.Application.type.$select.addEventListener('change',
+      function(event) { app.changeAppType(event.target.value, true); });
+    app.elements.Application.type.$blurSlider.addEventListener('change',
+      function(event) { app.changeAppBlurSlider(event.target.value); });
+    app.elements.Application.type.$blurSlider.addEventListener('touchmove',
+      function(event) { app.updateAppSliderLabel(event.target.value); });
+    app.elements.Application.type.$customBox.addEventListener('click',
+      app.showAppCustomLocationBox);
   };
 
   /**
@@ -263,12 +279,12 @@ var app = app || {};
     };
 
     var customSettingsKeys = [
-      { key: 'geolocation.blur.cl.type',    name: "type" },
-      { key: 'geolocation.blur.cl.country', name: "country" },
-      { key: 'geolocation.blur.cl.city',    name: "city" },
-      { key: 'geolocation.blur.longitude',  name: "longitude" },
-      { key: 'geolocation.blur.latitude',   name: "latitude" },
-      { key: 'geolocation.blur.cl.type',    name: "type" }
+      { key: 'geolocation.blur.cl.type',    name: 'type' },
+      { key: 'geolocation.blur.cl.country', name: 'country' },
+      { key: 'geolocation.blur.cl.city',    name: 'city' },
+      { key: 'geolocation.blur.longitude',  name: 'longitude' },
+      { key: 'geolocation.blur.latitude',   name: 'latitude' },
+      { key: 'geolocation.blur.cl.type',    name: 'type' }
     ];
 
     var lock = app.settings.createLock();
@@ -307,7 +323,8 @@ var app = app || {};
       'geolocation.blur.cl.city':     settings.city,
       'geolocation.blur.longitude':   settings.longitude,
       'geolocation.blur.latitude':    settings.latitude,
-      'geolocation.blur.coords':      flag ? '@' + settings.latitude + ',' + settings.longitude : ''
+      'geolocation.blur.coords':
+        flag ? '@' + settings.latitude + ',' + settings.longitude : ''
     });
   };
 
@@ -400,7 +417,8 @@ var app = app || {};
     app.settings.createLock().set({ 'geolocation.blur.slider': value });
 
     // save radius
-    app.settings.createLock().set({ 'geolocation.blur.radius': app.getRadiusValue(value) });
+    app.settings.createLock()
+      .set({ 'geolocation.blur.radius': app.getRadiusValue(value) });
 
     // set slider label
     app.updateSliderLabel(value);
@@ -462,7 +480,8 @@ var app = app || {};
     app.elements.Exceptions.$box.style.display = 'block';
 
     // remove existing entries from application list
-    for (var $el of app.elements.Exceptions.$appBox.querySelectorAll('.app-element')) {
+    var apps = app.elements.Exceptions.$appBox.querySelectorAll('.app-element');
+    for (var $el of apps) {
       app.elements.Exceptions.$appBox.removeChild($el);
     }
 
@@ -530,7 +549,8 @@ var app = app || {};
       link.appendChild(type);
     }
 
-    link.addEventListener('click', function(){ app.showApplicationPanel(itemData); });
+    link.addEventListener('click',
+      function(){ app.showApplicationPanel(itemData); });
     item.classList.add('app-element');
     item.appendChild(link);
     return item;
@@ -557,8 +577,10 @@ var app = app || {};
     app.elements.Application.$box.style.display = 'block';
 
     // set application info
-    app.elements.Application.type.$infoBox.querySelector('img').src = itemData.iconSrc;
-    app.elements.Application.type.$infoBox.querySelector('span').textContent = itemData.name;
+    app.elements.Application.type.$infoBox
+      .querySelector('img').src = itemData.iconSrc;
+    app.elements.Application.type.$infoBox
+      .querySelector('span').textContent = itemData.name;
 
     var application = app.elements.exceptionsList[itemData.manifestUrl];
     if (!application) {
@@ -604,7 +626,9 @@ var app = app || {};
         app.elements.Application.type.$blurBox.classList.add('enabled');
         app.elements.Application.type.$blurBox.classList.remove('disabled');
 
-        app.updateAppSliderLabel(app.elements.Application.type.$blurSlider.value);
+        app.updateAppSliderLabel(
+          app.elements.Application.type.$blurSlider.value
+        );
         break;
       case 'system-settings':
         // remove application
@@ -628,7 +652,8 @@ var app = app || {};
    * @param {Number} value
    */
   app.updateAppSliderLabel = function(value) {
-    app.elements.Application.type.$blurLabel.textContent = app.getRadiusLabel(value);
+    app.elements.Application.type.$blurLabel.textContent =
+      app.getRadiusLabel(value);
   };
 
   /**
@@ -679,7 +704,7 @@ var app = app || {};
     var flag = settings.latitude && settings.longitude;
 
     app.saveApplications({
-      coords:       flag ? '@' + settings.latitude + ',' + settings.longitude : '',
+      coords:       flag ? '@'+settings.latitude+','+settings.longitude : '',
       cl_type:      settings.type,
       cl_country:   settings.country,
       cl_city:      settings.city,
@@ -699,7 +724,9 @@ var app = app || {};
     app.elements.exceptionsList[app.elements.currentApp] = {
       type:   app.elements.Application.type.$select.value,
       slider: app.elements.Application.type.$blurSlider.value,
-      radius: app.getRadiusValue(app.elements.Application.type.$blurSlider.value),
+      radius: app.getRadiusValue(
+        app.elements.Application.type.$blurSlider.value
+      ),
 
       coords:       extraSettings.coords || current.coords || null,
       cl_type:      extraSettings.cl_type || current.cl_type || null,
@@ -709,7 +736,8 @@ var app = app || {};
       cl_latitude:  extraSettings.cl_latitude || current.cl_latitude || null
     };
 
-    app.settings.createLock().set({ 'geolocation.exceptions': app.elements.exceptionsList });
+    app.settings.createLock()
+      .set({ 'geolocation.exceptions': app.elements.exceptionsList });
   };
 
   /**
@@ -718,7 +746,8 @@ var app = app || {};
   app.removeApplication = function() {
     delete app.elements.exceptionsList[app.elements.currentApp];
 
-    app.settings.createLock().set({ 'geolocation.exceptions': app.elements.exceptionsList });
+    app.settings.createLock()
+      .set({ 'geolocation.exceptions': app.elements.exceptionsList });
   };
 
   app.init();

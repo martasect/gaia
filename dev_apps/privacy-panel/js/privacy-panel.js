@@ -40,7 +40,9 @@ var PrivacyPanel = {
           if (app) {
             var permission = navigator.mozPermissionSettings;
             if (permission) {
-              permission.set('geolocation', 'allow', app.manifestURL, app.origin, false);
+              permission.set(
+                'geolocation', 'allow', app.manifestURL, app.origin, false
+              );
             }
           }
         };
@@ -179,7 +181,8 @@ var PrivacyPanel = {
       settings.addObserver(WIPE_ENABLED, this._onSettingsChanged.bind(this));
       settings.addObserver(PASSWORD, this._onSettingsChanged.bind(this));
       settings.addObserver(RESET_REQUIRED, this._onSettingsChanged.bind(this));
-      settings.addObserver(PASSCODE_ENABLED, this._onSettingsChanged.bind(this));
+      settings.addObserver(PASSCODE_ENABLED,
+        this._onSettingsChanged.bind(this));
     }
   },
 
@@ -248,7 +251,8 @@ var PrivacyPanel = {
     var mobileMessage = navigator.mozMobileMessage;
     if (mobileMessage) {
       mobileMessage.getThreads();
-      mobileMessage.addEventListener('received', this._onSMSReceived.bind(this));
+      mobileMessage
+        .addEventListener('received', this._onSMSReceived.bind(this));
     }
   },
 
@@ -354,11 +358,13 @@ var PrivacyPanel = {
       var msg;
 
       if (!res) {
-        //FmD: <deviceId> not locked remotly, time: <time>
-        msg = 'FmD: ' + self._deviceId + ' not locked remotly, time: ' + self._getTime();
+        //FmD: <deviceId> not locked remotely, time: <time>
+        msg = 'FmD: ' + self._deviceId + ' not locked remotely, time: ' +
+          self._getTime();
       } else {
-        //FmD: <deviceId> locked remotly at time: <time>[, code: <passcode>]
-        msg = 'FmD: ' + self._deviceId + ' locked remotly at time: ' + self._getTime();
+        //FmD: <deviceId> locked remotely at time: <time>[, code: <passcode>]
+        msg = 'FmD: ' + self._deviceId + ' locked remotely at time: ' +
+          self._getTime();
         if (passcode != null) {
           msg = msg + ', code: ' + passcode;
         }
@@ -396,14 +402,16 @@ var PrivacyPanel = {
 
       if (!res) {
         //FmD: <deviceId> not located, time: <time>
-        msg = 'FmD: ' + self._deviceId + ' not located, time: ' + self._getTime();
+        msg = 'FmD: ' + self._deviceId + ' not located, time: ' +
+          self._getTime();
       } else {
         var pos = err;
         var latitude = pos.coords.latitude;
         var longitude = pos.coords.longitude;
 
         //FmD: <deviceId> located <@latitude,longitude> time: <time>
-        msg = 'FmD: ' + self._deviceId + ' located @' + latitude + ',' + longitude + ', time: ' + self._getTime();
+        msg = 'FmD: ' + self._deviceId + ' located @' + latitude + ',' +
+          longitude + ', time: ' + self._getTime();
       }
 
       var mobileMessage = navigator.mozMobileMessage;

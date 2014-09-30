@@ -1,5 +1,6 @@
-var AppList = (function(require) {
-  'use strict';
+'use strict';
+
+(function(require) {
 
   var mozApps = navigator.mozApps;
   var AppList = function() {
@@ -38,13 +39,15 @@ var AppList = (function(require) {
       var max = 0;
 
       for (var size in manifest.icons) {
-        size = parseInt(size, 10);
-        if (size > max) {
-          max = size;
-        }
+        if (manifest.icons.hasOwnProperty(size)) {
+          size = parseInt(size, 10);
+          if (size > max) {
+            max = size;
+          }
 
-        if (size >= preferredIconSize && size < preferredSize) {
-          preferredSize = size;
+          if (size >= preferredIconSize && size < preferredSize) {
+            preferredSize = size;
+          }
         }
       }
       // If there is an icon matching the preferred size, we return the result,
@@ -65,6 +68,5 @@ var AppList = (function(require) {
 
   };
 
-  return new AppList();
-
+  window.AppList = new AppList();
 })();

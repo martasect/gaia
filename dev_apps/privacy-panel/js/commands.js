@@ -1,4 +1,4 @@
-/* global DUMP, SettingsHelper, SettingsListener, SettingsURL, FindMyDevice */
+/* global DUMP, SettingsHelper, SettingsListener, SettingsURL */
 
 'use strict';
 
@@ -82,7 +82,6 @@ var Commands = {
         clearTimeout(self._trackTimeoutId);
         self._trackTimeoutId = null;
         SettingsHelper('findmydevice.tracking').set(false);
-        //FindMyDevice.endHighPriority('command');
       }
 
       if (this._watchPositionId !== null || this._trackTimeoutId !== null) {
@@ -94,7 +93,6 @@ var Commands = {
         if (reply) {
           reply(true);
         }
-        //FindMyDevice.endHighPriority('command');
         return;
       }
 
@@ -159,8 +157,6 @@ var Commands = {
       request.onerror = function() {
         reply(false, 'failed to set settings');
       };
-
-      //FindMyDevice.endHighPriority('command');
     },
 
     ring: function fmdc_ring(duration, reply) {
@@ -171,7 +167,6 @@ var Commands = {
         ringer.currentTime = 0;
         clearTimeout(this._ringTimeoutId);
         this._ringTimeoutId = null;
-        //FindMyDevice.endHighPriority('command');
       }.bind(this);
 
       var ringing = !ringer.paused || this._ringTimeoutId !== null;
@@ -183,7 +178,6 @@ var Commands = {
         if (reply) {
           reply(true);
         }
-        //FindMyDevice.endHighPriority('command');
         return;
       }
 

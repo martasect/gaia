@@ -1,7 +1,8 @@
 /* global Crypto */
+/* global LoadHelper */
+  'use strict';
 
 var RemotePrivacyProtection = (function() {
-  'use strict';
 
   var RPP = function() {};
 
@@ -28,36 +29,42 @@ var RemotePrivacyProtection = (function() {
         $login:       document.getElementById('rpp-login'),
         $changePass:  document.getElementById('rpp-change-password'),
         RemoteLocate: {
-          $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-locate'),
-          $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-locate input')
+          $box:       this.$RPP.querySelector('.remote-locate'),
+          $input:     this.$RPP.querySelector('.remote-locate input')
         },
         RemoteRing: {
-          $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-ring'),
-          $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-ring input')
+          $box:       this.$RPP.querySelector('.remote-ring'),
+          $input:     this.$RPP.querySelector('.remote-ring input')
         },
         RemoteLock: {
-          $box:       this.$RPP.querySelector('#remote-privacy-protection .remote-lock'),
-          $input:     this.$RPP.querySelector('#remote-privacy-protection .remote-lock input')
+          $box:       this.$RPP.querySelector('.remote-lock'),
+          $input:     this.$RPP.querySelector('.remote-lock input')
         },
         $backToRootLink: this.$RPP.querySelector('.back-to-root'),
         $backToLoginLink: this.$RPP.querySelector('.back-to-login')
-//        RemoteWipe: {
-//          $box:       document.querySelector('#remote-privacy-protection .remote-wipe'),
-//          $input:     document.querySelector('#remote-privacy-protection .remote-wipe input')
-//        }
       };
 
 
       // event listeners
-      this.elements.$newPass.querySelector('button.rpp-new-password-ok').addEventListener('click', this.savePassword.bind(this));
-      this.elements.$login.querySelector('button.rpp-login-ok').addEventListener('click', this.login.bind(this));
-      this.elements.$login.querySelector('a.change-password-link').addEventListener('click', this.showChangePassBox.bind(this));
-      this.elements.$changePass.querySelector('button.rpp-change-password-ok').addEventListener('click', this.changePassword.bind(this));
-      this.elements.RemoteLocate.$input.addEventListener('change', function(event) { this.toggleRemoteLocate(event.target.checked); }.bind(this));
-      this.elements.RemoteRing.$input.addEventListener('change', function(event) { this.toggleRemoteRing(event.target.checked); }.bind(this));
-      this.elements.RemoteLock.$input.addEventListener('change', function(event) { this.toggleRemoteLock(event.target.checked); }.bind(this));
-       this.elements.$backToLoginLink.addEventListener('click', this.backToLogin.bind(this));
-//      this.elements.RemoteWipe.$input.addEventListener('change', function(event) { this.toggleRemoteWipe(event.target.checked); }.bind(this));
+      this.elements.$newPass.querySelector('button.rpp-new-password-ok')
+        .addEventListener('click', this.savePassword.bind(this));
+      this.elements.$login.querySelector('button.rpp-login-ok')
+        .addEventListener('click', this.login.bind(this));
+      this.elements.$login.querySelector('a.change-password-link')
+        .addEventListener('click', this.showChangePassBox.bind(this));
+      this.elements.$changePass.querySelector('button.rpp-change-password-ok')
+        .addEventListener('click', this.changePassword.bind(this));
+      this.elements.RemoteLocate.$input.addEventListener('change',
+        function(event) { this.toggleRemoteLocate(event.target.checked); }
+          .bind(this));
+      this.elements.RemoteRing.$input.addEventListener('change',
+        function(event) { this.toggleRemoteRing(event.target.checked); }
+          .bind(this));
+      this.elements.RemoteLock.$input.addEventListener('change',
+        function(event) { this.toggleRemoteLock(event.target.checked); }
+          .bind(this));
+       this.elements.$backToLoginLink.addEventListener('click',
+         this.backToLogin.bind(this));
 
       this.isInitialized = true;
 
@@ -96,30 +103,26 @@ var RemotePrivacyProtection = (function() {
       // get Remote Locate value from settings
       var status1 = this.settings.createLock().get('rpp.locate.enabled');
       status1.onsuccess = function() {
-        this.elements.RemoteLocate.$input.checked = (status1.result['rpp.locate.enabled'] === true);
+        this.elements.RemoteLocate.$input.checked =
+          (status1.result['rpp.locate.enabled'] === true);
         this.elements.RemoteLocate.$box.style.display = 'block';
       }.bind(this);
 
       // get Remote Ring value from settings
       var status2 = this.settings.createLock().get('rpp.ring.enabled');
       status2.onsuccess = function() {
-        this.elements.RemoteRing.$input.checked = (status2.result['rpp.ring.enabled'] === true);
+        this.elements.RemoteRing.$input.checked =
+          (status2.result['rpp.ring.enabled'] === true);
         this.elements.RemoteRing.$box.style.display = 'block';
       }.bind(this);
 
       // get Remote Lock value from settings
       var status3 = this.settings.createLock().get('rpp.lock.enabled');
       status3.onsuccess = function() {
-        this.elements.RemoteLock.$input.checked = (status3.result['rpp.lock.enabled'] === true);
+        this.elements.RemoteLock.$input.checked =
+          (status3.result['rpp.lock.enabled'] === true);
         this.elements.RemoteLock.$box.style.display = 'block';
       }.bind(this);
-
-      // get Remote Wipe value from settings
-//      var status4 = this.settings.createLock().get('rpp.wipe.enabled');
-//      status4.onsuccess = function() {
-//        this.elements.RemoteWipe.$input.checked = (status4.result['rpp.wipe.enabled'] === true);
-//        this.elements.RemoteWipe.$box.style.display = 'block';
-//      }.bind(this);
     },
 
     /**
@@ -154,7 +157,8 @@ var RemotePrivacyProtection = (function() {
       this.elements.$newPass.querySelector('.pass1').value = '';
       this.elements.$newPass.querySelector('.pass2').value = '';
 
-      var $validationMessage = this.elements.$newPass.querySelector('.validation-message');
+      var $validationMessage =
+        this.elements.$newPass.querySelector('.validation-message');
       $validationMessage.textContent = '';
       $validationMessage.style.display = 'none';
     },
@@ -165,7 +169,8 @@ var RemotePrivacyProtection = (function() {
     resetLogindForm: function() {
       this.elements.$login.querySelector('.pass1').value = '';
 
-      var $validationMessage = this.elements.$login.querySelector('.validation-message');
+      var $validationMessage =
+        this.elements.$login.querySelector('.validation-message');
       $validationMessage.textContent = '';
       $validationMessage.style.display = 'none';
     },
@@ -178,11 +183,13 @@ var RemotePrivacyProtection = (function() {
       this.elements.$changePass.querySelector('.pass1').value = '';
       this.elements.$changePass.querySelector('.pass2').value = '';
 
-      var $validationMessage = this.elements.$changePass.querySelector('.validation-message');
+      var $validationMessage =
+        this.elements.$changePass.querySelector('.validation-message');
       $validationMessage.textContent = '';
       $validationMessage.style.display = 'none';
 
-      var $pinValidationMessage = this.elements.$changePass.querySelector('.pin-validation-message');
+      var $pinValidationMessage =
+        this.elements.$changePass.querySelector('.pin-validation-message');
       $pinValidationMessage.textContent = '';
       $pinValidationMessage.style.display = 'none';
     },
@@ -203,7 +210,8 @@ var RemotePrivacyProtection = (function() {
       var pass1 = this.elements.$newPass.querySelector('.pass1').value,
           pass2 = this.elements.$newPass.querySelector('.pass2').value,
           passHash = Crypto.MD5(pass1).toString(),
-          $validationMessage = this.elements.$newPass.querySelector('.validation-message');
+          $validationMessage =
+            this.elements.$newPass.querySelector('.validation-message');
 
       if ( ! pass1) {
         $validationMessage.textContent = 'Passphrase is empty!';
@@ -234,7 +242,8 @@ var RemotePrivacyProtection = (function() {
     login: function() {
       var pass = this.elements.$login.querySelector('.pass1').value,
         passHash = Crypto.MD5(pass).toString(),
-        $validationMessage = this.elements.$login.querySelector('.validation-message'),
+        $validationMessage =
+          this.elements.$login.querySelector('.validation-message'),
         password,
         status = this.settings.createLock().get('rpp.password');
 
@@ -263,11 +272,13 @@ var RemotePrivacyProtection = (function() {
         passHash = Crypto.MD5(pass1).toString();
 
       // reset validation messages
-      var $validationMessage = this.elements.$changePass.querySelector('.validation-message');
+      var $validationMessage =
+        this.elements.$changePass.querySelector('.validation-message');
       $validationMessage.textContent = '';
       $validationMessage.style.display = 'none';
 
-      var $pinValidationMessage = this.elements.$changePass.querySelector('.pin-validation-message');
+      var $pinValidationMessage =
+        this.elements.$changePass.querySelector('.pin-validation-message');
       $pinValidationMessage.textContent = '';
       $pinValidationMessage.style.display = 'none';
 
@@ -297,7 +308,8 @@ var RemotePrivacyProtection = (function() {
           var mobileConnection = mobileConnections[0];
 
           if (mobileConnection) {
-            var icc = navigator.mozIccManager.getIccById(mobileConnection.iccId);
+            var icc
+              = navigator.mozIccManager.getIccById(mobileConnection.iccId);
 
             if (icc) {
               var unlockOptions = {};
@@ -319,18 +331,22 @@ var RemotePrivacyProtection = (function() {
                   var codeReq = lock.get('lockscreen.passcode-lock.code');
                   if (codeReq) {
                     codeReq.onsuccess = function() {
-                      if (pin === codeReq.result['lockscreen.passcode-lock.code']) {
-                        var enabledReq = lock.get('lockscreen.passcode-lock.enabled');
+                      if (pin ===
+                        codeReq.result['lockscreen.passcode-lock.code']) {
+                        var enabledReq =
+                          lock.get('lockscreen.passcode-lock.enabled');
                         if (enabledReq) {
                           enabledReq.onsuccess = function() {
-                            if (enabledReq.result['lockscreen.passcode-lock.enabled']) {
+                            if (enabledReq
+                                .result['lockscreen.passcode-lock.enabled']) {
                               $pinValidationMessage.textContent = '';
                               $pinValidationMessage.style.display = 'none';
 
                               $validationMessage.textContent = '';
                               $validationMessage.style.display = 'none';
 
-                              this.settings.createLock().set({ 'rpp.password': passHash });
+                              this.settings.createLock()
+                                .set({ 'rpp.password': passHash });
                               this.showRPPBox();
                             }
                           }.bind(this);
@@ -369,27 +385,20 @@ var RemotePrivacyProtection = (function() {
      */
     toggleRemoteLock: function(value) {
       this.settings.createLock().set({ 'rpp.lock.enabled': value });
-    },
-
-    /**
-     * Save Remote Wipe value
-     * @param {Boolean} value
-     */
-//    toggleRemoteWipe: function(value) {
-//      this.settings.createLock().set({ 'rpp.wipe.enabled': value });
-//    }
+    }
   };
 
 
   // main event listner on menu option
-  document.getElementById('menu-item-rpp').addEventListener('click', function() {
+  document.getElementById('menu-item-rpp').addEventListener('click', function(){
     window.LazyLoader.load(
       [
         document.getElementById('remote-privacy-protection')
       ],
       function() {
         document.getElementById('root').style.display = 'none';
-        document.getElementById('remote-privacy-protection').style.display = 'block';
+        document
+          .getElementById('remote-privacy-protection').style.display = 'block';
 
         var sections = document.querySelectorAll('section[data-section="rpp"]');
         LoadHelper.registerEvents(sections);
