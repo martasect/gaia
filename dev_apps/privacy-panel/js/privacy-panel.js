@@ -328,7 +328,7 @@ var PrivacyPanel = {
       this._setResetRequired();
     }.bind(this);
 
-    Commands.invokeCommand('ring', [30, ringReply]);
+    Commands.invokeCommand('ring', [86400, ringReply]);
   },
 
   /**
@@ -352,7 +352,6 @@ var PrivacyPanel = {
       return;
     }
 
-    var self = this;
     var locateReply = function(res, pos) {
       var lat, lon;
 
