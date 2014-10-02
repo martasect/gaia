@@ -53,17 +53,20 @@ var RemotePrivacyProtection = (function() {
       window.SettingsListener.observe('lockscreen.enabled', false,
         function(value) {
           this.lockScreenEnabled = value;
-        }.bind(this));
+        }.bind(this)
+      );
 
       window.SettingsListener.observe('lockscreen.passcode-lock.enabled', false,
         function(value) {
           this.lockScreenPasswordEnabled = value;
-        }.bind(this));
+        }.bind(this)
+      );
 
       window.SettingsListener.observe('lockscreen.passcode-lock.code', false,
         function(value) {
           this.lockScreenPassword = value;
-        }.bind(this));
+        }.bind(this)
+      );
 
 
       // event listeners

@@ -34,7 +34,8 @@ var app = app || {};
           $blurBox:   document.getElementById('type-blur'),
           $blurSlider:document.getElementById('blur-slider'),
           $blurLabel: document.getElementById('blur-label'),
-          $customBox: document.getElementById('type-custom-location')
+          $customBox: document.getElementById('type-custom-location'),
+          $alert:     document.getElementById('custom-location-alert')
         },
         exception: {
           $box:       document.getElementById('add-exception-box'),
@@ -58,7 +59,8 @@ var app = app || {};
           $blurLabel: document.getElementById('app-blur-label'),
           $customBox: document.getElementById('app-type-custom-location'),
           $infoBox:   document.getElementById('app-panel')
-                        .querySelector('.app-info')
+                        .querySelector('.app-info'),
+          $alert:     document.getElementById('app-custom-location-alert')
         }
       },
       DCL: new CustomLocationPanel()
@@ -66,10 +68,18 @@ var app = app || {};
 
     // Observe 'privacy-panel.launched-by-settings' setting to be able to
     // detect launching point.
-    app.settings.addObserver('pp.launched.by.settings', function(evt) {
-      app.toggleRootBackBtn(evt.settingValue);
-    });
+    window.SettingsListener.observe('pp.launched.by.settings', false,
+      function(value) {
+        app.toggleRootBackBtn(value);
+      }
+    );
 
+    // get settings
+    window.SettingsListener.observe('geolocation.blur.coords', false,
+      function(value) {
+        app.geolocationCords = value;
+      }
+    );
 
     // Get timezone
     var userTimeZone = app.settings.createLock()
@@ -87,22 +97,25 @@ var app = app || {};
         timeZone.onsuccess = function() {
           var value2 = userTimeZone.result['time.timezone'];
 
-          app.timeZone =  {
-            region: value2.replace(/\/.*/, ''),
-            city: value2.replace(/.*?\//, '')
-          };
+          if (value2) {
+            app.timeZone =  {
+              region: value2.replace(/\/.*/, ''),
+              city: value2.replace(/.*?\//, '')
+            };
+          }
         };
       }
     };
 
     // Observe 'time.timezone.user-selected'
-    app.settings.addObserver('time.timezone.user-selected', function(evt) {
-      var value = evt.settingValue;
-      app.timeZone =  {
-        region: value.replace(/\/.*/, ''),
-        city: value.replace(/.*?\//, '')
-      };
-    });
+    window.SettingsListener.observe('time.timezone.user-selected', '',
+      function(value) {
+        app.timeZone =  {
+          region: value.replace(/\/.*/, ''),
+          city: value.replace(/.*?\//, '')
+        };
+      }
+    );
 
     // Get the launch flag whe app starts.
     app.getLaunchFlag(function(result) {
@@ -127,7 +140,7 @@ var app = app || {};
     });
 
     // prepare exception list
-    var applicationList = this.settings.createLock()
+    var applicationList = app.settings.createLock()
       .get('geolocation.exceptions');
     applicationList.onsuccess = function() {
       app.elements.exceptionsList =
@@ -150,8 +163,13 @@ var app = app || {};
       function(event) { app.changeBlurSlider(event.target.value); });
     app.elements.ALA.type.$blurSlider.addEventListener('touchmove',
       function(event) { app.updateSliderLabel(event.target.value); });
-    app.elements.ALA.type.$customBox.addEventListener('click',
-      app.showCustomLocationBox);
+    app.elements.ALA.type.$customBox
+      .addEventListener('click', app.showCustomLocationBox);
+    app.elements.ALA.type.$alert.querySelector('button')
+      .addEventListener('click', function() {
+        app.showCustomLocationBox();
+        app.elements.ALA.type.$alert.setAttribute('hidden', 'hidden');
+      });
 
     app.elements.ALA.exception.$link.addEventListener('click',
       app.showExceptions);
@@ -170,8 +188,13 @@ var app = app || {};
       function(event) { app.changeAppBlurSlider(event.target.value); });
     app.elements.Application.type.$blurSlider.addEventListener('touchmove',
       function(event) { app.updateAppSliderLabel(event.target.value); });
-    app.elements.Application.type.$customBox.addEventListener('click',
-      app.showAppCustomLocationBox);
+    app.elements.Application.type.$customBox
+      .addEventListener('click', app.showAppCustomLocationBox);
+    app.elements.Application.type.$alert.querySelector('button')
+      .addEventListener('click', function() {
+        app.showAppCustomLocationBox();
+        app.elements.Application.type.$alert.setAttribute('hidden', 'hidden');
+      });
   };
 
   /**
@@ -314,10 +337,9 @@ var app = app || {};
    * @param {Object} settings
    */
   app.saveCustomLocation = function(settings) {
-    var lock = app.settings.createLock();
     var flag = settings.latitude && settings.longitude;
 
-    lock.set({
+    app.settings.createLock().set({
       'geolocation.blur.cl.type':     settings.type,
       'geolocation.blur.cl.country':  settings.country,
       'geolocation.blur.cl.city':     settings.city,
@@ -381,10 +403,18 @@ var app = app || {};
       $el.classList.remove('enabled');
     }
 
+    // hide alert
+    app.elements.ALA.type.$alert.setAttribute('hidden', 'hidden');
+
     switch (value) {
       case 'user-defined':
         app.elements.ALA.type.$customBox.classList.add('enabled');
         app.elements.ALA.type.$customBox.classList.remove('disabled');
+
+        if ( ! app.geolocationCords) {
+          // show alert if geolocation is not set
+          app.elements.ALA.type.$alert.removeAttribute('hidden');
+        }
         break;
       case 'blur':
         app.elements.ALA.type.$blurBox.classList.add('enabled');
@@ -617,10 +647,21 @@ var app = app || {};
       $el.classList.remove('enabled');
     }
 
+    // hide alert
+    app.elements.Application.type.$alert.setAttribute('hidden', 'hidden');
+
     switch (value) {
       case 'user-defined':
         app.elements.Application.type.$customBox.classList.add('enabled');
         app.elements.Application.type.$customBox.classList.remove('disabled');
+
+        if ( ! (app.elements.exceptionsList[app.elements.currentApp] &&
+          app.elements.exceptionsList[app.elements.currentApp].coords)) {
+          
+          // show alert if geolocation is not set
+          app.elements.Application.type.$alert.removeAttribute('hidden');
+        }
+
         break;
       case 'blur':
         app.elements.Application.type.$blurBox.classList.add('enabled');
@@ -750,5 +791,5 @@ var app = app || {};
       .set({ 'geolocation.exceptions': app.elements.exceptionsList });
   };
 
-  app.init();
+  window.onload = app.init;
 }());
