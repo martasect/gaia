@@ -84,8 +84,14 @@ var RemotePrivacyProtection = (function() {
       this.elements.RemoteLock.$input.addEventListener('change',
         function(event) { this.toggleRemoteLock(event.target.checked); }
           .bind(this));
-       this.elements.$backToLoginLink.addEventListener('click',
-         this.backToLogin.bind(this));
+      this.elements.$backToLoginLink.addEventListener('click',
+        this.backToLogin.bind(this));
+
+      document.getElementById('launch-settings').addEventListener('click',
+        function() {
+          window.SettingApp.launchSettings();
+        }
+      );
 
       this.isInitialized = true;
 
@@ -118,10 +124,29 @@ var RemotePrivacyProtection = (function() {
      * Show RPP content
      */
     showRPPContent: function() {
+      var modal;
+
       this.hideRPPBoxes();
       this.elements.$content.classList.add('active-box');
 
       this.showBackToRootButton();
+
+      if ( ! this.lockScreenEnabled || ! this.lockScreenPasswordEnabled ||
+        ! this.lockScreenPassword) {
+
+        modal = this.elements.$content.querySelector('.overlay');
+        modal.removeAttribute('hidden');
+
+        this.elements.RemoteLocate.$input.checked = false;
+        this.elements.RemoteRing.$input.checked = false;
+        this.elements.RemoteLock.$input.checked = false;
+
+        this.elements.RemoteLocate.$box.style.display = 'block';
+        this.elements.RemoteRing.$box.style.display = 'block';
+        this.elements.RemoteLock.$box.style.display = 'block';
+
+        return;
+      }
 
       // get Remote Locate value from settings
       var status1 = this.settings.createLock().get('rpp.locate.enabled');
