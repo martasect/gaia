@@ -49,6 +49,23 @@ var RemotePrivacyProtection = (function() {
         maxPassLength: 10
       };
 
+      // get settings
+      window.SettingsListener.observe('lockscreen.enabled', false,
+        function(value) {
+          this.lockScreenEnabled = value;
+        }.bind(this));
+
+      window.SettingsListener.observe('lockscreen.passcode-lock.enabled', false,
+        function(value) {
+          this.lockScreenPasswordEnabled = value;
+        }.bind(this));
+
+      window.SettingsListener.observe('lockscreen.passcode-lock.code', false,
+        function(value) {
+          this.lockScreenPassword = value;
+        }.bind(this));
+
+
       // event listeners
       this.elements.$newPass.querySelector('button.rpp-new-password-ok')
         .addEventListener('click', this.savePassword.bind(this));
@@ -104,6 +121,8 @@ var RemotePrivacyProtection = (function() {
       this.hideRPPBoxes();
       this.elements.$content.classList.add('active-box');
 
+      this.showBackToRootButton();
+
       // get Remote Locate value from settings
       var status1 = this.settings.createLock().get('rpp.locate.enabled');
       status1.onsuccess = function() {
@@ -148,10 +167,17 @@ var RemotePrivacyProtection = (function() {
      */
     backToLogin: function() {
       // show back-to-root button
-      this.elements.$backToRootLink.style.display = 'block';
-      this.elements.$backToLoginLink.style.display = 'none';
+      this.showBackToRootButton();
 
       this.showRPPBox();
+    },
+
+    /**
+     * Show back-to-root button
+     */
+    showBackToRootButton: function() {
+      this.elements.$backToRootLink.style.display = 'block';
+      this.elements.$backToLoginLink.style.display = 'none';
     },
 
     /**
@@ -232,11 +258,7 @@ var RemotePrivacyProtection = (function() {
       } else {
         this.resetNewPasswordForm();
 
-        // saving password
-        this.settings.createLock().set({ 'rpp.password': passHash });
-
-        // show RPP content
-        this.showRPPContent();
+        this.savePasswordToSettings(passHash).bind(this);
       }
     },
 
@@ -303,68 +325,55 @@ var RemotePrivacyProtection = (function() {
       } else if ( ! pin) {
         $pinValidationMessage.textContent = 'Passcode lock/SIM PIN is empty!';
         $pinValidationMessage.style.display = 'block';
-      } else {
+      } else if (pin.length !== 4) {
         $pinValidationMessage.textContent = 'Wrong Passcode lock/SIM PIN!';
         $pinValidationMessage.style.display = 'block';
+      } else {
 
-        var mobileConnections = navigator.mozMobileConnections;
-        if (mobileConnections && mobileConnections.length > 0) {
-          var mobileConnection = mobileConnections[0];
+        if (this.lockScreenEnabled && this.lockScreenPasswordEnabled &&
+          pin === this.lockScreenPassword) {
 
-          if (mobileConnection) {
-            var icc
-              = navigator.mozIccManager.getIccById(mobileConnection.iccId);
+          this.savePasswordToSettings(passHash);
+          return;
+        } else {
 
-            if (icc) {
-              var unlockOptions = {};
-              unlockOptions.lockType = 'pin';
-              unlockOptions.pin = pin;
-              var unlock = icc.unlockCardLock(unlockOptions);
+          var mobileConnections = navigator.mozMobileConnections;
+          for (var i in mobileConnections) {
 
-              unlock.onsuccess = function() {
-                $pinValidationMessage.textContent = '';
-                $pinValidationMessage.style.display = 'none';
+            var mobileConnection = mobileConnections[i];
 
-                this.settings.createLock().set({ 'rpp.password': passHash });
-                this.showRPPBox();
-              }.bind(this);
+            if (mobileConnection) {
+              var icc =
+                navigator.mozIccManager.getIccById(mobileConnection.iccId);
 
-              unlock.onerror = function() {
-                var lock = this.settings.createLock();
-                if (lock) {
-                  var codeReq = lock.get('lockscreen.passcode-lock.code');
-                  if (codeReq) {
-                    codeReq.onsuccess = function() {
-                      if (pin ===
-                        codeReq.result['lockscreen.passcode-lock.code']) {
-                        var enabledReq =
-                          lock.get('lockscreen.passcode-lock.enabled');
-                        if (enabledReq) {
-                          enabledReq.onsuccess = function() {
-                            if (enabledReq
-                                .result['lockscreen.passcode-lock.enabled']) {
-                              $pinValidationMessage.textContent = '';
-                              $pinValidationMessage.style.display = 'none';
+              if (icc) {
+                var unlockOptions = {};
+                unlockOptions.lockType = 'pin';
+                unlockOptions.pin = pin;
 
-                              $validationMessage.textContent = '';
-                              $validationMessage.style.display = 'none';
-
-                              this.settings.createLock()
-                                .set({ 'rpp.password': passHash });
-                              this.showRPPBox();
-                            }
-                          }.bind(this);
-                        }
-
-                      }
-                    }.bind(this);
-                  }
-                }
-              }.bind(this);
+                var unlock = icc.unlockCardLock(unlockOptions);
+                unlock.onsuccess =
+                  this.savePasswordToSettings.bind(this, passHash);
+              }
             }
           }
         }
+
+        $pinValidationMessage.textContent = 'Wrong Passcode lock/SIM PIN!';
+        $pinValidationMessage.style.display = 'block';
       }
+    },
+
+    /**
+     * Save password to settings
+     * @param passHash
+     */
+    savePasswordToSettings: function(passHash) {
+      // saving password
+      this.settings.createLock().set({ 'rpp.password': passHash });
+
+      // show RPP content
+      this.showRPPContent();
     },
 
     /**
