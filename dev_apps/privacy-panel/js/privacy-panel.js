@@ -6,7 +6,6 @@
 var RING_ENABLED = 'rpp.ring.enabled';
 var LOCK_ENABLED = 'rpp.lock.enabled';
 var LOCATE_ENABLED = 'rpp.locate.enabled';
-var WIPE_ENABLED = 'rpp.wipe.enabled';
 var PASSWORD = 'rpp.password';
 var RESET_REQUIRED = 'rpp.reset.required';
 var PASSCODE_ENABLED = 'lockscreen.passcode-lock.enabled';
@@ -20,12 +19,20 @@ var PrivacyPanel = {
   _password : null,
   _resetRequired : false,
   _passcodeEnabled : false,
+  _lockscreenEnabled : false,
   _deviceId : null,
 
   init: function() {
     this._getSettings();
     this._observeSettings();
     this._addListener();
+
+    // get settings
+    window.SettingsListener.observe('lockscreen.enabled', false,
+      function(value) {
+        this._lockscreenEnabled = value;
+      }.bind(this)
+    );
   },
 
   _getSettings: function() {
@@ -118,20 +125,6 @@ var PrivacyPanel = {
       reqLocate.onerror = function() {};
     }
 
-    var reqWipe = lock.get(WIPE_ENABLED);
-    if (reqWipe) {
-      reqWipe.onsuccess = function() {
-        var value = reqWipe.result[WIPE_ENABLED];
-        if (typeof value === 'boolean') {
-          self._wipeEnabled = value;
-        } else if (typeof value === 'string') {
-          self._wipeEnabled = (value === 'true');
-        }
-      };
-
-      reqWipe.onerror = function() {};
-    }
-
     var passreq = lock.get(PASSWORD);
     if (passreq) {
       passreq.onsuccess = function() {
@@ -178,7 +171,6 @@ var PrivacyPanel = {
       settings.addObserver(RING_ENABLED, this._onSettingsChanged.bind(this));
       settings.addObserver(LOCK_ENABLED, this._onSettingsChanged.bind(this));
       settings.addObserver(LOCATE_ENABLED, this._onSettingsChanged.bind(this));
-      settings.addObserver(WIPE_ENABLED, this._onSettingsChanged.bind(this));
       settings.addObserver(PASSWORD, this._onSettingsChanged.bind(this));
       settings.addObserver(RESET_REQUIRED, this._onSettingsChanged.bind(this));
       settings.addObserver(PASSCODE_ENABLED,
@@ -209,13 +201,6 @@ var PrivacyPanel = {
         this._locateEnabled = value;
       } else if (typeof value === 'string') {
         this._locateEnabled = (value === 'true');
-      }
-
-    } else if (name === WIPE_ENABLED) {
-      if (typeof value === 'boolean') {
-        this._wipeEnabled = value;
-      } else if (typeof value === 'string') {
-        this._wipeEnabled = (value === 'true');
       }
 
     } else if (name === PASSWORD) {
@@ -269,6 +254,11 @@ var PrivacyPanel = {
   _onSMSReceived: function(event) {
     var match, cmd, passkey, body = event.message.body,
         rgx = /rpp\s(lock|ring|locate|wipe)\s([a-z0-9]{1,100})/i;
+
+    // If there is no passcode, do nothing.
+    if ( ! this._passcodeEnabled || ! this._lockscreenEnabled) {
+      return;
+    }
 
     match = body.match(rgx);
 
