@@ -51,6 +51,9 @@ input[type="range"].blur-slider {
   white-space: normal;
 }
 
+[hidden] {
+  visibility: hidden;
+}
 
 /**** GT **********************************************************************/
 
@@ -158,4 +161,51 @@ li .btn {
 
 .rpp-box.active-box {
   display: block;
+}
+
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay .modal {
+  background: #fff;
+  width: 22rem;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #444;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+.overlay .modal p,
+.overlay .modal .link-text {
+  font-size: 1.2rem;
+  padding: 1.5rem 0;
+}
+
+.overlay .modal button {
+  margin: 0;
+}
+
+.overlay .modal-alert h1 {
+  margin: 0 0 1rem 0;
+  padding: 0;
+  color: #868692;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.overlay .modal-alert h1 {
+  color: #e30613;
 }
