@@ -43,6 +43,10 @@ input[type="range"].blur-slider {
   border-top: none;
 }
 
+.app-info :after {
+  display: none;
+}
+
 .validation-message,
 .pin-validation-message {
   color: red;
@@ -64,6 +68,10 @@ section[role="region"] > header.gt-header:first-child {
 
 section[role="region"] > header.gt-header:first-child a:hover {
   background: none;
+}
+
+section[role="region"] > header.gt-header:first-child .icon-close {
+  background-image: url(images/close.png);
 }
 
 section[role="region"] > div.gt-box {
@@ -150,6 +158,12 @@ li .btn {
 .btn.btn-blue {
   background-color: #00caf2;
   border-color: #00caf2;
+  color: #fff;
+}
+
+.btn.btn-dark-gray {
+  background-color: #5f5f5f;
+  border: none;
   color: #fff;
 }
 
