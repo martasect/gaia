@@ -74,6 +74,9 @@ var app = app || {};
       DCL: new CustomLocationPanel()
     };
 
+    app.elements.ALA.$back.querySelector('span').classList.remove('icon-back');
+    app.elements.ALA.$back.querySelector('span').classList.add('icon-close');
+
     // Observe 'privacy-panel.launched-by-settings' setting to be able to
     // detect launching point.
     window.SettingsListener.observe('pp.launched.by.settings', false,

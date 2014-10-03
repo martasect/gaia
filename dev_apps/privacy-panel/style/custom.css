@@ -55,6 +55,18 @@ input[type="range"].blur-slider {
   white-space: normal;
 }
 
+.icon-ala {
+  background-image: url("images/icon_location_accuracy.png");
+}
+
+.icon-rpp {
+  background-image: url("images/icon_remote_privacy_protection.png");
+}
+
+.icon-gt {
+  background-image: url("images/icon_guided_tour.png");
+}
+
 [hidden] {
   visibility: hidden;
 }
@@ -80,8 +92,13 @@ section[role="region"] > div.gt-box {
 }
 
 .gt-picture {
-  height: calc(50% - 5rem);
-  background: #cde4e3;
+  height: 50%;
+  background: #CEE2E3;
+  overflow: hidden;
+}
+
+.gt-picture img {
+  height: 100%;
 }
 
 .gt-description {
@@ -95,13 +112,13 @@ section[role="region"] > div.gt-box {
   line-height: 2rem;
   display: block;
   margin: 0;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 2rem 1rem 0rem 1rem;
   height: 100%;
   font-weight: 300;
 }
 
 .gt-description p {
-  line-height: 2rem;
+  line-height: 1.5rem;
   font-size: 1.2rem;
   text-align: center;
   color: #585858;

@@ -53,12 +53,14 @@ var RemotePrivacyProtection = (function() {
       window.SettingsListener.observe('lockscreen.enabled', false,
         function(value) {
           this.lockScreenEnabled = value;
+          this.toggleModalBox();
         }.bind(this)
       );
 
       window.SettingsListener.observe('lockscreen.passcode-lock.enabled', false,
         function(value) {
           this.lockScreenPasswordEnabled = value;
+          this.toggleModalBox();
         }.bind(this)
       );
 
@@ -123,33 +125,34 @@ var RemotePrivacyProtection = (function() {
       }.bind(this);
     },
 
+    toggleModalBox: function(value) {
+      var modal = this.elements.$content.querySelector('.overlay');;
+
+      if ( ! this.lockScreenEnabled || ! this.lockScreenPasswordEnabled) {
+        modal.removeAttribute('hidden');
+
+        // this.elements.RemoteLocate.$input.checked = false;
+        // this.elements.RemoteRing.$input.checked = false;
+        // this.elements.RemoteLock.$input.checked = false;
+
+        this.elements.RemoteLocate.$box.style.display = 'block';
+        this.elements.RemoteRing.$box.style.display = 'block';
+        this.elements.RemoteLock.$box.style.display = 'block';
+      } else {
+        modal.setAttribute('hidden', 'hidden');
+      }
+    },
+
     /**
      * Show RPP content
      */
     showRPPContent: function() {
-      var modal;
+      
 
       this.hideRPPBoxes();
       this.elements.$content.classList.add('active-box');
 
       this.showBackToRootButton();
-
-      if ( ! this.lockScreenEnabled || ! this.lockScreenPasswordEnabled ||
-        ! this.lockScreenPassword) {
-
-        modal = this.elements.$content.querySelector('.overlay');
-        modal.removeAttribute('hidden');
-
-        this.elements.RemoteLocate.$input.checked = false;
-        this.elements.RemoteRing.$input.checked = false;
-        this.elements.RemoteLock.$input.checked = false;
-
-        this.elements.RemoteLocate.$box.style.display = 'block';
-        this.elements.RemoteRing.$box.style.display = 'block';
-        this.elements.RemoteLock.$box.style.display = 'block';
-
-        return;
-      }
 
       // get Remote Locate value from settings
       var status1 = this.settings.createLock().get('rpp.locate.enabled');
