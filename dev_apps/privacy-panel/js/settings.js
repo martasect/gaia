@@ -7,8 +7,8 @@ var WIPE_ENABLED = 'rpp.wipe.enabled';
 var UNLOCK_ENABLED = 'rpp.unlock.enabled';
 var PASSWORD = 'rpp.password';
 var RESET_REQUIRED = 'rpp.reset.required';
-var GEO_RADIUS = 'geolocation.blur.radius';
-var GEO_COORDS = 'geolocation.blur.coords';
+var GEO_RADIUS = 'geolocation.approx_distance';
+var GEO_COORDS = 'geolocation.fixed_coords';
 
 var Settings = {
 
