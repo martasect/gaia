@@ -345,7 +345,7 @@ var app = app || {};
    * @param {Object} settings
    */
   app.saveCustomLocation = function(settings) {
-    var flag = settings.latitude && settings.longitude;
+    var flag = settings.latitude !== '' && settings.longitude !== '';
 
     app.settings.createLock().set({
       'geolocation.blur.cl.type':     settings.type,
@@ -750,7 +750,7 @@ var app = app || {};
    * @param {Object} settings
    */
   app.saveAppCustomLocation = function(settings) {
-    var flag = settings.latitude && settings.longitude;
+    var flag = settings.latitude !== '' && settings.longitude !== '';
 
     app.saveApplications({
       coords:       flag ? '@'+settings.latitude+','+settings.longitude : '',

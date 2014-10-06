@@ -36,6 +36,25 @@
           el.addEventListener('click', this.changePage);
         }
       }
+    },
+
+    /**
+     * JSON loader
+     */
+    loadJSON: function(href, callback) {
+      if (!callback) {
+        return;
+      }
+      var xhr = new XMLHttpRequest();
+      xhr.onerror = function() {
+        console.error('Failed to fetch file: ' + href, xhr.statusText);
+      };
+      xhr.onload = function() {
+        callback(xhr.response);
+      };
+      xhr.open('GET', href, true); // async
+      xhr.responseType = 'json';
+      xhr.send();
     }
   };
 

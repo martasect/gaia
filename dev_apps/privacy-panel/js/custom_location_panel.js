@@ -1,10 +1,15 @@
+/* global LoadHelper */
 'use strict';
 
 function CustomLocationPanel(rootPanelId) {
 
   // TODO: remove fallback when simulator allows us to
   // access mozL10n (on device works ok)
-  this.l10n = navigator.mozL10n || { get: function(b) { return b;} };
+  this.l10n = navigator.mozL10n || {
+    get: function (b) {
+      return b;
+    }
+  };
 
   this.$root = document.getElementById(rootPanelId ? rootPanelId : 'root');
   this.$box = document.getElementById('dcl');
@@ -28,20 +33,9 @@ function CustomLocationPanel(rootPanelId) {
     latitudeChange: this.toggleLatitude.bind(this)
   };
 
-  this.countriesAndCities = {
-    'poland': {
-      'warsaw': { lon: 15, lat: 51 },
-      'zielona-gora': { lon: 16, lat: 51 },
-      'wroclaw': { lon: 17, lat: 51 },
-      'poznan': { lon: 18, lat: 51 }
-    },
-    'germany': {
-      'berlin': { lon: 13, lat:42},
-      'colln': {lon:13, lat:41},
-      'frankfurt': {lon:14, lat:43},
-      'hannover': {lon:15, lat:41}
-    }
-  };
+  LoadHelper.loadJSON('resources/countries.json', function(data) {
+    this.countriesAndCities = data;
+  }.bind(this));
 
   this.cities = {};
   this.settings = {};
@@ -140,7 +134,7 @@ CustomLocationPanel.prototype = {
       if (this.countriesAndCities.hasOwnProperty(countryName)) {
         var option = document.createElement('option');
         option.value = countryName;
-        option.text = this.l10n.get(countryName);
+        option.text = this.l10n.get(countryName) || countryName;
         this.$countries.add(option);
       }
     }
@@ -167,7 +161,8 @@ CustomLocationPanel.prototype = {
   },
 
   updateCountry: function() {
-    if (this.settings.country === undefined) {
+    if ( ! this.countriesAndCities[this.settings.country] ||
+      this.settings.country === undefined) {
       this.settings.country =
         (this.settings.timeZone &&
         this.countriesAndCities.hasOwnProperty(this.settings.timeZone.region)) ?
@@ -200,7 +195,7 @@ CustomLocationPanel.prototype = {
       if (this.cities.hasOwnProperty(cityName)) {
         var option = document.createElement('option');
         option.value = cityName;
-        option.text = this.l10n.get(cityName);
+        option.text = this.l10n.get(cityName) || cityName;
         this.$cities.add(option);
       }
     }
