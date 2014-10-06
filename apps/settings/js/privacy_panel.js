@@ -1,12 +1,12 @@
-/* global ScreenLayout, Settings */
+/* global Settings */
 'use strict';
 
 var PrivacyPanel = {
   init: function about_init() {
-    document.getElementById('menuItem-privacyPanel').onclick = this.launchPrivacyPanel;
+    document.getElementById('menuItem-privacyPanel').onclick = this.launchPP;
 },
 
-launchPrivacyPanel: function about_launchPrivacyPanel(evt) {
+launchPP: function about_launchPrivacyPanel(evt) {
   var settings = Settings.mozSettings;
   if (!settings) {
     return;
@@ -45,7 +45,7 @@ launchPrivacyPanel: function about_launchPrivacyPanel(evt) {
 
         privacyPanelApp.launch();
       } else {
-        alert(navigator.mozL10n.get('no-settings'));
+        alert(navigator.mozL10n.get('no-privacypanel'));
       }
     };
 
