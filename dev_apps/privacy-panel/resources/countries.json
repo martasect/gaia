@@ -1,0 +1,50 @@
+{
+  "africa": {
+   "abidjan":           { "lat": 0,           "lon": 0},
+   "accra":             { "lat": 0,           "lon": 0},
+   "addis-ababa":       { "lat": 0,           "lon": 0},
+   "algiers":           { "lat": 0,           "lon": 0},
+   "asmara":            { "lat": 0,           "lon": 0},
+   "bamako":            { "lat": 0,           "lon": 0},
+   "bangui":            { "lat": 0,           "lon": 0},
+   "banjul":            { "lat": 0,           "lon": 0},
+   "bissau":            { "lat": 0,           "lon": 0},
+   "blantyre":          { "lat": 0,           "lon": 0},
+   "blantyre":          { "lat": 0,           "lon": 0},
+   "brazzaville":       { "lat": 0,           "lon": 0},
+   "bojumbura":         { "lat": 0,           "lon": 0},
+   "cairo":             { "lat": 0,           "lon": 0}
+ },
+ "america": {
+   "adak":              { "lat": 0,           "lon": 0},
+   "anchorage":         { "lat": 0,           "lon": 0}
+ },
+ "antarctica": {
+   "casey":             { "lat": 0,           "lon": 0},
+   "davis":             { "lat": 0,           "lon": 0}
+ },
+ "asia": {
+   "aden":              { "lat": 0,           "lon": 0},
+   "almaty":            { "lat": 0,           "lon": 0}
+ },
+ "atlantic-ocean": {
+   "azores":            { "lat": 0,           "lon": 0},
+   "bermuda":           { "lat": 0,           "lon": 0}
+ },
+ "australia": {
+   "adelaide":          { "lat": 0,           "lon": 0},
+   "brisbane":          { "lat": 0,           "lon": 0}
+ },
+ "europe": {
+   "amsterdam":         { "lat": 0,           "lon": 0},
+   "andorra":           { "lat": 0,           "lon": 0}
+ },
+ "indian-ocean": {
+   "antonanarivo":      { "lat": 0,           "lon": 0},
+   "chagos":            { "lat": 0,           "lon": 0}
+ },
+ "pacific-ocean": {
+   "apia":              { "lat": 0,           "lon": 0},
+   "auckland":          { "lat": 0,           "lon": 0}
+ }
+}
