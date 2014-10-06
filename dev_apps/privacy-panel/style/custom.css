@@ -56,15 +56,15 @@ input[type="range"].blur-slider {
 }
 
 .icon-ala {
-  background-image: url("images/icon_location_accuracy.png");
+  background-image: url("images/ala.png");
 }
 
 .icon-rpp {
-  background-image: url("images/icon_remote_privacy_protection.png");
+  background-image: url("images/rpp.png");
 }
 
 .icon-gt {
-  background-image: url("images/icon_guided_tour.png");
+  background-image: url("images/gt.png");
 }
 
 [hidden] {
