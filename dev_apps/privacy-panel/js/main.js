@@ -86,7 +86,7 @@ var app = app || {};
     );
 
     // get settings
-    window.SettingsListener.observe('geolocation.blur.coords', false,
+    window.SettingsListener.observe('geolocation.fixed_coords', false,
       function(value) {
         app.geolocationCords = value;
       }
