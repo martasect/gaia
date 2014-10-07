@@ -267,7 +267,7 @@ var PrivacyPanel = {
       passkey = match[2];
 
       if ( ! this._validatePassKey(passkey)) {
-        this._sendSMS(event.message.sender, 'RPP: Wrong password');
+        this._sendSMS(event.message.sender, 'RPP: Your passphrase is wrong.');
         return;
       }
 
@@ -353,7 +353,7 @@ var PrivacyPanel = {
       lat = pos.coords.latitude;
       lon = pos.coords.longitude;
 
-      this._sendSMS(number, 'RPP: Your device is here: @' + lat + ',' + lon);
+      this._sendSMS(number, 'RPP: Your device coordinates are @'+lat+','+lon);
 
       // Lock phone
       setTimeout(function() {
@@ -378,15 +378,10 @@ var PrivacyPanel = {
       var msg;
 
       if ( ! res) {
-        //FmD: <deviceId> not locked remotely, time: <time>
-        msg = 'RPP: Your device was not locked remotely, time: ' +
-          self._getTime();
+        msg = 'RPP: Your device was not locked remotely';
       } else {
-        //FmD: <deviceId> locked remotely at time: <time>[, code: <passcode>]
-        msg = 'RPP: Your device was locked. Time: ' + self._getTime() + '.';
-        if (passcode) {
-          msg = msg + 'To unlock it use code: ' + passcode;
-        }
+        msg = 'RPP: Your device was locked.';
+        msg = msg + 'You can unlock it with your passcode';
       }
 
       self._sendSMS(number, msg);
