@@ -850,88 +850,330 @@
     "vostok":            { "lat": 0,           "lon": 0}
   },
   "asia": {
-    "aden":              { "lat": 0,           "lon": 0},
-    "almaty":            { "lat": 0,           "lon": 0},
-    "amman":             { "lat": 0,           "lon": 0},
-    "anadyr":            { "lat": 0,           "lon": 0},
-    "aqtau":             { "lat": 0,           "lon": 0},
-    "aqtobe":            { "lat": 0,           "lon": 0},
-    "ashgabat":          { "lat": 0,           "lon": 0},
-    "ashkhabad":         { "lat": 0,           "lon": 0},
-    "baghdad":           { "lat": 0,           "lon": 0},
-    "bahrain":           { "lat": 0,           "lon": 0},
-    "baku":              { "lat": 0,           "lon": 0},
-    "bangkok":           { "lat": 0,           "lon": 0},
-    "beirut":            { "lat": 0,           "lon": 0},
-    "bishkek":           { "lat": 0,           "lon": 0},
-    "brunei":            { "lat": 0,           "lon": 0},
-    "choibalsan":        { "lat": 0,           "lon": 0},
-    "chongqing":         { "lat": 0,           "lon": 0},
-    "colombo":           { "lat": 0,           "lon": 0},
-    "damascus":          { "lat": 0,           "lon": 0},
-    "dhaka":             { "lat": 0,           "lon": 0},
-    "dili":              { "lat": 0,           "lon": 0},
-    "dubai":             { "lat": 0,           "lon": 0},
-    "sushanbe":          { "lat": 0,           "lon": 0},
-    "gaza":              { "lat": 0,           "lon": 0},
-    "harbin":            { "lat": 0,           "lon": 0},
-    "herbon":            { "lat": 0,           "lon": 0},
-    "ho-chi-minh":       { "lat": 0,           "lon": 0},
-    "hong-kong":         { "lat": 0,           "lon": 0},
-    "hovd":              { "lat": 0,           "lon": 0},
-    "irkutsk":           { "lat": 0,           "lon": 0},
-    "istanbul":          { "lat": 0,           "lon": 0},
-    "jakarta":           { "lat": 0,           "lon": 0},
-    "jayapura":          { "lat": 0,           "lon": 0},
-    "jerusalem":         { "lat": 0,           "lon": 0},
-    "kabul":             { "lat": 0,           "lon": 0},
-    "kamchatka":         { "lat": 0,           "lon": 0},
-    "karachi":           { "lat": 0,           "lon": 0},
-    "kashgar":           { "lat": 0,           "lon": 0},
-    "kathmandu":         { "lat": 0,           "lon": 0},
-    "kolkata":           { "lat": 0,           "lon": 0},
-    "krasnoyarsk":       { "lat": 0,           "lon": 0},
-    "kuala-lumpur":      { "lat": 0,           "lon": 0},
-    "kuching":           { "lat": 0,           "lon": 0},
-    "kuwait":            { "lat": 0,           "lon": 0},
-    "macau":             { "lat": 0,           "lon": 0},
-    "magadan":           { "lat": 0,           "lon": 0},
-    "makassar":          { "lat": 0,           "lon": 0},
-    "manila":            { "lat": 0,           "lon": 0},
-    "muscat":            { "lat": 0,           "lon": 0},
-    "nicosia":           { "lat": 0,           "lon": 0},
-    "novokuznetsk":      { "lat": 0,           "lon": 0},
-    "novosibirsk":       { "lat": 0,           "lon": 0},
-    "omsk":              { "lat": 0,           "lon": 0},
-    "oral":              { "lat": 0,           "lon": 0},
-    "phnom-penh":        { "lat": 0,           "lon": 0},
-    "pontianak":         { "lat": 0,           "lon": 0},
-    "pyongyang":         { "lat": 0,           "lon": 0},
-    "qatar":             { "lat": 0,           "lon": 0},
-    "qyzylorda":         { "lat": 0,           "lon": 0},
-    "rangoon":           { "lat": 0,           "lon": 0},
-    "riyadh":            { "lat": 0,           "lon": 0},
-    "riyadh":            { "lat": 0,           "lon": 0},
-    "saigon":            { "lat": 0,           "lon": 0},
-    "sakhalin":          { "lat": 0,           "lon": 0},
-    "samarkand":         { "lat": 0,           "lon": 0},
-    "seoul":             { "lat": 0,           "lon": 0},
-    "shanghai":          { "lat": 0,           "lon": 0},
-    "singapore":         { "lat": 0,           "lon": 0},
-    "taipei":            { "lat": 0,           "lon": 0},
-    "tashkent":          { "lat": 0,           "lon": 0},
-    "tbilisi":           { "lat": 0,           "lon": 0},
-    "tehran":            { "lat": 0,           "lon": 0},
-    "tel-aviv":          { "lat": 0,           "lon": 0},
-    "thimphu":           { "lat": 0,           "lon": 0},
-    "tokyo":             { "lat": 0,           "lon": 0},
-    "ulan-bator":        { "lat": 0,           "lon": 0},
-    "urumqi":            { "lat": 0,           "lon": 0},
-    "vientiane":         { "lat": 0,           "lon": 0},
-    "vladivostok":       { "lat": 0,           "lon": 0},
-    "yakutsk":           { "lat": 0,           "lon": 0},
-    "yekaterinburg":     { "lat": 0,           "lon": 0},
-    "yerevan":           { "lat": 0,           "lon": 0}
+    "aden": {
+      "lat": 12.8,
+      "lon": 45.033333
+    },
+    "almaty": {
+      "lat": 43.2775,
+      "lon": 76.895833
+    },
+    "amman": {
+      "lat": 31.956578,
+      "lon": 35.945695
+    },
+    "anadyr": {
+      "lat": 64.733333,
+      "lon": 177.516667
+    },
+    "aqtau": {
+      "lat": 43.685941,
+      "lon": 51.287568
+    },
+    "aqtobe": {
+      "lat": 50.283333,
+      "lon": 57.166667
+    },
+    "ashgabat": {
+      "lat": 37.933333,
+      "lon": 58.366667
+    },
+    "ashkhabad": {
+      "lat": 37.933333,
+      "lon": 58.366667
+    },
+    "baghdad": {
+      "lat": 33.325,
+      "lon": 44.422
+    },
+    "bahrain": {
+      "lat": 26.0667,
+      "lon": 50.5577
+    },
+    "baku": {
+      "lat": 40.393636,
+      "lon": 49.863052
+    },
+    "bangkok": {
+      "lat": 13.727895,
+      "lon": 100.524123
+    },
+    "beirut": {
+      "lat": 33.888628,
+      "lon": 35.495479
+    },
+    "bishkek": {
+      "lat": 42.874722,
+      "lon": 74.612222
+    },
+    "brunei": {
+      "lat": 4.535277,
+      "lon": 114.727669
+    },
+    "choibalsan": {
+      "lat": 48.078333,
+      "lon": 114.535
+    },
+    "chongqing": {
+      "lat": 29.56301,
+      "lon": 106.551557
+    },
+    "colombo": {
+      "lat": 6.927078,
+      "lon": 79.861243
+    },
+    "damascus": {
+      "lat": 33.513,
+      "lon": 36.292
+    },
+    "dhaka": {
+      "lat": 23.810332,
+      "lon": 90.412518
+    },
+    "dili": {
+      "lat": -8.549999,
+      "lon": 125.566667
+    },
+    "dubai": {
+      "lat": 25.047664,
+      "lon": 55.181740
+    },
+    "dushanbe": {
+      "lat": 38.536667,
+      "lon": 68.779999
+    },
+    "gaza": {
+      "lat": 31.522561,
+      "lon": 34.453593
+    },
+    "harbin": {
+      "lat": 45.803774,
+      "lon": 126.534967
+    },
+    "herbon": {
+      "lat": 47.631389,
+      "lon": -2.844706
+    },
+    "ho-chi-minh": {
+      "lat": 10.823098,
+      "lon": 106.629663
+    },
+    "hong-kong": {
+      "lat": 22.396428,
+      "lon": 114.109497
+    },
+    "hovd": {
+      "lat": 48.004167,
+      "lon": 91.65
+    },
+    "irkutsk": {
+      "lat": 52.286974,
+      "lon": 104.305018
+    },
+    "istanbul": {
+      "lat": 41.00527,
+      "lon": 28.97696
+    },
+    "jakarta": {
+      "lat": -6.208763,
+      "lon": 106.845599
+    },
+    "jayapura": {
+      "lat": -2.533,
+      "lon": 140.717
+    },
+    "jerusalem": {
+      "lat": 31.768319,
+      "lon": 35.21371
+    },
+    "kabul": {
+      "lat": 34.533333,
+      "lon": 69.166667
+    },
+    "kamchatka": {
+      "lat": 61.434398,
+      "lon": 166.788413
+    },
+    "karachi": {
+      "lat": 24.861462,
+      "lon": 67.009938
+    },
+    "kashgar": {
+      "lat": 39.4704,
+      "lon": 75.989755
+    },
+    "kathmandu": {
+      "lat": 27.7,
+      "lon": 85.333333
+    },
+    "kolkata": {
+      "lat": 22.572646,
+      "lon": 88.363895
+    },
+    "krasnoyarsk": {
+      "lat": 56.015283,
+      "lon": 92.893247
+    },
+    "kuala-lumpur": {
+      "lat": 3.139003,
+      "lon": 101.686855
+    },
+    "kuching": {
+      "lat": 1.56,
+      "lon": 110.345
+    },
+    "kuwait": {
+      "lat": 29.31166,
+      "lon": 47.481766
+    },
+    "macau": {
+      "lat": 22.198745,
+      "lon": 113.543873
+    },
+    "magadan": {
+      "lat": 59.566667,
+      "lon": 150.8
+    },
+    "makassar": {
+      "lat": -5.130855,
+      "lon": 119.416528
+    },
+    "manila": {
+      "lat": 14.599512,
+      "lon": 120.984219
+    },
+    "muscat": {
+      "lat": 23.61,
+      "lon": 58.54
+    },
+    "nicosia": {
+      "lat": 35.166667,
+      "lon": 33.366667
+    },
+    "novokuznetsk": {
+      "lat": 53.759593,
+      "lon": 87.121570
+    },
+    "novosibirsk": {
+      "lat": 55.008352,
+      "lon": 82.935732
+    },
+    "omsk": {
+      "lat": 54.983332,
+      "lon": 73.366666
+    },
+    "oral": {
+      "lat": 51.233332,
+      "lon": 51.366667
+    },
+    "phnom-penh": {
+      "lat": 11.544872,
+      "lon": 104.892166
+    },
+    "pontianak": {
+      "lat": 0,
+      "lon": 109.333333
+    },
+    "pyongyang": {
+      "lat": 39.039219,
+      "lon": 125.762524
+    },
+    "qatar": {
+      "lat": 25.354826,
+      "lon": 51.183884
+    },
+    "qyzylorda": {
+      "lat": 44.848831,
+      "lon": 65.482268
+    },
+    "rangoon": {
+      "lat": 16.780833,
+      "lon": 96.149722
+    },
+    "riyadh": {
+      "lat": 24.633333,
+      "lon": 46.716667
+    },
+    "saigon": {
+      "lat": 10.823098,
+      "lon": 106.629663
+    },
+    "sakhalin": {
+      "lat": 51,
+      "lon": 143
+    },
+    "samarkand": {
+      "lat": 39.627012,
+      "lon": 66.974973
+    },
+    "seoul": {
+      "lat": 37.566535,
+      "lon": 126.977969
+    },
+    "shanghai": {
+      "lat": 31.230416,
+      "lon": 121.473701
+    },
+    "singapore": {
+      "lat": 1.352083,
+      "lon": 103.819836
+    },
+    "taipei": {
+      "lat": 25.046565,
+      "lon": 121.548866
+    },
+    "tashkent": {
+      "lat": 41.266667,
+      "lon": 69.216667
+    },
+    "tbilisi": {
+      "lat": 41.716667,
+      "lon": 44.783333
+    },
+    "tehran": {
+      "lat": 35.696111,
+      "lon": 51.423056
+    },
+    "tel-aviv": {
+      "lat": 32.085299,
+      "lon": 34.781767
+    },
+    "thimphu": {
+      "lat": 27.472792,
+      "lon": 89.639286
+    },
+    "tokyo": {
+      "lat": 35.689487,
+      "lon": 139.691706
+    },
+    "ulan-bator": {
+      "lat": 47.919999,
+      "lon": 106.92
+    },
+    "urumqi": {
+      "lat": 43.825592,
+      "lon": 87.616847
+    },
+    "vientiane": {
+      "lat": 17.966667,
+      "lon": 102.6
+    },
+    "vladivostok": {
+      "lat": 43.133333,
+      "lon": 131.9
+    },
+    "yakutsk": {
+      "lat": 62.033332,
+      "lon": 129.733333
+    },
+    "yekaterinburg": {
+      "lat": 56.833333,
+      "lon": 60.583333
+    },
+    "yerevan": {
+      "lat": 40.183333,
+      "lon": 44.516667
+    }
   },
   "atlantic-ocean": {
     "azores":            { "lat": 0,           "lon": 0},
