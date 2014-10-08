@@ -1,59 +1,214 @@
 {
   "africa": {
-   "abidjan":           { "lat": 0,           "lon": 0},
-   "accra":             { "lat": 0,           "lon": 0},
-   "addis-ababa":       { "lat": 0,           "lon": 0},
-   "algiers":           { "lat": 0,           "lon": 0},
-   "asmara":            { "lat": 0,           "lon": 0},
-   "bamako":            { "lat": 0,           "lon": 0},
-   "bangui":            { "lat": 0,           "lon": 0},
-   "banjul":            { "lat": 0,           "lon": 0},
-   "bissau":            { "lat": 0,           "lon": 0},
-   "blantyre":          { "lat": 0,           "lon": 0},
-   "blantyre":          { "lat": 0,           "lon": 0},
-   "brazzaville":       { "lat": 0,           "lon": 0},
-   "bujumbura":         { "lat": 0,           "lon": 0},
-   "cairo":             { "lat": 0,           "lon": 0},
-   "casablanca":        { "lat": 0,           "lon": 0},
-   "ceuta":             { "lat": 0,           "lon": 0},
-   "conakry":           { "lat": 0,           "lon": 0},
-   "dakar":             { "lat": 0,           "lon": 0},
-   "dar-es-salaam":     { "lat": 0,           "lon": 0},
-   "djibouti":          { "lat": 0,           "lon": 0},
-   "douala":            { "lat": 0,           "lon": 0},
-   "el-aaiun":          { "lat": 0,           "lon": 0},
-   "freetown":          { "lat": 0,           "lon": 0},
-   "gaborone":          { "lat": 0,           "lon": 0},
-   "harare":            { "lat": 0,           "lon": 0},
-   "johannesburg":      { "lat": 0,           "lon": 0},
-   "juba":              { "lat": 0,           "lon": 0},
-   "kampala":           { "lat": 0,           "lon": 0},
-   "khartoum":          { "lat": 0,           "lon": 0},
-   "kigali":            { "lat": 0,           "lon": 0},
-   "kinshasa":          { "lat": 0,           "lon": 0},
-   "lagos":             { "lat": 0,           "lon": 0},
-   "libreville":        { "lat": 0,           "lon": 0},
-   "lome":              { "lat": 0,           "lon": 0},
-   "luanda":            { "lat": 0,           "lon": 0},
-   "lubumbashi":        { "lat": 0,           "lon": 0},
-   "lusaka":            { "lat": 0,           "lon": 0},
-   "malabo":            { "lat": 0,           "lon": 0},
-   "maputo":            { "lat": 0,           "lon": 0},
-   "maseru":            { "lat": 0,           "lon": 0},
-   "mbabane":           { "lat": 0,           "lon": 0},
-   "mogadishu":         { "lat": 0,           "lon": 0},
-   "monrovia":          { "lat": 0,           "lon": 0},
-   "nairobi":           { "lat": 0,           "lon": 0},
-   "ndjamena":          { "lat": 0,           "lon": 0},
-   "nouakchott":        { "lat": 0,           "lon": 0},
-   "ouagadougou":       { "lat": 0,           "lon": 0},
-   "porto-novo":        { "lat": 0,           "lon": 0},
-   "sao-tome":          { "lat": 0,           "lon": 0},
-   "timbuktu":          { "lat": 0,           "lon": 0},
-   "tripoli":           { "lat": 0,           "lon": 0},
-   "tunis":             { "lat": 0,           "lon": 0},
-   "windhoek":          { "lat": 0,           "lon": 0}
- },
+    "abidjan": {
+      "lat": 5.316667,
+      "lon": -4.033333
+    },
+    "accra": {
+      "lat": 5.55,
+      "lon": -0.2
+    },
+    "addis-ababa": {
+      "lat": 8.980603,
+      "lon": 38.757760
+    },
+    "algiers": {
+      "lat": 36.752887,
+      "lon": 3.042048
+    },
+    "asmara": {
+      "lat": 15.333333,
+      "lon": 38.933333
+    },
+    "bamako": {
+      "lat": 12.65,
+      "lon": -8
+    },
+    "bangui": {
+      "lat": 4.366667,
+      "lon": 18.583333
+    },
+    "banjul": {
+      "lat": 13.453056,
+      "lon": -16.5775
+    },
+    "bissau": {
+      "lat": 11.881655,
+      "lon": -15.617794
+    },
+    "blantyre": {
+      "lat": -15.786111,
+      "lon": 35.005833
+    },
+    "brazzaville": {
+      "lat": -4.267778,
+      "lon": 15.291944
+    },
+    "bujumbura": {
+      "lat": -3.383333,
+      "lon": 29.366667
+    },
+    "cairo": {
+      "lat": 30.044419,
+      "lon": 31.235711
+    },
+    "casablanca": {
+      "lat": 33.533333,
+      "lon": -7.583333
+    },
+    "ceuta": {
+      "lat": 35.889387,
+      "lon": -5.321345
+    },
+    "conakry": {
+      "lat": 9.509167,
+      "lon": -13.712222
+    },
+    "dakar": {
+      "lat": 14.764504,
+      "lon": -17.366028
+    },
+    "dar-es-salaam": {
+      "lat": -6.8,
+      "lon": 39.283333
+    },
+    "djibouti": {
+      "lat": 11.825138,
+      "lon": 42.590275
+    },
+    "douala": {
+      "lat": 4.05,
+      "lon": 9.7
+    },
+    "el-aaiun": {
+      "lat": 27.147702,
+      "lon": -13.222516
+    },
+    "freetown": {
+      "lat": 8.484444,
+      "lon": -13.234444
+    },
+    "gaborone": {
+      "lat": -24.658056,
+      "lon": 25.912222
+    },
+    "harare": {
+      "lat": -17.863889,
+      "lon": 31.029722
+    },
+    "johannesburg": {
+      "lat": -26.204102,
+      "lon": 28.047305
+    },
+    "juba": {
+      "lat": 4.85,
+      "lon": 31.6
+    },
+    "kampala": {
+      "lat": 0.313611,
+      "lon": 32.581111
+    },
+    "khartoum": {
+      "lat": 15.566667,
+      "lon": 32.516667
+    },
+    "kigali": {
+      "lat": -1.943889,
+      "lon": 30.059444
+    },
+    "kinshasa": {
+      "lat": -4.331666,
+      "lon": 15.313889
+    },
+    "lagos": {
+      "lat": 6.524379,
+      "lon": 3.379205
+    },
+    "libreville": {
+      "lat": 0.3901,
+      "lon": 9.4544
+    },
+    "lome": {
+      "lat": 6.131944,
+      "lon": 1.222778
+    },
+    "luanda": {
+      "lat": -8.838333,
+      "lon": 13.234444
+    },
+    "lubumbashi": {
+      "lat": -11.664722,
+      "lon": 27.479444
+    },
+    "lusaka": {
+      "lat": -15.416667,
+      "lon": 28.283333
+    },
+    "malabo": {
+      "lat": 3.75,
+      "lon": 8.783332
+    },
+    "maputo": {
+      "lat": -25.966667,
+      "lon": 32.583333
+    },
+    "maseru": {
+      "lat": -29.31,
+      "lon": 27.48
+    },
+    "mbabane": {
+      "lat": -26.316667,
+      "lon": 31.133333
+    },
+    "mogadishu": {
+      "lat": 2.033333,
+      "lon": 45.35
+    },
+    "monrovia": {
+      "lat": 6.313333,
+      "lon": -10.801389
+    },
+    "nairobi": {
+      "lat": -1.292065,
+      "lon": 36.821946
+    },
+    "ndjamena": {
+      "lat": 12.113056,
+      "lon": 15.049167
+    },
+    "nouakchott": {
+      "lat": 18.1,
+      "lon": -15.95
+    },
+    "ouagadougou": {
+      "lat": 12.35,
+      "lon": -1.516667
+    },
+    "porto-novo": {
+      "lat": 6.497222,
+      "lon": 2.605
+    },
+    "sao-tome": {
+      "lat": 0.330192,
+      "lon": 6.733343
+    },
+    "timbuktu": {
+      "lat": 16.766588,
+      "lon": -3.002561
+    },
+    "tripoli": {
+      "lat": 32.813311,
+      "lon": 13.104844
+    },
+    "tunis": {
+      "lat": 36.806494,
+      "lon": 10.181531
+    },
+    "windhoek": {
+      "lat": -22.57,
+      "lon": 17.083611
+    }
+  },
  "america": {
    "adak":              { "lat": 0,           "lon": 0},
    "anchorage":         { "lat": 0,           "lon": 0},
