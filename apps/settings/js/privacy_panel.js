@@ -1,57 +1,53 @@
-/* global Settings */
-'use strict';
+define(function(){
+  'use strict';
 
-var PrivacyPanel = {
-  init: function about_init() {
-    document.getElementById('menuItem-privacyPanel').onclick = this.launchPP;
-},
+  function PrivacyPanelHandler() {}
 
-launchPP: function about_launchPrivacyPanel(evt) {
-  var settings = Settings.mozSettings;
-  if (!settings) {
-    return;
-  }
+  PrivacyPanelHandler.prototype = {
 
-  evt.stopImmediatePropagation();
-  evt.preventDefault();
+    /**
+     * Initialize click event for Privacy Panel menu item.
+     */
+    init: function() {
+      document.getElementById('menuItem-privacyPanel')
+        .addEventListener('click', this.launch);
+    },
 
-  var key = 'privacyPanel.manifestURL';
-  var req = settings.createLock().get(key);
+    /**
+     * Launch Privacy Panel app.
+     */
+    launch: function(event) {
+      event.stopImmediatePropagation();
+      event.preventDefault();
 
-  req.onsuccess = function privacyPanelManifest() {
-
-    var privacyPanelManifestURL = req.result[key];
-    if (!privacyPanelManifestURL) {
-      privacyPanelManifestURL = document.location.protocol +
+      var privacyPanelManifestURL = document.location.protocol +
         '//privacy-panel.gaiamobile.org' +
-        (location.port ? (':' + location.port) : '') +
-        '/manifest.webapp';
-    }
+        (location.port ? (':' + location.port) : '') + '/manifest.webapp';
 
-    var privacyPanelApp = null;
-    navigator.mozApps.mgmt.getAll().onsuccess = function gotApps(evt) {
-      var apps = evt.target.result;
-      for (var i = 0; i < apps.length && privacyPanelApp == null; i++) {
-        var app = apps[i];
-        if (app.manifestURL == privacyPanelManifestURL) {
-          privacyPanelApp = app;
+      var privacyPanelApp = null;
+      navigator.mozApps.mgmt.getAll().onsuccess = function gotApps(evt) {
+        var apps = evt.target.result;
+        for (var i = 0; i < apps.length && privacyPanelApp === null; i++) {
+          var app = apps[i];
+          if (app.manifestURL === privacyPanelManifestURL) {
+            privacyPanelApp = app;
+          }
         }
-      }
 
-      if (privacyPanelApp) {
-        // Let privacy-panel app know that we launched it from settings
-        // so the app can show us a back button.
-        settings.createLock().set({ 'pp.launched.by.settings': true });
+        if (privacyPanelApp) {
+          // Let privacy-panel app know that we launched it from settings
+          // so the app can show us a back button pointing to settings app.
+          navigator.mozSettings.createLock().set({
+            'pp.launched.by.settings': true
+          });
 
-        privacyPanelApp.launch();
-      } else {
-        alert(navigator.mozL10n.get('no-privacypanel'));
-      }
-    };
-
-    return true;
+          privacyPanelApp.launch();
+        } else {
+          alert(navigator.mozL10n.get('no-privacypanel'));
+        }
+      };
+    }
   };
-}
-};
 
-navigator.mozL10n.once(PrivacyPanel.init.bind(PrivacyPanel));
+  return new PrivacyPanelHandler();
+});
