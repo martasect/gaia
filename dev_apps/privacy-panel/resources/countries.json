@@ -210,164 +210,631 @@
     }
   },
   "america": {
-    "adak":              { "lat": 0,           "lon": 0},
-    "anchorage":         { "lat": 0,           "lon": 0},
-    "anguilla":          { "lat": 0,           "lon": 0},
-    "antigua":           { "lat": 0,           "lon": 0},
-    "araguaina":         { "lat": 0,           "lon": 0},
-    "aruba":             { "lat": 0,           "lon": 0},
-    "asuncion":          { "lat": 0,           "lon": 0},
-    "atikokan":          { "lat": 0,           "lon": 0},
-    "atka":              { "lat": 0,           "lon": 0},
-    "bahia":             { "lat": 0,           "lon": 0},
-    "bahia-banderas":    { "lat": 0,           "lon": 0},
-    "barbados":          { "lat": 0,           "lon": 0},
-    "belem":             { "lat": 0,           "lon": 0},
-    "belize":            { "lat": 0,           "lon": 0},
-    "blanc-sablon":      { "lat": 0,           "lon": 0},
-    "boa-vista":         { "lat": 0,           "lon": 0},
-    "bogota":            { "lat": 0,           "lon": 0},
-    "boise":             { "lat": 0,           "lon": 0},
-    "brasilia":          { "lat": 0,           "lon": 0},
-    "buelah":            { "lat": 0,           "lon": 0},
-    "buenos-aires":      { "lat": 0,           "lon": 0},
-    "caamaraca":         { "lat": 0,           "lon": 0},
-    "cambridge-bay":     { "lat": 0,           "lon": 0},
-    "cambo-grande":      { "lat": 0,           "lon": 0},
-    "cancun":            { "lat": 0,           "lon": 0},
-    "caracas":           { "lat": 0,           "lon": 0},
-    "cayenne":           { "lat": 0,           "lon": 0},
-    "chicago":           { "lat": 0,           "lon": 0},
-    "chihuahua":         { "lat": 0,           "lon": 0},
-    "comodoro-rivadavia":{ "lat": 0,           "lon": 0},
-    "coral-harbour":     { "lat": 0,           "lon": 0},
-    "cordoba":           { "lat": 0,           "lon": 0},
-    "costa-rica":        { "lat": 0,           "lon": 0},
-    "creston":           { "lat": 0,           "lon": 0},
-    "creston":           { "lat": 0,           "lon": 0},
-    "cuiaba":            { "lat": 0,           "lon": 0},
-    "curacao":           { "lat": 0,           "lon": 0},
-    "danmarkshavn":      { "lat": 0,           "lon": 0},
-    "dawson":            { "lat": 0,           "lon": 0},
-    "dawson-creek":      { "lat": 0,           "lon": 0},
-    "denver":            { "lat": 0,           "lon": 0},
-    "detroit":           { "lat": 0,           "lon": 0},
-    "dominica":          { "lat": 0,           "lon": 0},
-    "edmonton":          { "lat": 0,           "lon": 0},
-    "eirunepe":          { "lat": 0,           "lon": 0},
-    "el-salvador":       { "lat": 0,           "lon": 0},
-    "ensenada":          { "lat": 0,           "lon": 0},
-    "fort-wayne":        { "lat": 0,           "lon": 0},
-    "fortaleza":         { "lat": 0,           "lon": 0},
-    "glace-bay":         { "lat": 0,           "lon": 0},
-    "godthab":           { "lat": 0,           "lon": 0},
-    "goose-bay":         { "lat": 0,           "lon": 0},
-    "grand-turk":        { "lat": 0,           "lon": 0},
-    "grenada":           { "lat": 0,           "lon": 0},
-    "guadeloupe":        { "lat": 0,           "lon": 0},
-    "guatemala":         { "lat": 0,           "lon": 0},
-    "guayaquil":         { "lat": 0,           "lon": 0},
-    "guyana":            { "lat": 0,           "lon": 0},
-    "halifax":           { "lat": 0,           "lon": 0},
-    "havana":            { "lat": 0,           "lon": 0},
-    "hermosillo":        { "lat": 0,           "lon": 0},
-    "indianapolis":      { "lat": 0,           "lon": 0},
-    "inuvik":            { "lat": 0,           "lon": 0},
-    "iqaluit":           { "lat": 0,           "lon": 0},
-    "jamaica":           { "lat": 0,           "lon": 0},
-    "jujuy":             { "lat": 0,           "lon": 0},
-    "juneau":            { "lat": 0,           "lon": 0},
-    "knox":              { "lat": 0,           "lon": 0},
-    "kralendijk":        { "lat": 0,           "lon": 0},
-    "la-paz":            { "lat": 0,           "lon": 0},
-    "la-rioja":          { "lat": 0,           "lon": 0},
-    "lima":              { "lat": 0,           "lon": 0},
-    "los-angeles":       { "lat": 0,           "lon": 0},
-    "louisville":        { "lat": 0,           "lon": 0},
-    "lower-princes":     { "lat": 0,           "lon": 0},
-    "maceio":            { "lat": 0,           "lon": 0},
-    "managua":           { "lat": 0,           "lon": 0},
-    "manaus":            { "lat": 0,           "lon": 0},
-    "marigot":           { "lat": 0,           "lon": 0},
-    "martinique":        { "lat": 0,           "lon": 0},
-    "matamoros":         { "lat": 0,           "lon": 0},
-    "mazatlan":          { "lat": 0,           "lon": 0},
-    "mendoza":           { "lat": 0,           "lon": 0},
-    "menominee":         { "lat": 0,           "lon": 0},
-    "merida":            { "lat": 0,           "lon": 0},
-    "metlakatla":        { "lat": 0,           "lon": 0},
-    "mexico-city":       { "lat": 0,           "lon": 0},
-    "marengo":           { "lat": 0,           "lon": 0},
-    "miquelon":          { "lat": 0,           "lon": 0},
-    "moncton":           { "lat": 0,           "lon": 0},
-    "monterrey":         { "lat": 0,           "lon": 0},
-    "montevideo":        { "lat": 0,           "lon": 0},
-    "monticello":        { "lat": 0,           "lon": 0},
-    "montreal":          { "lat": 0,           "lon": 0},
-    "montserrat":        { "lat": 0,           "lon": 0},
-    "nassau":            { "lat": 0,           "lon": 0},
-    "new-salem":         { "lat": 0,           "lon": 0},
-    "new-york":          { "lat": 0,           "lon": 0},
-    "nipigon":           { "lat": 0,           "lon": 0},
-    "nome":              { "lat": 0,           "lon": 0},
-    "noronha":           { "lat": 0,           "lon": 0},
-    "ojinaga":           { "lat": 0,           "lon": 0},
-    "panama":            { "lat": 0,           "lon": 0},
-    "pangnirtung":       { "lat": 0,           "lon": 0},
-    "paramaribo":        { "lat": 0,           "lon": 0},
-    "petersburg":        { "lat": 0,           "lon": 0},
-    "phoenix":           { "lat": 0,           "lon": 0},
-    "port-of-spain":     { "lat": 0,           "lon": 0},
-    "port-au-prince":    { "lat": 0,           "lon": 0},
-    "porto-acre":        { "lat": 0,           "lon": 0},
-    "porto-velho":       { "lat": 0,           "lon": 0},
-    "perto-rico":        { "lat": 0,           "lon": 0},
-    "quito":             { "lat": 0,           "lon": 0},
-    "rainy-river":       { "lat": 0,           "lon": 0},
-    "rankin-inlet":      { "lat": 0,           "lon": 0},
-    "recife":            { "lat": 0,           "lon": 0},
-    "regina":            { "lat": 0,           "lon": 0},
-    "resolute":          { "lat": 0,           "lon": 0},
-    "rio-branco":        { "lat": 0,           "lon": 0},
-    "rio-gallegos":      { "lat": 0,           "lon": 0},
-    "rosario":           { "lat": 0,           "lon": 0},
-    "salta":             { "lat": 0,           "lon": 0},
-    "san-juan":          { "lat": 0,           "lon": 0},
-    "san-luis":          { "lat": 0,           "lon": 0},
-    "santa-isabel":      { "lat": 0,           "lon": 0},
-    "santarem":          { "lat": 0,           "lon": 0},
-    "santiago":          { "lat": 0,           "lon": 0},
-    "santo-domingo":     { "lat": 0,           "lon": 0},
-    "scoresbysund":      { "lat": 0,           "lon": 0},
-    "shiprock":          { "lat": 0,           "lon": 0},
-    "shiprock":          { "lat": 0,           "lon": 0},
-    "sitka":             { "lat": 0,           "lon": 0},
-    "st-barthelemy":     { "lat": 0,           "lon": 0},
-    "st-johns":          { "lat": 0,           "lon": 0},
-    "st-kitts":          { "lat": 0,           "lon": 0},
-    "st-lucia":          { "lat": 0,           "lon": 0},
-    "st-thomas":         { "lat": 0,           "lon": 0},
-    "st-vincent":        { "lat": 0,           "lon": 0},
-    "swift-current":     { "lat": 0,           "lon": 0},
-    "sao-paulo":         { "lat": 0,           "lon": 0},
-    "tell-city":         { "lat": 0,           "lon": 0},
-    "tegucigalpa":       { "lat": 0,           "lon": 0},
-    "thule":             { "lat": 0,           "lon": 0},
-    "thunder-bay":       { "lat": 0,           "lon": 0},
-    "tucuman":           { "lat": 0,           "lon": 0},
-    "tijuana":           { "lat": 0,           "lon": 0},
-    "toronto":           { "lat": 0,           "lon": 0},
-    "tortola":           { "lat": 0,           "lon": 0},
-    "ushuaia":           { "lat": 0,           "lon": 0},
-    "vancouver":         { "lat": 0,           "lon": 0},
-    "vevay":             { "lat": 0,           "lon": 0},
-    "vincennes":         { "lat": 0,           "lon": 0},
-    "virgin":            { "lat": 0,           "lon": 0},
-    "whitehorse":        { "lat": 0,           "lon": 0},
-    "winamac":           { "lat": 0,           "lon": 0},
-    "winnipeg":          { "lat": 0,           "lon": 0},
-    "yakutat":           { "lat": 0,           "lon": 0},
-    "yellowknife":       { "lat": 0,           "lon": 0}
+    "adak": {
+      "lat": 51.88,
+      "lon": -176.658055
+    },
+    "anchorage": {
+      "lat": 61.218055,
+      "lon": -149.900277
+    },
+    "anguilla": {
+      "lat": 18.220554,
+      "lon": -63.068614
+    },
+    "antigua": {
+      "lat": 17.074655,
+      "lon": -61.817520
+    },
+    "araguaina": {
+      "lat": -7.192773,
+      "lon": -48.204826
+    },
+    "aruba": {
+      "lat": 12.52111,
+      "lon": -69.968338
+    },
+    "asuncion": {
+      "lat": -25.282197,
+      "lon": -57.635099
+    },
+    "atikokan": {
+      "lat": 48.757169,
+      "lon": -91.625521
+    },
+    "atka": {
+      "lat": 52.162146,
+      "lon": -174.344639
+    },
+    "bahia": {
+      "lat": -12.579738,
+      "lon": -41.700727
+    },
+    "bahia-banderas": {
+      "lat": 24.18039,
+      "lon": -110.295856
+    },
+    "barbados": {
+      "lat": 13.193887,
+      "lon": -59.543198
+    },
+    "belem": {
+      "lat": -1.455754,
+      "lon": -48.490179
+    },
+    "belize": {
+      "lat": 17.189877,
+      "lon": -88.49765
+    },
+    "blanc-sablon": {
+      "lat": 51.426445,
+      "lon": -57.131314
+    },
+    "boa-vista": {
+      "lat": 2.823509,
+      "lon": -60.675833
+    },
+    "bogota": {
+      "lat": 4.598056,
+      "lon": -74.075833
+    },
+    "boise": {
+      "lat": 43.618710,
+      "lon": -116.214606
+    },
+    "brasilia": {
+      "lat": -14.235004,
+      "lon": -51.92528
+    },
+    "buelah": {
+      "lat": 38.075833,
+      "lon": -104.986111
+    },
+    "buenos-aires": {
+      "lat": -34.603723,
+      "lon": -58.381593
+    },
+    "caamaraca": {
+      "lat": -6.454967,
+      "lon": -78.838264
+    },
+    "cambo-grande": {
+      "lat": -20.469710,
+      "lon": -54.620121
+    },
+    "cambridge-bay": {
+      "lat": 69.117222,
+      "lon": -105.053056
+    },
+    "cancun": {
+      "lat": 21.161908,
+      "lon": -86.851527
+    },
+    "caracas": {
+      "lat": 10.469640,
+      "lon": -66.803718
+    },
+    "cayenne": {
+      "lat": 4.9227,
+      "lon": -52.326899
+    },
+    "chicago": {
+      "lat": 41.878113,
+      "lon": -87.629798
+    },
+    "chihuahua": {
+      "lat": 28.632995,
+      "lon": -106.069100
+    },
+    "comodoro-rivadavia": {
+      "lat": -45.867919,
+      "lon": -67.5
+    },
+    "coral-harbour": {
+      "lat": 64.138834,
+      "lon": -83.169896
+    },
+    "cordoba": {
+      "lat": -31.398929,
+      "lon": -64.182129
+    },
+    "costa-rica": {
+      "lat": 9.748916,
+      "lon": -83.753428
+    },
+    "creston": {
+      "lat": 49.095540,
+      "lon": -116.513507
+    },
+    "cuiaba": {
+      "lat": -15.601410,
+      "lon": -56.097891
+    },
+    "curacao": {
+      "lat": 12.16957,
+      "lon": -68.99002
+    },
+    "danmarkshavn": {
+      "lat": 76.766667,
+      "lon": -18.666667
+    },
+    "dawson": {
+      "lat": 31.773500,
+      "lon": -84.446582
+    },
+    "dawson-creek": {
+      "lat": 55.759627,
+      "lon": -120.237662
+    },
+    "denver": {
+      "lat": 39.737567,
+      "lon": -104.984717
+    },
+    "detroit": {
+      "lat": 42.331427,
+      "lon": -83.045753
+    },
+    "dominica": {
+      "lat": 15.414999,
+      "lon": -61.370976
+    },
+    "edmonton": {
+      "lat": 53.544389,
+      "lon": -113.490926
+    },
+    "eirunepe": {
+      "lat": -6.657140,
+      "lon": -69.866714
+    },
+    "el-salvador": {
+      "lat": 13.794185,
+      "lon": -88.89653
+    },
+    "ensenada": {
+      "lat": 31.857778,
+      "lon": -116.605833
+    },
+    "fort-wayne": {
+      "lat": 41.079273,
+      "lon": -85.139351
+    },
+    "fortaleza": {
+      "lat": -3.731861,
+      "lon": -38.526670
+    },
+    "glace-bay": {
+      "lat": 46.196919,
+      "lon": -59.957004
+    },
+    "godthab": {
+      "lat": 64.175,
+      "lon": -51.738889
+    },
+    "goose-bay": {
+      "lat": 53.301682,
+      "lon": -60.326084
+    },
+    "grand-turk": {
+      "lat": 21.459,
+      "lon": -71.139
+    },
+    "grenada": {
+      "lat": 12.1165,
+      "lon": -61.678999
+    },
+    "guadeloupe": {
+      "lat": 16.265,
+      "lon": -61.550999
+    },
+    "guatemala": {
+      "lat": 15.783471,
+      "lon": -90.230758
+    },
+    "guayaquil": {
+      "lat": -2.170997,
+      "lon": -79.922359
+    },
+    "guyana": {
+      "lat": 4.860416,
+      "lon": -58.93018
+    },
+    "halifax": {
+      "lat": 44.648862,
+      "lon": -63.575319
+    },
+    "havana": {
+      "lat": 23.054069,
+      "lon": -82.345188
+    },
+    "hermosillo": {
+      "lat": 29.072967,
+      "lon": -110.955919
+    },
+    "indianapolis": {
+      "lat": 39.768403,
+      "lon": -86.158068
+    },
+    "inuvik": {
+      "lat": 68.360743,
+      "lon": -133.723017
+    },
+    "iqaluit": {
+      "lat": 63.746693,
+      "lon": -68.516966
+    },
+    "jamaica": {
+      "lat": 18.109581,
+      "lon": -77.297508
+    },
+    "jujuy": {
+      "lat": -24.185786,
+      "lon": -65.299476
+    },
+    "juneau": {
+      "lat": 58.301944,
+      "lon": -134.419722
+    },
+    "knox": {
+      "lat": 41.295875,
+      "lon": -86.625013
+    },
+    "knox-in": {
+      "lat": 41.295875,
+      "lon": -86.625013
+    },
+    "kralendijk": {
+      "lat": 12.1507,
+      "lon": -68.276699
+    },
+    "la-paz": {
+      "lat": -16.5,
+      "lon": -68.149999
+    },
+    "la-rioja": {
+      "lat": -29.412800,
+      "lon": -66.855980
+    },
+    "lima": {
+      "lat": -12.046374,
+      "lon": -77.042793
+    },
+    "los-angeles": {
+      "lat": 34.052234,
+      "lon": -118.243684
+    },
+    "louisville": {
+      "lat": 38.252664,
+      "lon": -85.758455
+    },
+    "lower-princes": {
+      "lat": 18.052778,
+      "lon": -63.0425
+    },
+    "maceio": {
+      "lat": -9.649848,
+      "lon": -35.708949
+    },
+    "managua": {
+      "lat": 12.136389,
+      "lon": -86.251389
+    },
+    "manaus": {
+      "lat": -3.119027,
+      "lon": -60.021731
+    },
+    "marengo": {
+      "lat": 42.248633,
+      "lon": -88.608426
+    },
+    "marigot": {
+      "lat": 18.0731,
+      "lon": -63.082200
+    },
+    "martinique": {
+      "lat": 14.641528,
+      "lon": -61.024174
+    },
+    "matamoros": {
+      "lat": 25.869029,
+      "lon": -97.502737
+    },
+    "mazatlan": {
+      "lat": 23.249414,
+      "lon": -106.411142
+    },
+    "mendoza": {
+      "lat": -32.890183,
+      "lon": -68.844049
+    },
+    "menominee": {
+      "lat": 45.107762,
+      "lon": -87.614273
+    },
+    "merida": {
+      "lat": 20.966044,
+      "lon": -89.627433
+    },
+    "metlakatla": {
+      "lat": 55.129166,
+      "lon": -131.572222
+    },
+    "mexico-city": {
+      "lat": 19.432607,
+      "lon": -99.133208
+    },
+    "miquelon": {
+      "lat": 47.040178,
+      "lon": -56.334878
+    },
+    "moncton": {
+      "lat": 46.087816,
+      "lon": -64.778231
+    },
+    "monterrey": {
+      "lat": 25.686614,
+      "lon": -100.316112
+    },
+    "montevideo": {
+      "lat": -34.901112,
+      "lon": -56.164531
+    },
+    "monticello": {
+      "lat": 38.008604,
+      "lon": -78.453199
+    },
+    "montreal": {
+      "lat": 45.508669,
+      "lon": -73.553992
+    },
+    "montserrat": {
+      "lat": 16.742498,
+      "lon": -62.187366
+    },
+    "nassau": {
+      "lat": 25.06,
+      "lon": -77.345
+    },
+    "new-salem": {
+      "lat": 42.504255,
+      "lon": -72.332028
+    },
+    "new-york": {
+      "lat": 40.712783,
+      "lon": -74.005941
+    },
+    "nipigon": {
+      "lat": 49.015735,
+      "lon": -88.268316
+    },
+    "nome": {
+      "lat": 64.501111,
+      "lon": -165.406388
+    },
+    "noronha": {
+      "lat": -15.447367,
+      "lon": -50.362688
+    },
+    "ojinaga": {
+      "lat": 29.564443,
+      "lon": -104.416389
+    },
+    "panama": {
+      "lat": 8.537981,
+      "lon": -80.782127
+    },
+    "pangnirtung": {
+      "lat": 66.146557,
+      "lon": -65.701218
+    },
+    "paramaribo": {
+      "lat": 5.852035,
+      "lon": -55.203827
+    },
+    "perto-rico": {
+      "lat": 18.220833,
+      "lon": -66.590149
+    },
+    "petersburg": {
+      "lat": 37.227927,
+      "lon": -77.401927
+    },
+    "phoenix": {
+      "lat": 33.448377,
+      "lon": -112.074037
+    },
+    "port-au-prince": {
+      "lat": 18.533333,
+      "lon": -72.333333
+    },
+    "port-of-spain": {
+      "lat": 10.666667,
+      "lon": -61.516667
+    },
+    "porto-acre": {
+      "lat": -9.593638,
+      "lon": -67.541107
+    },
+    "porto-velho": {
+      "lat": -9.414588,
+      "lon": -64.147823
+    },
+    "quito": {
+      "lat": -0.180653,
+      "lon": -78.467838
+    },
+    "rainy-river": {
+      "lat": 48.716667,
+      "lon": -94.566667
+    },
+    "rankin-inlet": {
+      "lat": 62.808375,
+      "lon": -92.085285
+    },
+    "recife": {
+      "lat": -8.047545,
+      "lon": -34.876962
+    },
+    "regina": {
+      "lat": 50.454722,
+      "lon": -104.606667
+    },
+    "resolute": {
+      "lat": 74.697299,
+      "lon": -94.829729
+    },
+    "rio-branco": {
+      "lat": -9.975377,
+      "lon": -67.824897
+    },
+    "rio-gallegos": {
+      "lat": -51.623048,
+      "lon": -69.216829
+    },
+    "rosario": {
+      "lat": -32.950740,
+      "lon": -60.666500
+    },
+    "salta": {
+      "lat": -24.782932,
+      "lon": -65.412155
+    },
+    "san-juan": {
+      "lat": -31.527273,
+      "lon": -68.521408
+    },
+    "san-luis": {
+      "lat": -33.302220,
+      "lon": -66.336797
+    },
+    "santa-isabel": {
+      "lat": -23.317686,
+      "lon": -46.224110
+    },
+    "santarem": {
+      "lat": -2.450629,
+      "lon": -54.700923
+    },
+    "santiago": {
+      "lat": -33.469119,
+      "lon": -70.641997
+    },
+    "santo-domingo": {
+      "lat": 18.466667,
+      "lon": -69.95
+    },
+    "sao-paulo": {
+      "lat": -23.550519,
+      "lon": -46.633309
+    },
+    "scoresbysund": {
+      "lat": 70.485278,
+      "lon": -21.966667
+    },
+    "shiprock": {
+      "lat": 36.785554,
+      "lon": -108.687032
+    },
+    "sitka": {
+      "lat": 57.053055,
+      "lon": -135.33
+    },
+    "st-barthelemy": {
+      "lat": 17.9,
+      "lon": -62.833333
+    },
+    "st-johns": {
+      "lat": 47.560541,
+      "lon": -52.712831
+    },
+    "st-kitts": {
+      "lat": 17.343379,
+      "lon": -62.755904
+    },
+    "st-lucia": {
+      "lat": 13.909444,
+      "lon": -60.978893
+    },
+    "st-thomas": {
+      "lat": 18.335361,
+      "lon": -64.953400
+    },
+    "st-vincent": {
+      "lat": 13.264877,
+      "lon": -61.210244
+    },
+    "swift-current": {
+      "lat": 50.285069,
+      "lon": -107.797172
+    },
+    "tegucigalpa": {
+      "lat": 14.0833,
+      "lon": -87.2167
+    },
+    "tell-city": {
+      "lat": 37.951444,
+      "lon": -86.767766
+    },
+    "thule": {
+      "lat": 77.466667,
+      "lon": -69.230555
+    },
+    "thunder-bay": {
+      "lat": 48.380895,
+      "lon": -89.247682
+    },
+    "tijuana": {
+      "lat": 32.514946,
+      "lon": -117.038247
+    },
+    "toronto": {
+      "lat": 43.653226,
+      "lon": -79.383184
+    },
+    "tortola": {
+      "lat": 18.433470,
+      "lon": -64.633278
+    },
+    "tucuman": {
+      "lat": -26.808284,
+      "lon": -65.217590
+    },
+    "ushuaia": {
+      "lat": -54.801912,
+      "lon": -68.302951
+    },
+    "vancouver": {
+      "lat": 49.261226,
+      "lon": -123.113926
+    },
+    "vevay": {
+      "lat": 38.747840,
+      "lon": -85.067172
+    },
+    "vincennes": {
+      "lat": 38.677269,
+      "lon": -87.528632
+    },
+    "virgin": {
+      "lat": 18.335765,
+      "lon": -64.896335
+    },
+    "whitehorse": {
+      "lat": 60.721187,
+      "lon": -135.056844
+    },
+    "winamac": {
+      "lat": 41.051429,
+      "lon": -86.603064
+    },
+    "winnipeg": {
+      "lat": 49.899754,
+      "lon": -97.137493
+    },
+    "yakutat": {
+      "lat": 59.546944,
+      "lon": -139.727222
+    },
+    "yellowknife": {}
   },
   "antarctica": {
     "casey":             { "lat": 0,           "lon": 0},
