@@ -339,65 +339,239 @@
    "sydney":            { "lat": 0,           "lon": 0}
  },
  "europe": {
-   "amsterdam":         { "lat": 0,           "lon": 0},
-   "andorra":           { "lat": 0,           "lon": 0},
-   "athens":            { "lat": 0,           "lon": 0},
-   "belfast":           { "lat": 0,           "lon": 0},
-   "belgrade":          { "lat": 0,           "lon": 0},
-   "berlin":            { "lat": 0,           "lon": 0},
-   "bratislava":        { "lat": 0,           "lon": 0},
-   "brussels":          { "lat": 0,           "lon": 0},
-   "bucharest":         { "lat": 0,           "lon": 0},
-   "budapest":          { "lat": 0,           "lon": 0},
-   "chisinau":          { "lat": 0,           "lon": 0},
-   "copenhagen":        { "lat": 0,           "lon": 0},
-   "dublin":            { "lat": 0,           "lon": 0},
-   "gilbraltar":        { "lat": 0,           "lon": 0},
-   "guerney":           { "lat": 0,           "lon": 0},
-   "helsinki":          { "lat": 0,           "lon": 0},
-   "isle-of-man":       { "lat": 0,           "lon": 0},
-   "istanbul":          { "lat": 0,           "lon": 0},
-   "jersey":            { "lat": 0,           "lon": 0},
-   "kaliningrad":       { "lat": 0,           "lon": 0},
-   "kiev":              { "lat": 0,           "lon": 0},
-   "lisbon":            { "lat": 0,           "lon": 0},
-   "ljubljana":         { "lat": 0,           "lon": 0},
-   "london":            { "lat": 0,           "lon": 0},
-   "luxembourg":        { "lat": 0,           "lon": 0},
-   "madrid":            { "lat": 0,           "lon": 0},
-   "malta":             { "lat": 0,           "lon": 0},
-   "mariehamn":         { "lat": 0,           "lon": 0},
-   "minsk":             { "lat": 0,           "lon": 0},
-   "monaco":            { "lat": 0,           "lon": 0},
-   "moscow":            { "lat": 0,           "lon": 0},
-   "nicosia":           { "lat": 0,           "lon": 0},
-   "oslo":              { "lat": 0,           "lon": 0},
-   "paris":             { "lat": 0,           "lon": 0},
-   "podgorica":         { "lat": 0,           "lon": 0},
-   "prague":            { "lat": 0,           "lon": 0},
-   "riga":              { "lat": 0,           "lon": 0},
-   "rome":              { "lat": 0,           "lon": 0},
-   "samara":            { "lat": 0,           "lon": 0},
-   "san-marino":        { "lat": 0,           "lon": 0},
-   "sarajevo":          { "lat": 0,           "lon": 0},
-   "simferopol":        { "lat": 0,           "lon": 0},
-   "skopje":            { "lat": 0,           "lon": 0},
-   "sofia":             { "lat": 0,           "lon": 0},
-   "stockholm":         { "lat": 0,           "lon": 0},
-   "tallinn":           { "lat": 0,           "lon": 0},
-   "tirane":            { "lat": 0,           "lon": 0},
-   "tiraspol":          { "lat": 0,           "lon": 0},
-   "uzhgorod":          { "lat": 0,           "lon": 0},
-   "vaduz":             { "lat": 0,           "lon": 0},
-   "vatican":           { "lat": 0,           "lon": 0},
-   "vienna":            { "lat": 0,           "lon": 0},
-   "vilnius":           { "lat": 0,           "lon": 0},
-   "volgograd":         { "lat": 0,           "lon": 0},
-   "warsaw":            { "lat": 0,           "lon": 0},
-   "zagreb":            { "lat": 0,           "lon": 0},
-   "zaporozhye":        { "lat": 0,           "lon": 0},
-   "zurich":            { "lat": 0,           "lon": 0}
- },
+    "amsterdam": {
+      "lat": 52.3702157,
+      "lon": 4.895167900000001
+    },
+    "andorra": {
+      "lat": 42.506285,
+      "lon": 1.521801
+    },
+    "athens": {
+      "lat": 37.983917,
+      "lon": 23.7293599
+    },
+    "belfast": {
+      "lat": 54.59728500000001,
+      "lon": -5.93012
+    },
+    "belgrade": {
+      "lat": 44.816667,
+      "lon": 20.466667
+    },
+    "berlin": {
+      "lat": 52.52000659999999,
+      "lon": 13.404954
+    },
+    "bratislava": {
+      "lat": 48.1458923,
+      "lon": 17.1071373
+    },
+    "brussels": {
+      "lat": 50.8503396,
+      "lon": 4.3517103
+    },
+    "bucharest": {
+      "lat": 44.4325,
+      "lon": 26.103889
+    },
+    "budapest": {
+      "lat": 47.497912,
+      "lon": 19.040235
+    },
+    "chisinau": {
+      "lat": 47,
+      "lon": 28.916667
+    },
+    "copenhagen": {
+      "lat": 55.6760968,
+      "lon": 12.5683371
+    },
+    "dublin": {
+      "lat": 53.3498053,
+      "lon": -6.2603097
+    },
+    "gilbraltar": {
+      "lat": 36.140751,
+      "lon": -5.353585
+    },
+    "guerney": {
+      "lat": 46.472778,
+      "lon": -90.508333
+    },
+    "helsinki": {
+      "lat": 60.17332440000001,
+      "lon": 24.9410248
+    },
+    "isle-of-man": {
+      "lat": 54.236107,
+      "lon": -4.548056
+    },
+    "istanbul": {
+      "lat": 41.00527,
+      "lon": 28.97696
+    },
+    "jersey": {
+      "lat": 49.214439,
+      "lon": -2.13125
+    },
+    "kaliningrad": {
+      "lat": 54.716667,
+      "lon": 20.516667
+    },
+    "kiev": {
+      "lat": 50.4501,
+      "lon": 30.5234
+    },
+    "lisbon": {
+      "lat": 38.7222524,
+      "lon": -9.1393366
+    },
+    "ljubljana": {
+      "lat": 46.0569465,
+      "lon": 14.5057515
+    },
+    "london": {
+      "lat": 51.5073509,
+      "lon": -0.1277583
+    },
+    "luxembourg": {
+      "lat": 49.815273,
+      "lon": 6.129582999999999
+    },
+    "madrid": {
+      "lat": 40.4167754,
+      "lon": -3.7037902
+    },
+    "malta": {
+      "lat": 35.937496,
+      "lon": 14.375416
+    },
+    "mariehamn": {
+      "lat": 60.0970945,
+      "lon": 19.9348339
+    },
+    "minsk": {
+      "lat": 53.9,
+      "lon": 27.566667
+    },
+    "monaco": {
+      "lat": 43.73841760000001,
+      "lon": 7.424615799999999
+    },
+    "moscow": {
+      "lat": 55.755826,
+      "lon": 37.6173
+    },
+    "nicosia": {
+      "lat": 35.166667,
+      "lon": 33.366667
+    },
+    "oslo": {
+      "lat": 59.9138688,
+      "lon": 10.7522454
+    },
+    "paris": {
+      "lat": 48.856614,
+      "lon": 2.3522219
+    },
+    "podgorica": {
+      "lat": 42.441286,
+      "lon": 19.262892
+    },
+    "prague": {
+      "lat": 50.0755381,
+      "lon": 14.4378005
+    },
+    "riga": {
+      "lat": 56.9496487,
+      "lon": 24.1051864
+    },
+    "rome": {
+      "lat": 41.8723889,
+      "lon": 12.4801802
+    },
+    "samara": {
+      "lat": 53.202778,
+      "lon": 50.140833
+    },
+    "san-marino": {
+      "lat": 43.94236,
+      "lon": 12.457777
+    },
+    "sarajevo": {
+      "lat": 43.8562586,
+      "lon": 18.4130763
+    },
+    "simferopol": {
+      "lat": 44.952117,
+      "lon": 34.102417
+    },
+    "skopje": {
+      "lat": 41.9973462,
+      "lon": 21.4279956
+    },
+    "sofia": {
+      "lat": 42.6977082,
+      "lon": 23.3218675
+    },
+    "stockholm": {
+      "lat": 59.32932349999999,
+      "lon": 18.0685808
+    },
+    "tallinn": {
+      "lat": 59.43696079999999,
+      "lon": 24.7535746
+    },
+    "tirane": {
+      "lat": 41.3275459,
+      "lon": 19.8186982
+    },
+    "tiraspol": {
+      "lat": 46.85,
+      "lon": 29.633333
+    },
+    "uzhgorod": {
+      "lat": 48.6208,
+      "lon": 22.287883
+    },
+    "vaduz": {
+      "lat": 47.14136999999999,
+      "lon": 9.5207
+    },
+    "vatican": {
+      "lat": 41.902916,
+      "lon": 12.453389
+    },
+    "vienna": {
+      "lat": 48.2081743,
+      "lon": 16.3738189
+    },
+    "vilnius": {
+      "lat": 54.6871555,
+      "lon": 25.2796514
+    },
+    "volgograd": {
+      "lat": 48.7,
+      "lon": 44.516667
+    },
+    "warsaw": {
+      "lat": 52.2296756,
+      "lon": 21.0122287
+    },
+    "zagreb": {
+      "lat": 45.8150108,
+      "lon": 15.981919
+    },
+    "zaporozhye": {
+      "lat": 47.8388,
+      "lon": 35.139567
+    },
+    "zurich": {
+      "lat": 47.3686498,
+      "lon": 8.539182499999999
+    }
+  },
  "indian-ocean": {
    "antonanarivo":      { "lat": 0,           "lon": 0},
    "chagos":            { "lat": 0,           "lon": 0},
