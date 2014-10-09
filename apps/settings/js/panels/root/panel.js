@@ -11,6 +11,7 @@ define(function(require) {
   var StorageAppItem = require('panels/root/storage_app_item');
   var WifiItem = require('panels/root/wifi_item');
   var ScreenLockItem = require('panels/root/screen_lock_item');
+  var PrivacyPanelItem = require('panels/root/privacy_panel_item');
 
   return function ctor_root_panel() {
     var root = Root();
@@ -46,6 +47,8 @@ define(function(require) {
         wifiItem = WifiItem(panel.querySelector('#wifi-desc'));
         screenLockItem =
           ScreenLockItem(panel.querySelector('.screenLock-desc'));
+        privacyPanelItem =
+          PrivacyPanelItem(panel.querySelector('#menuItem-privacyPanel'));
       },
       onBeforeShow: function rp_onBeforeShow() {
         languageItem.enabled = true;

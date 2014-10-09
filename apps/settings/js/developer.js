@@ -6,6 +6,7 @@ var Developer = {
 
   init: function about_init() {
     document.getElementById('ftuLauncher').onclick = this.launchFTU;
+//    document.getElementById('ala_dev.enabled').onclick = this.startALA;
 
     // hide software home button whenever the device has no hardware home button
     if (!ScreenLayout.getCurrentLayout('hardwareHomeButton')) {
@@ -16,6 +17,17 @@ var Developer = {
       }
     }
   },
+    
+/*  startALA: function start_ALA(){
+    var settings = Settings.mozSettings;
+    if (!settings) {
+        return;
+    }
+    var req = settings.createLock().get('ala_dev.enabled');
+    req.onsuccess = function showALA(){
+        getElementById('menuItem-privacyPanel').removeAttribute('hidden')
+    }
+  },*/
 
   launchFTU: function about_launchFTU() {
     var settings = Settings.mozSettings;
