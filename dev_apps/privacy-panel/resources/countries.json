@@ -837,17 +837,50 @@
     "yellowknife": {}
   },
   "antarctica": {
-    "casey":             { "lat": 0,           "lon": 0},
-    "davis":             { "lat": 0,           "lon": 0},
-    "dumont-d-urville":  { "lat": 0,           "lon": 0},
-    "macquarie":         { "lat": 0,           "lon": 0},
-    "mawson":            { "lat": 0,           "lon": 0},
-    "mcmudo":            { "lat": 0,           "lon": 0},
-    "palmer":            { "lat": 0,           "lon": 0},
-    "rothera":           { "lat": 0,           "lon": 0},
-    "south-pole":        { "lat": 0,           "lon": 0},
-    "syowa":             { "lat": 0,           "lon": 0},
-    "vostok":            { "lat": 0,           "lon": 0}
+    "casey": {
+      "lat": -66.281667,
+      "lon": 110.524444
+    },
+    "davis": {
+      "lat": -68.576389,
+      "lon": 77.968889
+    },
+    "dumont-d-urville": {
+      "lat": -66.663026,
+      "lon": 140.001826
+    },
+    "macquarie": {
+      "lat": -54.620811,
+      "lon": 158.855614
+    },
+    "mawson": {
+      "lat": -67.602149,
+      "lon": 62.872256
+    },
+    "mcmurdo": {
+      "lat": -77.841877,
+      "lon": 166.686344
+    },
+    "palmer": {
+      "lat": -64.749579,
+      "lon": -64.052102
+    },
+    "rothera": {
+      "lat": -67.566666,
+      "lon": -68.133333
+    },
+    "south-pole": {
+      "lat": -90,
+      "lon": 0
+    },
+    "syowa": {
+      "lat": -69,
+      "lon": 39.583333
+    },
+    "vostok": {
+      "lat": -78.464491,
+      "lon": 106.833972
+    }
   },
   "asia": {
     "aden": {
@@ -1176,31 +1209,100 @@
     }
   },
   "atlantic-ocean": {
-    "azores":            { "lat": 0,           "lon": 0},
-    "bermuda":           { "lat": 0,           "lon": 0},
-    "canary":            { "lat": 0,           "lon": 0},
-    "cape-verde":        { "lat": 0,           "lon": 0},
-    "faroe-islands":     { "lat": 0,           "lon": 0},
-    "jan-mayen":         { "lat": 0,           "lon": 0},
-    "madeira":           { "lat": 0,           "lon": 0},
-    "reykjavik":         { "lat": 0,           "lon": 0},
-    "south-georgia":     { "lat": 0,           "lon": 0},
-    "st-helena":         { "lat": 0,           "lon": 0},
-    "stanley":           { "lat": 0,           "lon": 0}
+    "azores": {
+      "lat": 37.741248,
+      "lon": -25.675594
+    },
+    "bermuda": {
+      "lat": 32.3078,
+      "lon": -64.7505
+    },
+    "canary": {
+      "lat": 28.291563,
+      "lon": -16.62913
+    },
+    "cape-verde": {
+      "lat": 15.120142,
+      "lon": -23.605172
+    },
+    "faroe-islands": {
+      "lat": 61.892635,
+      "lon": -6.911805
+    },
+    "jan-mayen": {
+      "lat": 71.021353,
+      "lon": -8.522312
+    },
+    "madeira": {
+      "lat": 32.760707,
+      "lon": -16.959472
+    },
+    "reykjavik": {
+      "lat": 64.133333,
+      "lon": -21.933333
+    },
+    "south-georgia": {
+      "lat": -54.413833,
+      "lon": -36.582716
+    },
+    "st-helena": {
+      "lat": -15.965010,
+      "lon": -5.708924
+    },
+    "stanley": {
+      "lat": -51.683333,
+      "lon": -59.166667
+    }
   },
   "australia": {
-    "adelaide":          { "lat": 0,           "lon": 0},
-    "brisbane":          { "lat": 0,           "lon": 0},
-    "broken-hill":       { "lat": 0,           "lon": 0},
-    "currie":            { "lat": 0,           "lon": 0},
-    "darwin":            { "lat": 0,           "lon": 0},
-    "eucla":             { "lat": 0,           "lon": 0},
-    "hobart":            { "lat": 0,           "lon": 0},
-    "lindeman":          { "lat": 0,           "lon": 0},
-    "lord-howe":         { "lat": 0,           "lon": 0},
-    "melbourne":         { "lat": 0,           "lon": 0},
-    "perth":             { "lat": 0,           "lon": 0},
-    "sydney":            { "lat": 0,           "lon": 0}
+    "adelaide": {
+      "lat": -34.928621,
+      "lon": 138.599959
+    },
+    "brisbane": {
+      "lat": -27.471010,
+      "lon": 153.023448
+    },
+    "broken-hill": {
+      "lat": -31.955858,
+      "lon": 141.465136
+    },
+    "currie": {
+      "lat": -39.928241,
+      "lon": 143.85231
+    },
+    "darwin": {
+      "lat": -12.462827,
+      "lon": 130.841777
+    },
+    "eucla": {
+      "lat": -31.677126,
+      "lon": 128.889304
+    },
+    "hobart": {
+      "lat": -42.881903,
+      "lon": 147.323814
+    },
+    "lindeman": {
+      "lat": -20.444784,
+      "lon": 149.04105
+    },
+    "lord-howe": {
+      "lat": -31.531482,
+      "lon": 159.070199
+    },
+    "melbourne": {
+      "lat": -37.814107,
+      "lon": 144.96328
+    },
+    "perth": {
+      "lat": -31.953004,
+      "lon": 115.857469
+    },
+    "sydney": {
+      "lat": -33.867486,
+      "lon": 151.206990
+    }
   },
   "europe": {
     "amsterdam": {
@@ -1437,59 +1539,215 @@
     }
   },
   "indian-ocean": {
-    "antonanarivo":      { "lat": 0,           "lon": 0},
-    "chagos":            { "lat": 0,           "lon": 0},
-    "christmas":         { "lat": 0,           "lon": 0},
-    "cocos":             { "lat": 0,           "lon": 0},
-    "comoro":            { "lat": 0,           "lon": 0},
-    "kerguelen":         { "lat": 0,           "lon": 0},
-    "mahe":              { "lat": 0,           "lon": 0},
-    "maldives":          { "lat": 0,           "lon": 0},
-    "mauritius":         { "lat": 0,           "lon": 0},
-    "mayotte":           { "lat": 0,           "lon": 0},
-    "reunion":           { "lat": 0,           "lon": 0}
+    "antonanarivo": {
+      "lat": -18.933333,
+      "lon": 47.516667
+    },
+    "chagos": {
+      "lat": -6.000000,
+      "lon": 72
+    },
+    "christmas": {
+      "lat": -39.687008,
+      "lon": 143.832193
+    },
+    "cocos": {
+      "lat": -12.170874,
+      "lon": 96.841739
+    },
+    "comoro": {
+      "lat": -8.546661,
+      "lon": 125.524759
+    },
+    "kerguelen": {
+      "lat": -49.25,
+      "lon": 69.5
+    },
+    "mahe": {
+      "lat": -4.682669,
+      "lon": 55.480396
+    },
+    "maldives": {
+      "lat": 1.977247,
+      "lon": 73.536103
+    },
+    "mauritius": {
+      "lat": -20.348404,
+      "lon": 57.552152
+    },
+    "mayotte": {
+      "lat": -12.8275,
+      "lon": 45.166244
+    },
+    "reunion": {
+      "lat": -21.115141,
+      "lon": 55.536384
+    }
   },
   "pacific-ocean": {
-    "apia":              { "lat": 0,           "lon": 0},
-    "auckland":          { "lat": 0,           "lon": 0},
-    "chatham":           { "lat": 0,           "lon": 0},
-    "chuuk-lagoon":      { "lat": 0,           "lon": 0},
-    "eester":            { "lat": 0,           "lon": 0},
-    "efate":             { "lat": 0,           "lon": 0},
-    "enderbury":         { "lat": 0,           "lon": 0},
-    "fakaofo":           { "lat": 0,           "lon": 0},
-    "fiji":              { "lat": 0,           "lon": 0},
-    "funafuti":          { "lat": 0,           "lon": 0},
-    "galapagos":         { "lat": 0,           "lon": 0},
-    "gambier":           { "lat": 0,           "lon": 0},
-    "guadalcanal":       { "lat": 0,           "lon": 0},
-    "guam":              { "lat": 0,           "lon": 0},
-    "honolulu":          { "lat": 0,           "lon": 0},
-    "johnston":          { "lat": 0,           "lon": 0},
-    "kritimati":         { "lat": 0,           "lon": 0},
-    "kosrae":            { "lat": 0,           "lon": 0},
-    "kwajalein":         { "lat": 0,           "lon": 0},
-    "majuro":            { "lat": 0,           "lon": 0},
-    "marquesas":         { "lat": 0,           "lon": 0},
-    "midway":            { "lat": 0,           "lon": 0},
-    "nauru":             { "lat": 0,           "lon": 0},
-    "niue":              { "lat": 0,           "lon": 0},
-    "norfolk":           { "lat": 0,           "lon": 0},
-    "noumea":            { "lat": 0,           "lon": 0},
-    "pago-pago":         { "lat": 0,           "lon": 0},
-    "palau":             { "lat": 0,           "lon": 0},
-    "pitcairn":          { "lat": 0,           "lon": 0},
-    "pohnpei":           { "lat": 0,           "lon": 0},
-    "ponape":            { "lat": 0,           "lon": 0},
-    "port-moresby":      { "lat": 0,           "lon": 0},
-    "rarotonga":         { "lat": 0,           "lon": 0},
-    "saipan":            { "lat": 0,           "lon": 0},
-    "samoa":             { "lat": 0,           "lon": 0},
-    "tahiti":            { "lat": 0,           "lon": 0},
-    "tarawa":            { "lat": 0,           "lon": 0},
-    "tongatapu":         { "lat": 0,           "lon": 0},
-    "wake":              { "lat": 0,           "lon": 0},
-    "wallis":            { "lat": 0,           "lon": 0},
-    "yap":               { "lat": 0,           "lon": 0}
+    "apia": {
+      "lat": -13.833333,
+      "lon": -171.75
+    },
+    "auckland": {
+      "lat": -36.848459,
+      "lon": 174.763331
+    },
+    "chatham": {
+      "lat": -43.9,
+      "lon": -176.483333
+    },
+    "chuuk-lagoon": {
+      "lat": 7.416666,
+      "lon": 151.783333
+    },
+    "easter": {
+      "lat": -27.121192,
+      "lon": -109.366423
+    },
+    "efate": {
+      "lat": -17.657747,
+      "lon": 168.429718
+    },
+    "enderbury": {
+      "lat": -3.133333,
+      "lon": -171.083333
+    },
+    "fakaofo": {
+      "lat": -9.380255,
+      "lon": -171.218835
+    },
+    "fiji": {
+      "lat": -17.713371,
+      "lon": 178.065032
+    },
+    "funafuti": {
+      "lat": -8.516667,
+      "lon": 179.216667
+    },
+    "galapagos": {
+      "lat": -0.829278,
+      "lon": -90.982066
+    },
+    "gambier": {
+      "lat": -23.134916,
+      "lon": -134.962683
+    },
+    "guadalcanal": {
+      "lat": -9.577328,
+      "lon": 160.145580
+    },
+    "guam": {
+      "lat": 13.444304,
+      "lon": 144.793731
+    },
+    "honolulu": {
+      "lat": 21.306944,
+      "lon": -157.858333
+    },
+    "johnston": {
+      "lat": 16.732272,
+      "lon": -169.530837
+    },
+    "kosrae": {
+      "lat": 5.309561,
+      "lon": 162.981487
+    },
+    "kritimati": {
+      "lat": 1.872134,
+      "lon": -157.427811
+    },
+    "kwajalein": {
+      "lat": 9.189823,
+      "lon": 167.424297
+    },
+    "majuro": {
+      "lat": 7.116421,
+      "lon": 171.185773
+    },
+    "marquesas": {
+      "lat": -9.454443,
+      "lon": -139.388889
+    },
+    "midway": {
+      "lat": 28.210076,
+      "lon": -177.37611
+    },
+    "nauru": {
+      "lat": -0.522778,
+      "lon": 166.931503
+    },
+    "niue": {
+      "lat": -19.054445,
+      "lon": -169.867233
+    },
+    "norfolk": {
+      "lat": -29.023064,
+      "lon": 167.939597
+    },
+    "noumea": {
+      "lat": -22.2758,
+      "lon": 166.458
+    },
+    "pago-pago": {
+      "lat": -14.279444,
+      "lon": -170.700556
+    },
+    "palau": {
+      "lat": 7.514979,
+      "lon": 134.58252
+    },
+    "pitcairn": {
+      "lat": -24.376765,
+      "lon": -128.324339
+    },
+    "pohnpei": {
+      "lat": 6.854125,
+      "lon": 158.262382
+    },
+    "ponape": {
+      "lat": 6.854125,
+      "lon": 158.262382
+    },
+    "port-moresby": {
+      "lat": -9.443800,
+      "lon": 147.180267
+    },
+    "rarotonga": {
+      "lat": -21.229237,
+      "lon": -159.776349
+    },
+    "saipan": {
+      "lat": 15.177801,
+      "lon": 145.750967
+    },
+    "samoa": {
+      "lat": -13.759029,
+      "lon": -172.104629
+    },
+    "tahiti": {
+      "lat": -17.650919,
+      "lon": -149.426042
+    },
+    "tarawa": {
+      "lat": 1.329052,
+      "lon": 172.979052
+    },
+    "tongatapu": {
+      "lat": -21.146596,
+      "lon": -175.251548
+    },
+    "wake": {
+      "lat": 19.282319,
+      "lon": 166.647046
+    },
+    "wallis": {
+      "lat": -13.266667,
+      "lon": -176.2
+    },
+    "yap": {
+      "lat": 9.539137,
+      "lon": 138.125891
+    }
   }
 }
