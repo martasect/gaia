@@ -23,6 +23,14 @@ input[type="range"].blur-slider {
   display: block;
 }
 
+.settings-disabled .location-blur-information {
+  display: block;
+}
+
+.settings-enabled .location-blur-information {
+  display: none;
+}
+
 .type-box.disabled {
   display: none;
 }
