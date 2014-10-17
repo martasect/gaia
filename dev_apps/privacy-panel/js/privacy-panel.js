@@ -58,21 +58,6 @@ var PrivacyPanel = {
       }
     }
 
-    var mobileConnections = navigator.mozMobileConnections;
-    if (mobileConnections && mobileConnections.length > 0) {
-      var mobileConnection = mobileConnections[0];
-      if (mobileConnection) {
-        var reqIMEI = mobileConnection.sendMMI('*#06#');
-        if (reqIMEI) {
-          reqIMEI.onsuccess = function() {
-            self._deviceId = reqIMEI.result.statusMessage;
-          };
-
-          reqIMEI.onerror = function() {};
-        }
-      }
-    }
-
     var settings = navigator.mozSettings;
     if (!settings) {
       return;
