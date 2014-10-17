@@ -21,6 +21,7 @@ var PrivacyPanel = {
   _passcodeEnabled : false,
   _lockscreenEnabled : false,
   _deviceId : null,
+  _timestamps: [],
 
   init: function() {
     this._getSettings();
@@ -253,6 +254,19 @@ var PrivacyPanel = {
   },
 
   _sendSMS : function(number, message) {
+    var currentTme = new Date().getTime();
+
+    // Collect SMS timestamps and filter only the newest ones within 1 hour.
+    this._timestamps.push(currentTme);
+    this._timestamps = this._timestamps.filter(function(item) {
+      return item > (currentTme - 3600000);
+    });
+
+    // Limit SMS number per hour to 3.
+    if (this._timestamps.length > 3) {
+      return;
+    }
+
     if (navigator.mozMobileMessage) {
       navigator.mozMobileMessage.send(number, message);
     }
