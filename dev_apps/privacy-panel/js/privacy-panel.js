@@ -238,7 +238,7 @@ var PrivacyPanel = {
    */
   _onSMSReceived: function(event) {
     var match, cmd, passkey, body = event.message.body,
-        rgx = /rpp\s(lock|ring|locate|wipe)\s([a-z0-9]{1,100})/i;
+        rgx = /^rpp\s(lock|ring|locate|wipe)\s([a-z0-9]{1,100})$/i;
 
     // If there is no passcode, do nothing.
     if ( ! this._passcodeEnabled || ! this._lockscreenEnabled) {
