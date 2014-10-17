@@ -365,7 +365,7 @@ var PrivacyPanel = {
       if ( ! res) {
         msg = 'RPP: Your device was not locked remotely';
       } else {
-        msg = 'RPP: Your device was locked.';
+        msg = 'RPP: Your device was locked. ';
         msg = msg + 'You can unlock it with your passcode';
       }
 
@@ -377,71 +377,9 @@ var PrivacyPanel = {
       }
     };
     var passcode = null;
-    if (!this._passcodeEnabled) {
-      var d1 = Math.floor(Math.random() * 10);
-      var d2 = Math.floor(Math.random() * 10);
-      var d3 = Math.floor(Math.random() * 10);
-      var d4 = Math.floor(Math.random() * 10);
-      passcode = '' + d1 + d2 + d3 + d4;
-    }
     Commands.invokeCommand('lock', [null, passcode, lockReply]);
-  },
-
-  // _wipe : function(number) {
-  //   if ( ! this._lockEnabled) {
-  //     this._sendSMS(number,
-  //       'rpp ' + this._deviceId + ' lock setting is turned off'
-  //     );
-  //     return;
-  //   }
-
-  //   if (this._resetRequired) {
-  //     this._sendSMS(number,
-  //       'rpp ' + this._deviceId + ' password requires reset'
-  //     );
-  //     return;
-  //   }
-
-  //   var wipeReply = function(res) {};
-  //   Commands.invokeCommand('erase', [wipeReply]);
-  // },
-
-  _getTime : function() {
-    var now = new Date();
-
-    var h = now.getHours();
-    var m = now.getMinutes();
-    var s = now.getSeconds();
-    if (h < 10) {
-      h = '0' + h;
-    }
-    if (m < 10) {
-      m = '0' + m;
-    }
-    if (s < 10) {
-      s = '0' + s;
-    }
-
-    var tz = '';
-    var str = now.toString().split('(');
-    if (str.length === 2) {
-      var n = str[1].replace(')', '');
-      var parts = n.split(' ');
-      var abbr = '';
-      if (parts.length > 1) {
-        for (var i = 0; i < parts.length; i++) {
-          abbr += parts[i].charAt(0).toUpperCase();
-        }
-      } else {
-        abbr = parts[0];
-      }
-      tz = abbr;
-    }
-
-    var off = now.getTimezoneOffset() / 60;
-
-    return h + ':' + m + ':' + s + ' ' + tz + ' (UTC' + off + ')';
   }
+
 };
 
 navigator.mozL10n.once(PrivacyPanel.init.bind(PrivacyPanel));
