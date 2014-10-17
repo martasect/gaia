@@ -289,7 +289,7 @@ var RemotePrivacyProtection = (function() {
       } else {
         this.resetNewPasswordForm();
 
-        this.savePasswordToSettings(passHash).bind(this);
+        this.savePasswordToSettings(passHash);
       }
     },
 

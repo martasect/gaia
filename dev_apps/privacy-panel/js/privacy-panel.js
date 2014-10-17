@@ -38,26 +38,6 @@ var PrivacyPanel = {
   _getSettings: function() {
     var self = this;
 
-    var apps = navigator.mozApps;
-    if (apps) {
-      var reqPerm = apps.getSelf();
-      if (reqPerm) {
-        reqPerm.onsuccess = function() {
-          var app = reqPerm.result;
-          if (app) {
-            var permission = navigator.mozPermissionSettings;
-            if (permission) {
-              permission.set(
-                'geolocation', 'allow', app.manifestURL, app.origin, false
-              );
-            }
-          }
-        };
-
-        reqPerm.onerror = function() {};
-      }
-    }
-
     var settings = navigator.mozSettings;
     if (!settings) {
       return;
