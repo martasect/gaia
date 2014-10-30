@@ -16,8 +16,29 @@ marionette('check main page', function() {
     client.helper.waitForElement('body');
   });
 
-  test('first test', function() {
-    console.log('inside');
-    assert.ok(true);
+  test('root page elements', function() {
+    var menuItems = client.findElements('#root li');
+    assert.ok(menuItems.length === 3);
+  });
+
+  test('ability to load ala panel', function() {
+    var alaMenuItem = client.findElement('#menu-item-ala');
+    var alaPanel = client.findElement('#ala-main');
+    alaMenuItem.click();
+    assert.ok(alaPanel.displayed());
+  });
+
+  test('ability to load rpp panel', function() {
+    var rppMenuItem = client.findElement('#menu-item-rpp');
+    var rppPanel = client.findElement('#rpp-main');
+    rppMenuItem.click();
+    assert.ok(rppPanel.displayed());
+  });
+
+  test('ability to load guided tour panel', function() {
+    var gtMenuItem = client.findElement('#menu-item-gt');
+    var gtPanel = client.findElement('#gt-main');
+    gtMenuItem.click();
+    assert.ok(gtPanel.displayed());
   });
 });
