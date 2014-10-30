@@ -10,6 +10,7 @@
   // If the inquiries to the object are all performed by requirejs, we can
   // remove the path of the object from the following list.
   paths: {
+    'shared/l10n': 'empty:',
     'shared/lazy_loader': 'empty:',
     'shared/settings_listener': 'empty:',
     'shared/settings_url': 'empty:',
