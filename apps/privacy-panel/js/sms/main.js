@@ -14,160 +14,53 @@ define([
 function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
   'use strict';
 
-  var RING_ENABLED = 'rpp.ring.enabled';
-  var LOCK_ENABLED = 'rpp.lock.enabled';
-  var LOCATE_ENABLED = 'rpp.locate.enabled';
-  var PASSCODE_ENABLED = 'lockscreen.passcode-lock.enabled';
+  const RING_ENABLED = 'rpp.ring.enabled';
+  const LOCK_ENABLED = 'rpp.lock.enabled';
+  const LOCATE_ENABLED = 'rpp.locate.enabled';
+  const PASSCODE_ENABLED = 'lockscreen.passcode-lock.enabled';
+  const LOCKSCREEN_ENABLED = 'lockscreen.enabled';
 
   var RPPExecuteCommands = {
 
     _ringEnabled: false,
     _lockEnabled: false,
     _locateEnabled: false,
-    _wipeEnabled: false,
-    _resetRequired : false,
     _passcodeEnabled : false,
     _lockscreenEnabled : false,
-    _deviceId : null,
-    _timestamps: [],
 
     init: function() {
       Commands.init();
       this.passphrase = new PassPhrase('rppmac', 'rppsalt');
 
-      this._getSettings();
-      this._observeSettings();
-      this._addListener();
-
-      // get settings
-      SettingsListener.observe('lockscreen.enabled', false,
-        function(value) {
-          this._lockscreenEnabled = value;
-        }.bind(this)
-      );
+      this.observers();
+      this.events();
     },
 
-    _getSettings: function() {
-      var self = this;
+    observers: function() {
+      SettingsListener.observe(LOCKSCREEN_ENABLED, false, value => {
+        this._lockscreenEnabled = value;
+      });
 
-      var settings = navigator.mozSettings;
-      if (!settings) {
-        return;
-      }
+      SettingsListener.observe(PASSCODE_ENABLED, false, value => {
+        this._passcodeEnabled = value;
+      });
 
-      var lock = settings.createLock();
-      if (!lock) {
-        return;
-      }
+      SettingsListener.observe(RING_ENABLED, false, value => {
+        this._ringEnabled = value;
+      });
 
-      var reqRing = lock.get(RING_ENABLED);
-      if (reqRing) {
-        reqRing.onsuccess = function() {
-          var value = reqRing.result[RING_ENABLED];
-          if (typeof value === 'boolean') {
-            self._ringEnabled = value;
-          } else if (typeof value === 'string') {
-            self._ringEnabled = (value === 'true');
-          }
-        };
+      SettingsListener.observe(LOCK_ENABLED, false, value => {
+        this._lockEnabled = value;
+      });
 
-        reqRing.onerror = function() {};
-      }
-
-      var reqLock = lock.get(LOCK_ENABLED);
-      if (reqLock) {
-        reqLock.onsuccess = function() {
-          var value = reqLock.result[LOCK_ENABLED];
-          if (typeof value === 'boolean') {
-            self._lockEnabled = value;
-          } else if (typeof value === 'string') {
-            self._lockEnabled = (value === 'true');
-          }
-        };
-
-        reqLock.onerror = function() {};
-      }
-
-      var reqLocate = lock.get(LOCATE_ENABLED);
-      if (reqLocate) {
-        reqLocate.onsuccess = function() {
-          var value = reqLocate.result[LOCATE_ENABLED];
-          if (typeof value === 'boolean') {
-            self._locateEnabled = value;
-          } else if (typeof value === 'string') {
-            self._locateEnabled = (value === 'true');
-          }
-        };
-
-        reqLocate.onerror = function() {};
-      }
-
-      var passcodeReq = lock.get(PASSCODE_ENABLED);
-      if (passcodeReq) {
-        passcodeReq.onsuccess = function() {
-          var value = passcodeReq.result[PASSCODE_ENABLED];
-          if (typeof value === 'boolean') {
-            self._passcodeEnabled = value;
-          } else if (typeof value === 'string') {
-            self._passcodeEnabled = (value === 'true');
-          }
-        };
-
-        passcodeReq.onerror = function() {};
-      }
+      SettingsListener.observe(LOCATE_ENABLED, false, value => {
+        this._locateEnabled = value;
+      });
     },
 
-    _observeSettings: function() {
-      var settings = navigator.mozSettings;
-      if (settings) {
-        settings.addObserver(RING_ENABLED,
-          this._onSettingsChanged.bind(this));
-        settings.addObserver(LOCK_ENABLED,
-          this._onSettingsChanged.bind(this));
-        settings.addObserver(LOCATE_ENABLED,
-          this._onSettingsChanged.bind(this));
-        settings.addObserver(PASSCODE_ENABLED,
-          this._onSettingsChanged.bind(this));
-      }
-    },
-
-    _onSettingsChanged: function(event) {
-      var name = event.settingName;
-      var value = event.settingValue;
-
-      if (name === RING_ENABLED) {
-        if (typeof value === 'boolean') {
-          this._ringEnabled = value;
-        } else if (typeof value === 'string') {
-          this._ringEnabled = (value === 'true');
-        }
-      } else if (name === LOCK_ENABLED) {
-        if (typeof value === 'boolean') {
-          this._lockEnabled = value;
-        } else if (typeof value === 'string') {
-          this._lockEnabled = (value === 'true');
-        }
-      } else if (name === LOCATE_ENABLED) {
-        if (typeof value === 'boolean') {
-          this._locateEnabled = value;
-        } else if (typeof value === 'string') {
-          this._locateEnabled = (value === 'true');
-        }
-      } else if (name === PASSCODE_ENABLED) {
-        if (typeof value === 'boolean') {
-          this._passcodeEnabled = value;
-        } else if (typeof value === 'string') {
-          this._passcodeEnabled = (value === 'true');
-        }
-      }
-    },
-
-    _addListener: function() {
-      var mobileMessage = navigator.mozMobileMessage;
-      if (mobileMessage) {
-        mobileMessage.addEventListener('received',
-          this._onSMSReceived.bind(this));
-      }
+    events: function() {
+      navigator.mozSetMessageHandler('sms-received',
+        this._onSMSReceived.bind(this));
     },
 
     /**
@@ -176,9 +69,9 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
      * @param {Object} event Object recieved from SMS listener event 'recieved'
      */
     _onSMSReceived: function(event) {
-      var match, cmd, passkey, body = event.message.body,
+      var match, cmd, passkey, body = event.body,
           rgx = /^rpp\s(lock|ring|locate)\s([a-z0-9]{1,100})$/i,
-          sender = event.message.sender;
+          sender = event.sender;
 
       // If there is no passcode, do nothing.
       if ( ! this._passcodeEnabled || ! this._lockscreenEnabled) {
@@ -219,6 +112,11 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
       }
     },
 
+    /**
+     * Remotely rings the device
+     * 
+     * @param  {Number} number Phone number
+     */
     _ring : function(number) {
       if ( ! this._ringEnabled) {
         return;
@@ -263,6 +161,11 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
       this._doLock(number, lockReply);
     },
 
+    /**
+     * Remotely locates device and sends back reply SMS.
+     * 
+     * @param  {Number} number Phone number
+     */
     _locate : function(number) {
       if ( ! this._locateEnabled) {
         return;
