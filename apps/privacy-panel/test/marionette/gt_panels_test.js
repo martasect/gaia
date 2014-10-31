@@ -1,6 +1,5 @@
 'use strict';
 
-var assert = require('assert');
 var PRIVACYPANEL_TEST_APP = 'app://privacy-panel.gaiamobile.org';
 
 marionette('check guided tour panels', function() {
