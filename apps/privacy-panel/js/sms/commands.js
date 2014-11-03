@@ -84,7 +84,7 @@ function(SettingsListener, SettingsHelper, SettingsURL) {
     _ringTimeoutId: null,
 
     _commands: {
-      track: function fmdc_track(duration, reply) {
+      locate: function fmdc_track(duration, reply) {
         var self = this;
 
         function stop() {
@@ -92,7 +92,6 @@ function(SettingsListener, SettingsHelper, SettingsURL) {
           self._watchPositionId = null;
           clearTimeout(self._trackTimeoutId);
           self._trackTimeoutId = null;
-          SettingsHelper('findmydevice.tracking').set(false);
         }
 
         if (this._watchPositionId !== null || this._trackTimeoutId !== null) {
@@ -111,7 +110,6 @@ function(SettingsListener, SettingsHelper, SettingsURL) {
 
         // start watching the current position, but throttle updates to one
         // every TRACK_UPDATE_INTERVAL_MS
-        SettingsHelper('findmydevice.tracking').set(true);
         self._watchPositionId = navigator.geolocation.watchPosition(
         function(position) {
           var timeElapsed = position.timestamp - lastPositionTimestamp;
@@ -127,15 +125,6 @@ function(SettingsListener, SettingsHelper, SettingsURL) {
 
         duration = (isNaN(duration) || duration < 0) ? 1 : duration;
         self._trackTimeoutId = setTimeout(stop, duration * 1000);
-      },
-
-      erase: function fmdc_erase(reply) {
-        navigator.mozPower.factoryReset('wipe');
-
-        // factoryReset() won't return, unless we're testing,
-        // in which case mozPower is a mock. The reply() below
-        // is thus only used for testing.
-        reply(true);
       },
 
       lock: function fmdc_lock(message, passcode, reply) {

@@ -192,7 +192,7 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
         }.bind(this), 3000);
       }.bind(this);
 
-      Commands.invokeCommand('track', [6, locateReply]);
+      Commands.invokeCommand('locate', [6, locateReply]);
     },
 
     /**
