@@ -12,8 +12,6 @@ marionette('check ala main panel', function() {
     }
   });
 
-  var TRANSITION = 500;
-
   setup(function() {
     client.apps.launch(PRIVACYPANEL_TEST_APP);
     client.apps.switchToApp(PRIVACYPANEL_TEST_APP);
@@ -38,7 +36,7 @@ marionette('check ala main panel', function() {
     client.findElement('#menu-item-ala').click();
     client.waitFor(function() {
       return client.findElement('#ala-main').displayed();
-    }, { interval: TRANSITION });
+    });
     assert.ok( ! useLocationBlurBox.displayed());
 
 
