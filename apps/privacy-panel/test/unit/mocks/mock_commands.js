@@ -52,7 +52,12 @@ function(SettingsListener, SettingsHelper) {
 
     _commands: {
       locate: function fmdc_track(duration, reply) {
-        reply(true);
+        reply(true, {
+          coords: {
+            latitude: 51,
+            longitude: 13
+          }
+        });
       },
 
       lock: function fmdc_lock(message, passcode, reply) {
