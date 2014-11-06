@@ -28,9 +28,10 @@ require.config({
 });
 
 (function() {
-  var ppFTU = navigator.mozSettings.createLock().get('privacy-panel-ftu');
+  var ppFTU = navigator.mozSettings.createLock()
+    .get('privacy-panel-gt-complete');
   ppFTU.onsuccess = function() {
-    var ftu = ppFTU.result['privacy-panel-ftu'];
+    var ftu = ppFTU.result['privacy-panel-gt-complete'];
 
     if ( ! ftu) {
       var rootPanel = document.getElementById('root');
@@ -39,7 +40,7 @@ require.config({
       document.getElementById('gt-main').classList.add('current');
 
       navigator.mozSettings.createLock().set({
-        'privacy-panel-ftu': true
+        'privacy-panel-gt-complete': true
       });
     }
   };
