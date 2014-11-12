@@ -1,3 +1,4 @@
+/*jshint maxlen:120*/
 /**
  * ALA define custom location panel.
  * 
