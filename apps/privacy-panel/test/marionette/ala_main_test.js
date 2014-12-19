@@ -19,7 +19,7 @@ marionette('check ala main panel', function() {
     subject.init();
   });
 
-  test('ability to set geolocation and use location adjustment', function() {
+  test('ability to set geolocation and location adjustment', function() {
     var useLocationBlurBox = client.findElement('.show-when-geolocation-on');
     var geolocationTypeBox = client.findElement('.geolocation-type-box');
     var description1 = client.findElement('.hide-when-ala-on');
@@ -44,7 +44,7 @@ marionette('check ala main panel', function() {
     assert.ok(!description2.displayed());
 
 
-    // turn use location adjustment on
+    // turn location adjustment on
     alaSwitcher.click();
     client.waitFor(function() {
       return geolocationTypeBox.displayed();
@@ -74,7 +74,7 @@ marionette('check ala main panel', function() {
     assert.ok(geolocationTypeBox.displayed());
 
 
-    // turn use location adjustment off
+    // turn location adjustment off
     alaSwitcher.click();
     client.waitFor(function() {
       return !geolocationTypeBox.displayed();
