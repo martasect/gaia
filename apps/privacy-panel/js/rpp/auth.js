@@ -193,7 +193,7 @@ function(panels, PassPhrase, SettingsListener) {
      * @return {String}       Empty string when success
      */
     comparePINs: function(pass1, pass2) {
-      var rgx = /^([0-9]{1,4})$/i;
+      var rgx = /^([0-9]{1,8})$/i;
 
       if (!pass1) {
         return 'pin-empty';

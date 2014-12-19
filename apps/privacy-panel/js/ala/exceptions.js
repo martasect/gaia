@@ -84,7 +84,7 @@ function(panels, BlurSlider, appList, SettingsListener, SettingsHelper) {
               break;
             case 'blur':
               type = 'type-blur';
-              typeArg = { blur: BlurSlider.getLabel(appSettings.slider) };
+              typeArg = { blurRadius: BlurSlider.getLabel(appSettings.slider) };
               break;
             case 'precise':
               type = 'type-precise';
