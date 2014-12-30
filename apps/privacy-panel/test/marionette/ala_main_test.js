@@ -28,9 +28,9 @@ marionette('check ala main panel', function() {
     var typeBlur = client.findElement('.type-blur');
     var typeCustom = client.findElement('.type-custom-location');
     var geolocationSwitcher = client.findElement(
-      'span[data-l10n-id="use-geolocation"]');
+      'span[data-l10n-id="geolocation"]');
     var alaSwitcher = client.findElement(
-      'span[data-l10n-id="use-location-adjustment"]');
+      'span[data-l10n-id="location-adjustment"]');
 
     assert.ok(!useLocationBlurBox.displayed());
 
