@@ -72,16 +72,17 @@ function(panels, BlurSlider, SettingsListener, SettingsHelper) {
         if (appSettings) {
           switch (appSettings.type) {
             case 'user-defined':
-              type = 'User defined';
+              type = 'type-user-defined';
               break;
             case 'blur':
-              type = BlurSlider.getLabel(appSettings.slider) +' blur';
+              type = 'type-blur';
+              typeArg = { blurRadius: BlurSlider.getLabel(appSettings.slider) };
               break;
             case 'precise':
-              type = 'Precise';
+              type = 'type-precise';
               break;
             case 'no-location':
-              type = 'No location';
+              type = 'type-no-location';
               break;
             default:
               type = appSettings.type;
@@ -123,7 +124,12 @@ function(panels, BlurSlider, SettingsListener, SettingsHelper) {
 
       if (itemData.type) {
         var type = document.createElement('small');
-        type.textContent = itemData.type;
+        type.setAttribute('data-l10n-id', itemData.type);
+
+        if (itemData.typeArg) {
+          type.setAttribute('data-l10n-args', JSON.stringify(itemData.typeArg));
+        }
+
         link.appendChild(type);
       }
 
