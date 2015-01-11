@@ -338,7 +338,15 @@ function(panels, PassPhrase, SettingsListener) {
     },
 
     verifyPassCode: function(pin, callback) {
-      var status = this.comparePINs(pin, this.lsPasscode);
+      var form    = this.changeForm;
+      var message = form.querySelector('.validation-message');
+      var status = '';
+      if (pin.length > 4){
+       status = 'passcode-long'; 
+      }
+      else{
+         status = this.comparePINs(pin, this.lsPasscode);
+      }
       callback = callback || function() {};
 
       callback(status);
