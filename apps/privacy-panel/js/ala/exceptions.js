@@ -131,7 +131,7 @@ function(panels, BlurSlider, appList, SettingsListener, SettingsHelper) {
       link.appendChild(name);
 
       if (itemData.type) {
-        var type = document.createElement('small');
+        navigator.mozL10n.setAttributes('type', itemData.type, itemData.typeArg);
         type.setAttribute('data-l10n-id', itemData.type);
 
         if (itemData.typeArg) {

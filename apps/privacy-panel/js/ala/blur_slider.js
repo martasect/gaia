@@ -133,7 +133,7 @@ function(SettingsListener, SettingsHelper) {
       case 11:  return '500 '+navigator.mozL10n.get('blur-unit-km');
       case 12:  return '1000 '+navigator.mozL10n.get('blur-unit-km');
       default:  return '';
-    }
+       }
   };
 
   return BlurSlider;

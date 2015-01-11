@@ -146,7 +146,8 @@ function(panels, SettingsListener, SettingsHelper) {
       var keys = Object.keys(this.regionsAndCities);
 
       keys.sort(function(a, b) {
-        return (navigator.mozL10n.get(a) > navigator.mozL10n.get(b));
+        return ((navigator.mozL10n.get(a)).
+                localeCompare(navigator.mozL10n.get(b)));
       });
 
       // prepare region list entries

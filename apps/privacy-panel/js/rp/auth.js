@@ -338,8 +338,6 @@ function(panels, PassPhrase, SettingsListener) {
     },
 
     verifyPassCode: function(pin, callback) {
-      var form    = this.changeForm;
-      var message = form.querySelector('.validation-message');
       var status = '';
       if (pin.length > 4){
        status = 'passcode-long'; 
