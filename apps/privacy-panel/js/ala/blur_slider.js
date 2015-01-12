@@ -86,9 +86,10 @@ function(SettingsListener, SettingsHelper) {
      * @param {String} value
      */
     _setLabel: function(value) {
-      var label = BlurSlider.getLabel(value);
-      var l10nId = label.unit === 'km' ? 'blur-unit-km' : 'blur-unit-m';
-      navigator.mozL10n.setAttributes(node, l10nId, { value: label.value });
+      var lab = BlurSlider.getLabel(value);
+      var l10nId = lab.unit === 'km' ? 'blur-unit-km' : 'blur-unit-m';
+      navigator.mozL10n.setAttributes(this.label.textContent, 
+				l10nId, { value: lab.value });
     },
 
     /**
