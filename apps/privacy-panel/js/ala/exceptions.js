@@ -131,11 +131,11 @@ function(panels, BlurSlider, appList, SettingsListener, SettingsHelper) {
       link.appendChild(name);
 
       if (itemData.type) {
-        navigator.mozL10n.setAttributes('type', itemData.type, itemData.typeArg);
-        type.setAttribute('data-l10n-id', itemData.type);
-
+        var type = document.createElement('small');
+        navigator.mozL10n.setAttributes('type', itemData.type);
         if (itemData.typeArg) {
-          type.setAttribute('data-l10n-args', JSON.stringify(itemData.typeArg));
+          navigator.mozL10n.setAttributes('type', itemData.type,
+                                        itemData.typeArg);
         }
 
         link.appendChild(type);

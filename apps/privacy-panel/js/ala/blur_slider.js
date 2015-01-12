@@ -86,7 +86,9 @@ function(SettingsListener, SettingsHelper) {
      * @param {String} value
      */
     _setLabel: function(value) {
-      this.label.textContent = BlurSlider.getLabel(value);
+      var label = BlurSlider.getLabel(value);
+      var l10nId = label.unit === 'km' ? 'blur-unit-km' : 'blur-unit-m';
+      navigator.mozL10n.setAttributes(node, l10nId, { value: label.value });
     },
 
     /**
@@ -120,18 +122,18 @@ function(SettingsListener, SettingsHelper) {
    */
   BlurSlider.getLabel = function(value) {
     switch(parseInt(value)) {
-      case 1:   return '500 '+navigator.mozL10n.get('blur-unit-m');
-      case 2:   return '1 '+navigator.mozL10n.get('blur-unit-km');
-      case 3:   return '2 '+navigator.mozL10n.get('blur-unit-km');
-      case 4:   return '5 '+navigator.mozL10n.get('blur-unit-km');
-      case 5:   return '10 '+navigator.mozL10n.get('blur-unit-km');
-      case 6:   return '15 '+navigator.mozL10n.get('blur-unit-km');
-      case 7:   return '20 '+navigator.mozL10n.get('blur-unit-km');
-      case 8:   return '50 '+navigator.mozL10n.get('blur-unit-km');
-      case 9:   return '75 '+navigator.mozL10n.get('blur-unit-km');
-      case 10:  return '100 '+navigator.mozL10n.get('blur-unit-km');
-      case 11:  return '500 '+navigator.mozL10n.get('blur-unit-km');
-      case 12:  return '1000 '+navigator.mozL10n.get('blur-unit-km');
+       case 1:   return {'value': 500, 'unit': 'm'};
+       case 2:   return {'value': 1, 'unit': 'km'};
+       case 3:   return {'value': 2, 'unit': 'km'};
+      case 4:   return {'value': 5, 'unit': 'km'};
+      case 5:   return {'value': 10, 'unit': 'km'};
+      case 6:   return {'value': 15, 'unit': 'km'};
+      case 7:   return {'value': 20, 'unit': 'km'};
+      case 8:   return {'value': 50, 'unit': 'km'};
+      case 9:   return {'value': 75, 'unit': 'km'};
+      case 10:  return {'value': 100, 'unit': 'km'};
+      case 11:  return {'value': 500, 'unit': 'km'};
+      case 12:  return {'value': 1000, 'unit': 'km'};
       default:  return '';
        }
   };
