@@ -67,7 +67,7 @@ function(panels, BlurSlider, SettingsListener, SettingsHelper) {
           return;
         }
 
-        var type;
+        var type, typeArg;
         var appSettings = this.exceptionsList[item.origin];
         if (appSettings) {
           switch (appSettings.type) {
