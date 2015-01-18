@@ -124,11 +124,12 @@ function(panels, BlurSlider, SettingsListener, SettingsHelper) {
 
       if (itemData.type) {
         var type = document.createElement('small');
-        type.setAttribute('data-l10n-id', itemData.type);
+	type.setAttribute('data-l10n-id', itemData.type);
 
         if (itemData.typeArg) {
-          type.setAttribute('data-l10n-args', JSON.stringify(itemData.typeArg));
-        }
+          navigator.mozL10n.setAttributes('type', 
+				itemData.type, itemData.typeArg);
+	}
 
         link.appendChild(type);
       }
