@@ -40,7 +40,7 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
     },
 
     observers: function() {
-     console.log("privacy panel step 1"); 
+     console.log('privacy panel step 1'); 
 
      return new Promise(resolve => {
         var pending = 0;
@@ -51,7 +51,7 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
           if(pending === 6) {
             resolve();
           }
-	  console.log("privacy panel step 2");
+	  console.log('privacy panel step 2');
         }
 
         SettingsListener.observe(LOCKSCREEN_ENABLED, false, value => {
@@ -85,7 +85,7 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
           }
           finishStep();
         });
-       console.log("privacy panel step 3");
+       console.log('privacy panel step 3');
       });
     },
 
