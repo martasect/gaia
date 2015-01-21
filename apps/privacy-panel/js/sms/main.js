@@ -1,6 +1,6 @@
 /**
  * Command module to handle lock, ring, locate features.
- * 
+ *
  * @module RPPExecuteCommands
  * @return {Object}
  */
@@ -33,35 +33,59 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
       Commands.init();
       this.passphrase = new PassPhrase('rppmac', 'rppsalt');
 
-      this.observers();
-      this.events();
+      this.observers().then(() => {
+        this.events();
+      });
+
     },
 
     observers: function() {
-      SettingsListener.observe(LOCKSCREEN_ENABLED, false, value => {
-        this._lockscreenEnabled = value;
-      });
+     console.log("privacy panel step 1"); 
 
-      SettingsListener.observe(PASSCODE_ENABLED, false, value => {
-        this._passcodeEnabled = value;
-      });
+     return new Promise(resolve => {
+        var pending = 0;
 
-      SettingsListener.observe(RING_ENABLED, false, value => {
-        this._ringEnabled = value;
-      });
-
-      SettingsListener.observe(LOCK_ENABLED, false, value => {
-        this._lockEnabled = value;
-      });
-
-      SettingsListener.observe(LOCATE_ENABLED, false, value => {
-        this._locateEnabled = value;
-      });
-
-      SettingsListener.observe(LOCKSCREEN_LOCKED, false, value => {
-        if (!value) {
-          Commands.invokeCommand('ring', [0]);
+        // Promises would be better, but SettingsListener doesn't support it.
+        function finishStep() {
+          pending++;
+          if(pending === 6) {
+            resolve();
+          }
+	  console.log("privacy panel step 2");
         }
+
+        SettingsListener.observe(LOCKSCREEN_ENABLED, false, value => {
+          this._lockscreenEnabled = value;
+          finishStep();
+        });
+
+        SettingsListener.observe(PASSCODE_ENABLED, false, value => {
+          this._passcodeEnabled = value;
+          finishStep();
+        });
+
+        SettingsListener.observe(RING_ENABLED, false, value => {
+          this._ringEnabled = value;
+          finishStep();
+        });
+
+        SettingsListener.observe(LOCK_ENABLED, false, value => {
+          this._lockEnabled = value;
+          finishStep();
+        });
+
+        SettingsListener.observe(LOCATE_ENABLED, false, value => {
+          this._locateEnabled = value;
+          finishStep();
+        });
+
+        SettingsListener.observe(LOCKSCREEN_LOCKED, false, value => {
+          if (!value) {
+            Commands.invokeCommand('ring', [0]);
+          }
+          finishStep();
+        });
+       console.log("privacy panel step 3");
       });
     },
 
@@ -82,6 +106,7 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
 
       // If there is no passcode, do nothing.
       if (!this._passcodeEnabled || !this._lockscreenEnabled) {
+        // Before ready! =(
         return;
       }
 
@@ -130,7 +155,7 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
 
     /**
      * Remotely rings the device
-     * 
+     *
      * @param  {Number} number Phone number
      */
     _ring : function(number) {
@@ -157,7 +182,7 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
 
     /**
      * Remotely locks the screen
-     * 
+     *
      * @param  {Number} number Phone number
      */
     _lock : function(number) {
@@ -179,7 +204,7 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
 
     /**
      * Remotely locates device and sends back reply SMS.
-     * 
+     *
      * @param  {Number} number Phone number
      */
     _locate : function(number) {
@@ -212,7 +237,7 @@ function(Commands, PassPhrase, SettingsListener, SettingsHelper) {
 
     /**
      * Perform lockscreen
-     * 
+     *
      * @param  {Number} number Phone number
      */
     _doLock : function(number, reply) {
