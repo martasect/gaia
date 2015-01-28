@@ -1,28 +1,40 @@
-<element name="gt-main" extends="section">
-  <template>
-    <header class="gt-header">
-      <a class="pp-link back" href="#root">
-        <span class="icon gaia-icon-close">back</span>
-      </a>
-    </header>
-    <div>
-      <ul>
-        <li>
-          <div class="gt-picture">
-            <img src="style/images/guided_tour/privacy-panel-gt-01.svg">
-          </div>
-          <div class="gt-description">
-            <h2 data-l10n-id="gt-main-header">Welcome to the Privacy Panel!</h2>
-            <p data-l10n-id="gt-main-desc">
-              This app will help you enhance your privacy protection and enables you to lock or find your phone if it's lost. Just have a closer look. It takes only 2 minutes!
-            </p>
-          </div>
-          <div class="gt-action">
-            <div class="gt-pager page-1"></div>
-            <a class="pp-link btn btn-blue" href="#gt-ala-explain" data-l10n-id="get-started">Get started!</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </template>
-</element>
+<template id="container" class="theme-settings" aria-hidden="true">
+    <section id="splash-screen" role="region" class="show">
+    </section>
+    <section id="activation-screen" role="region" class="skin-organic no-options">
+        <gaia-header>
+            <h1 id="main-title"></h1>
+            <a class="pp-link back" href="#root">
+                <span class="icon gaia-icon-close">back</span>
+            </a>
+        </gaia-header>
+        <article role="main">
+            <section role="region" id="gt-1">
+                <div class="gt-picture">
+                    <img src="style/images/guided_tour/privacy-panel-gt-01.svg">
+                        </div>
+                <div class="gt-description">
+                    <h2 data-l10n-id="gt-main-header">Welcome to the Privacy Panel!</h2>
+                    <p data-l10n-id="gt-main-desc">
+                    This app will help you enhance your privacy protection and enables you to lock or find your phone if it's lost. Just have a closer look. It takes only 2 minutes!
+                    </p>
+                </div>
+            </section>
+            <section role="region" id="gt-2">
+                <div class="gt-picture">
+                    <img src="style/images/guided_tour/privacy-panel-gt-03.svg">
+                        </div>
+                <div class="gt-description">
+                    <h2 data-l10n-id="gt-ala-blur-header">How to set Location Adjustment?</h2>
+                    <p data-l10n-id="gt-ala-blur-desc">
+                    Not every app needs your exact location to work properly.  Instead of sharing your exact coordinates, you can choose to effectively blur your location to e.g. 50 miles around you. This way, your weather app will still work, but you are not disclosing your exact location. Remember: Location Adjustment will not completely hide you!
+                    </p>
+                </div>
+            </section>
+        </article>
+        <gaia-buttons id="nav-bar" class="nav forward-only">
+            <button id="back" class="button-left icon icon-previous" data-l10n-id="navbar-back">Back</button>
+            <button id="forward" class="recommend icon icon-next" data-l10n-id="navbar-next">Next</button>
+        </gaia-buttons>
+    </section>
+</template>
