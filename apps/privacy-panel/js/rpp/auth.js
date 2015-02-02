@@ -307,9 +307,18 @@ function(panels, PassPhrase, SettingsListener) {
       passmsg.textContent = '';
       pinmsg.textContent = '';
 
-      var resultCallback = function(pinError) {
+      var resultCallback = function(pinError, retryCount) {
         if (pinError) {
-          pinmsg.setAttribute('data-l10n-id', pinError);
+          if (pinError=='sim-invalid')
+          {
+	    var sim = this.simcards[type];
+	    sim.
+            navigator.mozL10n.setAttributes(pinmsg,
+                                       'sim-invalid-try', { value: retryCount});
+          }
+          else{
+            pinmsg.setAttribute('data-l10n-id', pinError);
+          }
           return;
         }
 
@@ -334,7 +343,8 @@ function(panels, PassPhrase, SettingsListener) {
     verifySIMPIN: function(simcard, pin, callback) {
       var unlock = simcard.unlockCardLock({ lockType : 'pin', pin: pin });
       unlock.onsuccess = callback.bind(this, '');
-      unlock.onerror = callback.bind(this, 'sim-invalid');
+      var retryCount = unlock.error.retryCount;
+      unlock.onerror = callback.bind(this, 'sim-invalid', retryCount);
     },
 
     verifyPassCode: function(pin, callback) {
